@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://raccoonchalet.com/sitemap.xml

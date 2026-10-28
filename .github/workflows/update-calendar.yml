@@ -6,7 +6,7 @@ name: Update availability calendar
 
 on:
   schedule:
-    - cron: '17 */6 * * *'
+    - cron: '17 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -50,11 +50,6 @@ jobs:
             echo 'Published calendar has not changed.'
             exit 0
           fi
-          git -C published config user.name 'github-actions[bot]'
-          git -C published config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git -C published add calendar.json
-          git -C published commit -m 'Update availability calendar'
-          git -C published push origin HEAD:gh-pages
           echo 'changed=true' >> "$GITHUB_OUTPUT"
       - name: Prepare published snapshot
         if: steps.update.outputs.changed == 'true'
@@ -74,3 +69,13 @@ jobs:
         if: steps.update.outputs.changed == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Save calendar in published snapshot
+        if: steps.update.outputs.changed == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C published config user.name 'github-actions[bot]'
+          git -C published config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C published add -- calendar.json
+          git -C published commit -m 'Update availability calendar'
+          git -C published push origin HEAD:gh-pages

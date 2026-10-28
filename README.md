@@ -15,7 +15,7 @@ The browser fetches `./calendar.json` at runtime. Calendar data is separate from
 Set repository **Pages Source** to **GitHub Actions**.
 
 - `deploy-site.yml` runs on source changes to `main`, refreshes the calendar, builds `dist/`, stores a `gh-pages` snapshot, and deploys the Pages artifact.
-- `update-calendar.yml` runs every six hours or manually. It refreshes `calendar.json` in the saved snapshot and republishes that snapshot without running the site build. It skips publishing when the data is unchanged.
+- `update-calendar.yml` runs hourly at minute 17 UTC or manually. It refreshes `calendar.json` in the saved snapshot and republishes that snapshot without running the site build. It skips publishing when the data is unchanged.
 
 GitHub Pages requires an artifact deployment to publish a changed static file. Calendar-only updates leave the site's HTML, CSS, JavaScript, and media unchanged.
 
@@ -23,4 +23,9 @@ Run the full site workflow once before the calendar-only workflow so the `gh-pag
 
 ## Custom domain
 
-The intended domain is `raccoonchalet.com`. Configure it in the repository's Pages settings after its DNS records point to GitHub Pages. Relative asset URLs also allow the default project URL to work while DNS is being configured.
+The canonical domain is `raccoonchalet.com`. The site's canonical tag, structured data, social previews, robots file, and sitemap all use this address. Relative asset URLs also let the default project URL work while DNS is being configured.
+
+1. In the repository's **Settings → Pages**, keep **Source: GitHub Actions**, set **Custom domain** to `raccoonchalet.com`, and save. With an Actions-published site, no `CNAME` file is needed.
+2. In DNSimple's advanced DNS editor, add an apex **ALIAS** record with a blank name (or `@`) pointing to `Zettersten.github.io.`. Add a **CNAME** record named `www` pointing to `Zettersten.github.io.`. Do not include `/raccoonchalet.com` in either target. Remove conflicting apex A/AAAA/ALIAS records and conflicting `www` records if any are present.
+3. When DNS and certificate provisioning finish, enable **Enforce HTTPS** in the same GitHub Pages settings. GitHub redirects `www.raccoonchalet.com` to the canonical apex domain.
+4. Verify `https://raccoonchalet.com/`, `/robots.txt`, and `/sitemap.xml` load. Add the domain to Google Search Console and Bing Webmaster Tools, verify ownership, and submit `https://raccoonchalet.com/sitemap.xml` to each.
