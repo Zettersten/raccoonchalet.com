@@ -300,7 +300,8 @@ function initHeroShader() {
     hero.classList.add('has-shader');
     frame = requestAnimationFrame(render);
   };
-  image.src = 'assets/deck-view-01.jpg';
+  const fallback = hero.querySelector('.hero-fallback');
+  image.src = fallback?.currentSrc || fallback?.src || 'assets/deck-view-01.jpg';
 }
 
 initNavigation();

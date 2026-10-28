@@ -105,3 +105,11 @@ h2,h3,p{margin-top:0}.intro h2,.home-heading h2,.sleep-intro h2,.availability-he
 @media (max-width:700px){.sleep-row p{font-size:.85rem}}
 .calendar-weekday{color:#526056}
 .film-copy .section-signature{color:#e8c4a9}
+
+/* Mobile story photography prefers lighter WebP files, with JPGs above as a fallback. */
+@media (max-width:700px){
+  .story-chapter[data-story="0"]{background-image:image-set(url("assets/hottub-view-01.webp") type("image/webp"),url("assets/hottub-view-01.jpg") type("image/jpeg"))}
+  .story-chapter[data-story="1"]{background-image:image-set(url("assets/entertainment-room-view-01.webp") type("image/webp"),url("assets/entertainment-room-view-01.jpg") type("image/jpeg"))}
+  .story-chapter[data-story="2"]{background-image:image-set(url("assets/livingroom-view-02.webp") type("image/webp"),url("assets/livingroom-view-02.jpg") type("image/jpeg"))}
+  .story-chapter[data-story="3"]{background-image:image-set(url("assets/deck-view-03.webp") type("image/webp"),url("assets/deck-view-03.jpg") type("image/jpeg"))}
+}
