@@ -84,9 +84,10 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preload" href="assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="assets/deck-view-01.jpg" as="image" fetchpriority="high" />
-    <link rel="stylesheet" href="styles.css?v=20261028-3" />
-    <script type="module" src="app.js"></script>
+    <link rel="preload" href="assets/deck-view-01-2000.webp" as="image" type="image/webp" media="(max-width: 1600px)" imagesrcset="assets/deck-view-01-1200.webp 1200w, assets/deck-view-01-2000.webp 2000w" imagesizes="100vw" fetchpriority="high" />
+    <link rel="preload" href="assets/deck-view-01.jpg" as="image" media="(min-width: 1601px)" fetchpriority="high" />
+    <link rel="stylesheet" href="styles.css?v=20261028-4" />
+    <script type="module" src="app.js?v=20261028-4"></script>
     <script type="module" src="calendar-ui.js"></script>
   </head>
   <body>
@@ -125,7 +126,10 @@
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-media" aria-hidden="true">
-          <img class="hero-fallback" src="assets/deck-view-01.jpg" alt="" fetchpriority="high" />
+          <picture>
+            <source media="(max-width: 1600px)" type="image/webp" srcset="assets/deck-view-01-1200.webp 1200w, assets/deck-view-01-2000.webp 2000w" sizes="100vw" />
+            <img class="hero-fallback" src="assets/deck-view-01.jpg" alt="" fetchpriority="high" />
+          </picture>
           <canvas id="hero-canvas"></canvas>
           <div class="hero-shade"></div>
         </div>
@@ -166,10 +170,10 @@
 
       <section class="story" aria-label="Ways to spend your stay">
         <div class="story-visual" aria-hidden="true">
-          <img class="story-image is-active" src="assets/hottub-view-01.jpg" alt="" data-story-image="0" loading="lazy" />
-          <img class="story-image" src="assets/entertainment-room-view-01.jpg" alt="" data-story-image="1" loading="lazy" />
-          <img class="story-image" src="assets/livingroom-view-02.jpg" alt="" data-story-image="2" loading="lazy" />
-          <img class="story-image" src="assets/deck-view-03.jpg" alt="" data-story-image="3" loading="lazy" />
+          <picture><source type="image/webp" srcset="assets/hottub-view-01.webp" /><img class="story-image is-active" src="assets/hottub-view-01.jpg" alt="" data-story-image="0" loading="lazy" /></picture>
+          <picture><source type="image/webp" srcset="assets/entertainment-room-view-01.webp" /><img class="story-image" src="assets/entertainment-room-view-01.jpg" alt="" data-story-image="1" loading="lazy" /></picture>
+          <picture><source type="image/webp" srcset="assets/livingroom-view-02.webp" /><img class="story-image" src="assets/livingroom-view-02.jpg" alt="" data-story-image="2" loading="lazy" /></picture>
+          <picture><source type="image/webp" srcset="assets/deck-view-03.webp" /><img class="story-image" src="assets/deck-view-03.jpg" alt="" data-story-image="3" loading="lazy" /></picture>
           <div class="story-visual-shade"></div>
           <span class="story-visual-label" id="story-visual-label">The reset</span>
           <span class="story-visual-count" id="story-visual-count">01 / 04</span>
