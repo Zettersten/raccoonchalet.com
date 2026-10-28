@@ -23,6 +23,7 @@ A mountain chalet five minutes from Bryce Resort with a saltwater hot tub, cedar
 - The published website reads a local `calendar.json` file at runtime so availability data is independent of the page bundle.
 - GitHub Actions refresh the calendar from the source API and publish the updated static artifact.
 - Airbnb is the only confirmed booking destination for now: `https://www.airbnb.com/rooms/1443504721219481379`.
+- The homepage includes a Microsoft Clarity site disclosure and links to a dedicated privacy notice. Clarity loads only after visitors allow analytics; they can later change that choice.
 - The site must support reduced motion and keyboard navigation alongside its immersive motion.
 
 ## Brand Commitments

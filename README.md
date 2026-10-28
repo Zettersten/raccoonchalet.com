@@ -21,6 +21,10 @@ GitHub Pages requires an artifact deployment to publish a changed static file. C
 
 Run the full site workflow once before the calendar-only workflow so the `gh-pages` snapshot exists. Airbnb is currently the only booking link.
 
+## Privacy and analytics
+
+The homepage footer contains the Microsoft Clarity site disclosure and links to `privacy.html`. Clarity loads only after a visitor allows analytics. `privacy.js` stores that choice in the visitor's browser for up to 180 days and sends Clarity Consent V2 with advertising storage denied. Visitors can change their choice from either page's footer. In the Clarity project, enable Consent Mode under **Settings → Setup** so the consent signal controls Clarity cookies.
+
 ## Custom domain
 
 The canonical domain is `raccoonchalet.com`. The site's canonical tag, structured data, social previews, robots file, and sitemap all use this address. Relative asset URLs also let the default project URL work while DNS is being configured.

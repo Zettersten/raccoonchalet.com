@@ -62,6 +62,33 @@
         ],
         "createdAt": "2026-10-28T20:08:32.055Z",
         "reason": "Agent: after fixing measured text failures, remaining detector pairs are white text over darkened photography and aria-hidden decorative type; the scanner substitutes parent surface colors."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "privacy.html"
+        ],
+        "createdAt": "2026-10-28T20:48:05.581Z",
+        "reason": "Agent: legal hero has a 20px container inset and more than 4rem vertical padding; screenshot confirms no flush text"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "privacy.html"
+        ],
+        "createdAt": "2026-10-28T20:48:06.950Z",
+        "reason": "Agent: privacy page has no marquee; detector associated shared homepage CSS with this route"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "privacy.html"
+        ],
+        "createdAt": "2026-10-28T20:48:09.098Z",
+        "reason": "Agent: privacy page inherits the warm paper color explicitly documented in DESIGN.md"
       }
     ]
   }
