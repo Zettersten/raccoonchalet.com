@@ -1,4 +1,4 @@
-const AIRBNB_URL = 'https://www.airbnb.com/rooms/1443504721219481379';
+const AIRBNB_URL = 'https://www.airbnb.com/rooms/1443504721219481379?utm_source=raccoonchalet.com&utm_medium=referral&utm_campaign=website';
 const DAY_MS = 86_400_000;
 
 const dateFormat = new Intl.DateTimeFormat('en-US', {
