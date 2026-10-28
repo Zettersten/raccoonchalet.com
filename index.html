@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101d19" />
+    <meta name="description" content="Raccoon Chalet is a private mountain retreat five minutes from Bryce Resort, with a saltwater hot tub, cedar sauna, theater, games, and room to slow down." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Raccoon Chalet — Come up for air" />
+    <meta property="og:description" content="A mountain retreat near Bryce Resort. Soak, gather, play, and stay a little longer." />
+    <meta property="og:image" content="https://zettersten.github.io/raccoonchalet.com/assets/exterior-view-02.jpg" />
+    <title>Raccoon Chalet — Come up for air</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/deck-view-01.jpg" as="image" fetchpriority="high" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="app.js"></script>
+    <script type="module" src="calendar-ui.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <span id="top" aria-hidden="true"></span>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Raccoon Chalet, back to top">
+        <span class="brand-symbol" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M4 17.5 20 5l16 12.5v17H4v-17Z"/><path d="M13 35V23.5l7-5 7 5V35"/><path d="M12 13.5h3m10 0h3"/></svg>
+        </span>
+        <span class="brand-name">Raccoon <em>Chalet</em></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#experience">The experience</a>
+        <a href="#inside">The home</a>
+        <a href="#around">Around here</a>
+        <a href="#availability">Availability</a>
+      </nav>
+      <a class="header-book" href="https://www.airbnb.com/rooms/1443504721219481379" target="_blank" rel="noopener noreferrer" aria-label="Book on Airbnb, opens in a new tab">Book your stay <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </header>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" inert>
+      <a href="#experience">The experience</a>
+      <a href="#inside">The home</a>
+      <a href="#around">Around here</a>
+      <a href="#availability">Availability</a>
+      <a href="https://www.airbnb.com/rooms/1443504721219481379" target="_blank" rel="noopener noreferrer">Book on Airbnb ↗</a>
+      <p>Five minutes from Bryce Resort. A world away from your routine.</p>
+    </nav>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-media" aria-hidden="true">
+          <img class="hero-fallback" src="assets/deck-view-01.jpg" alt="" fetchpriority="high" />
+          <canvas id="hero-canvas"></canvas>
+          <div class="hero-shade"></div>
+        </div>
+        <div class="hero-copy container">
+          <div class="hero-place reveal"><span class="tiny-diamond" aria-hidden="true"></span> Near Bryce Resort · Virginia mountains</div>
+          <h1 id="hero-title" class="reveal">Come up <em>for air.</em></h1>
+          <p class="hero-intro reveal">A private chalet made for slow mornings, long soaks, and one more game.</p>
+          <div class="hero-actions reveal">
+            <a class="button button-light" href="#availability">Explore available dates <span aria-hidden="true">↗</span></a>
+            <a class="text-link text-link-light" href="#experience">Discover the chalet <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="hero-bottom container" aria-hidden="true">
+          <span>Raccoon Chalet</span>
+          <span class="hero-scroll"><i></i> Scroll to explore</span>
+          <span>Virginia mountain retreat</span>
+        </div>
+      </section>
+
+      <section class="intro section-padding" id="experience" aria-labelledby="intro-title">
+        <div class="container intro-layout">
+          <div class="intro-left reveal">
+            <p class="section-signature">The mountain can wait.</p>
+            <h2 id="intro-title">Make yourself <em>at home.</em></h2>
+          </div>
+          <div class="intro-right reveal">
+            <p>There is a particular kind of quiet up here. The kind that makes the first coffee linger, turns an afternoon into an evening, and lets everyone find their own way to unwind.</p>
+            <p>At Raccoon Chalet, the best part of getting away might be staying in.</p>
+            <div class="intro-facts" aria-label="At a glance">
+              <span><strong>3</strong> bedrooms + kids’ loft</span>
+              <span><strong>2</strong> full bathrooms</span>
+              <span><strong>5</strong> minutes to Bryce Resort</span>
+            </div>
+          </div>
+        </div>
+        <div class="intro-marquee" aria-hidden="true"><div>SOAK A LITTLE LONGER <span>✳</span> STAY A LITTLE LATER <span>✳</span> SOAK A LITTLE LONGER <span>✳</span> STAY A LITTLE LATER <span>✳</span></div></div>
+      </section>
+
+      <section class="story" aria-label="Ways to spend your stay">
+        <div class="story-visual" aria-hidden="true">
+          <img class="story-image is-active" src="assets/hottub-view-01.jpg" alt="" data-story-image="0" loading="lazy" />
+          <img class="story-image" src="assets/entertainment-room-view-01.jpg" alt="" data-story-image="1" loading="lazy" />
+          <img class="story-image" src="assets/livingroom-view-02.jpg" alt="" data-story-image="2" loading="lazy" />
+          <img class="story-image" src="assets/deck-view-03.jpg" alt="" data-story-image="3" loading="lazy" />
+          <div class="story-visual-shade"></div>
+          <span class="story-visual-label" id="story-visual-label">The reset</span>
+          <span class="story-visual-count" id="story-visual-count">01 / 04</span>
+        </div>
+        <div class="story-chapters">
+          <article class="story-chapter is-active" data-story="0">
+            <div class="story-chapter-inner">
+              <p class="chapter-caption">A slower kind of day</p>
+              <h2>Heat, then <em>stillness.</em></h2>
+              <p>Let the cedar sauna warm you through. Let the saltwater hot tub take care of the rest. The mountain view is yours to keep a little longer.</p>
+              <div class="story-amenities"><span>Cedar sauna</span><span>Saltwater hot tub</span><span>Mountain views</span></div>
+            </div>
+          </article>
+          <article class="story-chapter" data-story="1">
+            <div class="story-chapter-inner">
+              <p class="chapter-caption">After dark, all together</p>
+              <h2>One more <em>round.</em></h2>
+              <p>The score can wait. Pool, ping pong, board games, and a private theater give every night its own story.</p>
+              <div class="story-amenities"><span>Pool table</span><span>Ping pong</span><span>Private theater</span></div>
+            </div>
+          </article>
+          <article class="story-chapter" data-story="2">
+            <div class="story-chapter-inner">
+              <p class="chapter-caption">Space to come together</p>
+              <h2>Settle <em>right in.</em></h2>
+              <p>Stretch out by the fireplace, cook something good in the stocked kitchen, and let dinner take as long as it likes.</p>
+              <div class="story-amenities"><span>Fireplace</span><span>Full kitchen</span><span>Room for everyone</span></div>
+            </div>
+          </article>
+          <article class="story-chapter" data-story="3">
+            <div class="story-chapter-inner">
+              <p class="chapter-caption">The view belongs to the moment</p>
+              <h2>Stay for <em>the sunset.</em></h2>
+              <p>Take dinner outside, gather by the fire pit, and watch the woods trade daylight for stars.</p>
+              <div class="story-amenities"><span>Spacious deck</span><span>Outdoor dining</span><span>Fire pit</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="home-section section-padding" id="inside" aria-labelledby="inside-title">
+        <div class="container home-heading reveal">
+          <div><p class="section-signature">A retreat in every room.</p><h2 id="inside-title">Find your <em>favorite corner.</em></h2></div>
+          <p>From coffee at the breakfast nook to movie night downstairs, there is room for the whole crew and space to find a moment of your own.</p>
+        </div>
+        <div class="gallery-wrap">
+          <div class="gallery-track" id="gallery-track" tabindex="0" aria-label="Photos of the chalet. Scroll horizontally to see more.">
+            <figure class="gallery-item gallery-item-wide"><img src="assets/livingroom-view-03.jpg" alt="Open living room and vaulted wood ceiling" loading="lazy"/><figcaption><span>Gather</span><small>Living room</small></figcaption></figure>
+            <figure class="gallery-item"><img src="assets/kitchen-view-01.jpg" alt="Fully equipped kitchen with mountain views" loading="lazy"/><figcaption><span>Make something good</span><small>Kitchen</small></figcaption></figure>
+            <figure class="gallery-item"><img src="assets/movie-view-01.jpg" alt="Private home theater with screen and comfortable seating" loading="lazy"/><figcaption><span>Stay in tonight</span><small>Theater</small></figcaption></figure>
+            <figure class="gallery-item gallery-item-wide"><img src="assets/bedroom-view-01.jpg" alt="King bedroom with exposed beams" loading="lazy"/><figcaption><span>Rest easy</span><small>King bedroom</small></figcaption></figure>
+            <figure class="gallery-item"><img src="assets/dinning-room-view-01.jpg" alt="Dining table set beside the living room" loading="lazy"/><figcaption><span>Take your time</span><small>Dining</small></figcaption></figure>
+            <figure class="gallery-item"><img src="assets/sauna-view-01.jpg" alt="Private cedar sauna on the outdoor deck" loading="lazy"/><figcaption><span>Warm through</span><small>Cedar sauna</small></figcaption></figure>
+          </div>
+          <div class="gallery-controls container"><span>Explore the spaces <span aria-hidden="true">—</span> drag or use the arrows</span><div><button type="button" class="circle-button" id="gallery-prev" aria-label="Previous gallery photos">←</button><button type="button" class="circle-button" id="gallery-next" aria-label="Next gallery photos">→</button></div></div>
+        </div>
+      </section>
+
+      <section class="film-section" aria-labelledby="film-title">
+        <div class="film-type" aria-hidden="true">STAY AWHILE · STAY AWHILE ·</div>
+        <div class="container film-layout">
+          <div class="film-copy reveal"><p class="section-signature">A glimpse of chalet life.</p><h2 id="film-title">Picture <em>yourself here.</em></h2><p>From the first breath of mountain air to the last game of the night, take a look around the place waiting for you.</p><span>Press play for a quick tour</span></div>
+          <div class="film-frame reveal"><video id="chalet-film" controls playsinline preload="none" poster="assets/sauna-view-01.jpg" aria-label="Short video tour of Raccoon Chalet"><source src="assets/chalet-tour.mp4" type="video/mp4" />Your browser does not support video playback.</video><span class="film-frame-caption">A little look inside Raccoon Chalet</span></div>
+        </div>
+      </section>
+
+      <section class="sleep-section section-padding" aria-labelledby="sleep-title">
+        <div class="container sleep-layout">
+          <div class="sleep-intro reveal">
+            <h2 id="sleep-title">Room to rest. <em>Room to roam.</em></h2>
+            <p>Three bedrooms, a kids’ loft, and two full baths make it easy for every kind of day to end well.</p>
+            <a class="text-link" href="#details">Explore all the details <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="sleep-list">
+            <div class="sleep-row reveal"><span class="sleep-row-index">Main level</span><div><h3>King bedroom</h3><p>Near a full bath on the main level.</p></div><span class="sleep-row-icon" aria-hidden="true">↗</span></div>
+            <div class="sleep-row reveal"><span class="sleep-row-index">Upper level</span><div><h3>King bedroom</h3><p>A second king bed upstairs.</p></div><span class="sleep-row-icon" aria-hidden="true">↗</span></div>
+            <div class="sleep-row reveal"><span class="sleep-row-index">Upper level</span><div><h3>The bunk room</h3><p>Full-over-full and twin-over-twin bunks.</p></div><span class="sleep-row-icon" aria-hidden="true">↗</span></div>
+            <div class="sleep-row reveal"><span class="sleep-row-index">A little extra</span><div><h3>Kids’ loft</h3><p>A place to play and make their own.</p></div><span class="sleep-row-icon" aria-hidden="true">↗</span></div>
+          </div>
+        </div>
+        <div class="sleep-photo reveal"><img src="assets/bedroom-view-03.jpg" alt="Bedroom with king bed and bunk beds beneath a vaulted ceiling" loading="lazy"/><span>Good nights start here.</span></div>
+      </section>
+
+      <section class="around-section" id="around" aria-labelledby="around-title">
+        <div class="around-image" aria-hidden="true"><img src="assets/exterior-view-02.jpg" alt="" loading="lazy" /></div>
+        <div class="around-shade"></div>
+        <div class="container around-content reveal">
+          <h2 id="around-title">Adventure is <em>just outside.</em></h2>
+          <p>Five minutes to Bryce Resort, with skiing, golf, Lake Laura, mountain biking, hiking, and local wineries close to the rhythm of your stay.</p>
+          <ul class="around-list"><li><span>Bryce Resort</span><small>Ski · snowboard · golf</small></li><li><span>Lake Laura</span><small>A day by the water</small></li><li><span>Mountain trails</span><small>Hike · bike · explore</small></li><li><span>Local favorites</span><small>Wineries · breweries</small></li></ul>
+        </div>
+      </section>
+
+      <section class="availability section-padding" id="availability" aria-labelledby="availability-title">
+        <div class="container availability-heading reveal"><p class="section-signature">The next good memory starts here.</p><h2 id="availability-title">Find your <em>moment.</em></h2><p>See what is open, choose a few days, and continue to Airbnb to confirm your stay.</p></div>
+        <div class="container booking-layout">
+          <div class="calendar-card" id="calendar-root" aria-label="Availability calendar">
+            <div class="calendar-top"><div><h3>Availability</h3><p id="calendar-updated">Checking the latest dates…</p></div><div class="calendar-nav"><button id="calendar-prev" type="button" aria-label="Previous month">←</button><button id="calendar-next" type="button" aria-label="Next month">→</button></div></div>
+            <div id="calendar-month" class="calendar-month" aria-live="polite"></div>
+            <div id="calendar-grid" class="calendar-grid" aria-label="Available and unavailable dates"></div>
+            <div class="calendar-bottom"><div class="calendar-legend"><span><i class="legend-dot legend-available"></i> Available</span><span><i class="legend-dot legend-unavailable"></i> Unavailable</span><span><i class="legend-dot legend-selected"></i> Selected</span></div><p id="calendar-status" role="status" aria-live="polite">Loading available dates…</p></div>
+          </div>
+          <aside class="booking-panel reveal" aria-label="Book your stay">
+            <div class="booking-panel-image"><img src="assets/deck-view-02.jpg" alt="Deck dining area overlooking the mountain" loading="lazy" /></div>
+            <div class="booking-panel-content"><h3>There’s room <em>for you here.</em></h3><p id="calendar-selection">Choose your dates, or browse the listing for current booking details.</p><a id="booking-link" class="button button-dark" href="https://www.airbnb.com/rooms/1443504721219481379" target="_blank" rel="noopener noreferrer">Continue on Airbnb <span aria-hidden="true">↗</span></a><small>Availability is a guide. Final dates, rates, and booking terms are confirmed on Airbnb.</small></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="details section-padding" id="details" aria-labelledby="details-title">
+        <div class="container details-layout">
+          <div class="details-intro reveal"><h2 id="details-title">The little <em>details.</em></h2><p>Everything that helps your getaway feel easy from the moment you arrive.</p><a class="text-link" href="https://www.airbnb.com/rooms/1443504721219481379" target="_blank" rel="noopener noreferrer">See the full listing <span aria-hidden="true">↗</span></a></div>
+          <div class="details-accordions">
+            <details><summary>What's included?<span aria-hidden="true">+</span></summary><div class="detail-content"><p>A fully equipped kitchen with drip and Keurig coffee makers, high-speed Wi-Fi, TVs in every bedroom and common area, washer and dryer, board games, a ski gear drop zone, and keyless self check-in. You have access to the entire home, including the theater, game room, sauna, hot tub, and deck.</p></div></details>
+            <details><summary>Can I bring my dog?<span aria-hidden="true">+</span></summary><div class="detail-content"><p>Yes. Up to two well-behaved dogs are welcome. The pet fee is $29 per pet per night. Cats cannot be hosted because of allergy and maintenance considerations.</p></div></details>
+            <details><summary>What should I know before arriving?<span aria-hidden="true">+</span></summary><div class="detail-content"><p>Parking is available on-site for up to two vehicles. A unique keyless entry code is provided before check-in. A Ring doorbell camera is present outside for security; there are no interior cameras.</p></div></details>
+            <details><summary>Are there any other stay notes?<span aria-hidden="true">+</span></summary><div class="detail-content"><p>Bryce Resort amenities may be open to the public for an additional fee. Wildlife and insects may occasionally be seen in the wooded mountain setting despite regular pest control. Stays of 14 nights or longer require an e-signed rental agreement sent in advance for review.</p></div></details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-glow" aria-hidden="true"></div>
+      <div class="container footer-main"><p>The mountains are calling.</p><h2>Stay a <em>little longer.</em></h2><a class="button button-light" href="https://www.airbnb.com/rooms/1443504721219481379" target="_blank" rel="noopener noreferrer">View the Airbnb listing <span aria-hidden="true">↗</span></a></div>
+      <div class="container footer-bottom"><a class="brand" href="#top"><span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M4 17.5 20 5l16 12.5v17H4v-17Z"/><path d="M13 35V23.5l7-5 7 5V35"/><path d="M12 13.5h3m10 0h3"/></svg></span><span class="brand-name">Raccoon <em>Chalet</em></span></a><span>Made for mountain time.</span><a href="#top">Back to top ↑</a></div>
+    </footer>
+    <a class="mobile-book" href="#availability">Check dates <span aria-hidden="true">↗</span></a>
+  </body>
+</html>

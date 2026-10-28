@@ -1,0 +1,70 @@
+name: Deploy site
+
+# gh-pages stores the last generated site so calendar-only refreshes can
+# republish it without running the site build.
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - calendar.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-publish
+  cancel-in-progress: false
+
+jobs:
+  deploy-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Fetch current availability
+        run: node scripts/update-calendar.mjs
+      - name: Build static site
+        run: npm run build
+      - name: Disable Jekyll processing
+        run: touch dist/.nojekyll
+      - name: Store generated site snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          snapshot="$RUNNER_TEMP/pages-snapshot"
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
+            git fetch --depth=1 origin gh-pages
+            git worktree add --detach "$snapshot" FETCH_HEAD
+          else
+            git worktree add --detach "$snapshot" HEAD
+            git -C "$snapshot" switch --orphan gh-pages
+          fi
+          rsync -a --delete --exclude='.git' dist/ "$snapshot/"
+          git -C "$snapshot" config user.name 'github-actions[bot]'
+          git -C "$snapshot" config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C "$snapshot" add --all
+          if ! git -C "$snapshot" diff --cached --quiet; then
+            git -C "$snapshot" commit -m 'Publish Raccoon Chalet site'
+            git -C "$snapshot" push origin HEAD:gh-pages
+          fi
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload generated site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

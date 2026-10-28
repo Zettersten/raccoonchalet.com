@@ -1,0 +1,25 @@
+{
+  "name": "Raccoon Chalet cinematic mountain journal",
+  "version": 1,
+  "tokens": {
+    "color": {
+      "ink": "#14231e",
+      "forest": "#101d19",
+      "forestSoft": "#20342a",
+      "cream": "#f4f0e8",
+      "paper": "#eae5db",
+      "sand": "#ded8cb",
+      "ember": "#a64f36",
+      "white": "#fffaf0"
+    },
+    "font": {
+      "display": "Instrument Serif",
+      "body": "DM Sans"
+    }
+  },
+  "motion": {
+    "hero": "WebGL image current and pointer lens",
+    "story": "sticky photo crossfade",
+    "reducedMotion": "static image and visible content"
+  }
+}
