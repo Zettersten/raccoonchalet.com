@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-29",
+  "articles": [
+    {
+      "slug": "first-ski-weekend-bryce-resort",
+      "title": "A relaxed first ski weekend at Bryce Resort",
+      "description": "A practical plan for a first ski weekend in Basye: reserve lessons before you arrive, check the mountain on the day, and leave room to unwind afterward.",
+      "category": "A weekend here",
+      "season": "Winter",
+      "aiAssisted": true,
+      "publishedAt": "2026-10-29",
+      "updatedAt": "2026-10-29",
+      "hero": {
+        "src": "assets/ski-shed-view-01.jpg",
+        "alt": "The ski gear drop zone at Raccoon Chalet, with chairs and mountain photographs"
+      },
+      "ogImage": "assets/guides/first-ski-weekend-bryce-resort-og.png",
+      "readingMinutes": 3,
+      "sections": [
+        {
+          "heading": "Make the lesson decision before the drive",
+          "paragraphs": [
+            "If anyone in your group is learning, start with Bryce Resort's lesson page rather than leaving the decision for the lift line. The resort currently says ski and snowboard lessons must be booked by 2 p.m. the day before. Its first-time package includes a private lesson, equipment and a lift ticket, with eligibility details on the booking page. Reserve directly with Bryce and confirm the details for your group.",
+            "The 2026–27 ski season opening date had not been announced when this guide was checked. Booking a chalet stay and booking a lesson are separate steps, so check the resort's current conditions before making a snow-day plan."
+          ]
+        },
+        {
+          "heading": "Keep the first morning simple",
+          "paragraphs": [
+            "Raccoon Chalet is about five minutes from Bryce Resort. That short trip makes it easier to give beginners an unhurried start: eat breakfast at the chalet, check the resort's mountain status, then leave time to park, collect any rentals and find the lesson meeting point. The resort asks first-time package guests to arrive at its lift ticket sales area 30 minutes before their lesson to pick up equipment.",
+            "For a group with different energy levels, make the mountain the main event and keep the rest of the day open. The resort offers skiing and snowboarding, while the chalet gives anyone ready for a break a comfortable place to return to."
+          ]
+        },
+        {
+          "heading": "Come back to a warm evening",
+          "paragraphs": [
+            "After the slopes, the chalet's ski gear drop zone keeps the entry routine easy. A cedar sauna, saltwater hot tub and home theater give the group several ways to spend the evening without another drive. Dinner can be a group meal in the kitchen or a low-key night with a movie; the point is to leave room for the mountain day to end at its own pace."
+          ]
+        },
+        {
+          "heading": "Check the live details",
+          "paragraphs": [
+            "Lift operations, lesson availability, hours and prices can change during the season. Bryce Resort's current hours and conditions are the place to check close to your visit. The links below go to the resort's own information, reviewed for this guide on October 29, 2026."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Bryce Resort: Ski & Snowboard",
+          "url": "https://bryceresort.com/winter/ski-and-snowboard",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "title": "Bryce Resort: Ski & Snowboard Lessons",
+          "url": "https://bryceresort.com/winter/ski-and-snowboard/ski-and-snowboard-lessons",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "title": "Bryce Resort: Hours of Operation",
+          "url": "https://bryceresort.com/mountain-info/hours",
+          "checkedAt": "2026-10-29"
+        }
+      ]
+    },
+    {
+      "slug": "lake-laura-day-guide",
+      "title": "A slower summer day at Lake Laura",
+      "description": "How to plan a lake day near Raccoon Chalet, from the beach and lakeside trail to the practical rules worth checking before you go.",
+      "category": "Out in Basye",
+      "season": "Summer",
+      "aiAssisted": true,
+      "publishedAt": "2026-10-29",
+      "updatedAt": "2026-10-29",
+      "hero": {
+        "src": "assets/deck-view-02.jpg",
+        "alt": "The deck and mountain view at Raccoon Chalet, where guests can unwind after a day at Lake Laura"
+      },
+      "ogImage": "assets/guides/lake-laura-day-guide-og.png",
+      "readingMinutes": 3,
+      "sections": [
+        {
+          "heading": "Choose a beach day or a lake walk",
+          "paragraphs": [
+            "Lake Laura gives a summer group two different ways to spend the day. Bryce Resort describes a grassy beach for swimming and relaxing, with boat rentals when the lake is operating. The lake also has a trail that goes around the water. If the group wants a quieter outing, the walk can be the whole plan; if children want to swim, save the trail for another day or a shorter stretch.",
+            "The resort describes the full trail as an easy-to-moderate walk of roughly an hour and a half to two hours. It says the trail is open year-round but is not wheelchair accessible. Check trail conditions before setting out, especially after wet weather."
+          ]
+        },
+        {
+          "heading": "A few rules make packing easier",
+          "paragraphs": [
+            "The beach has no lifeguard, and Bryce Resort says visitors under 16 need a parent or guardian. Pets are not permitted at the beach, even though Raccoon Chalet welcomes up to two dogs. The resort also prohibits alcohol and grills in the beach area. Those details matter when deciding who is coming and what to bring.",
+            "For a water day, pack the ordinary things you'll want close by: towels, sun protection, water and dry clothes for the ride back. Check the resort's lake page for current admission, rentals and operating dates rather than relying on an old price in a travel article."
+          ]
+        },
+        {
+          "heading": "Let the evening stay open",
+          "paragraphs": [
+            "Back at the chalet, the deck is a good place to slow down before dinner. There is room for a group meal outdoors, plus the saltwater hot tub, games and a theater room if the weather turns. A lake day does not need a packed second act."
+          ]
+        },
+        {
+          "heading": "Check before heading out",
+          "paragraphs": [
+            "Lake Laura's beach and rentals are seasonal. Bryce Resort marked them closed for winter when this guide was checked on October 29, 2026. Use its current lake page and hours page for the latest opening status and fees."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Bryce Resort: Lake Laura",
+          "url": "https://bryceresort.com/summer/lake-laura",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "title": "Bryce Resort: Hours of Operation",
+          "url": "https://bryceresort.com/mountain-info/hours",
+          "checkedAt": "2026-10-29"
+        }
+      ]
+    }
+  ]
+}
