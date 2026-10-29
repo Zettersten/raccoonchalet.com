@@ -133,9 +133,9 @@ async function researchTopic(topic, queue, previousRejection = '') {
   const prompt = `You are preparing ONE practical local guide for prospective guests at Raccoon Chalet in Basye, Virginia. Today is ${today}. Reader question: ${topic.question}\n\n` +
     `Start with these official pages: ${topic.officialSources.join(', ')}. Search further within these allowed official domains only: ${topic.allowedDomains.join(', ')}. Use current primary sources and do not copy their prose.\n\n` +
     `Verified property facts supplied by the owner: ${PROPERTY_FACTS.join(' ')} Do not state any other property fact. Owner-supplied context: ${queue.ownerContext || 'None'}. Topic-specific owner notes: ${topic.ownerNotes || 'None'}. Owner notes can support statements about the owners' experiences, but cannot prove any current third-party amenity, opening, rule, price, or access. Do not write as though you personally visited a destination. Do not suggest the chalet grants access to resort amenities. Do not mention resort pool, gym, or fitness access.\n\n` +
-    `Write a useful 450-800 word article with 3-5 sections and concrete planning advice. Synthesize what the verified sources mean for a guest; do not paraphrase them section by section. Include at least 2 relevant official source URLs and a claim-to-source list covering each specific third-party factual assertion. Every sources[].url must be an absolute HTTPS URL from the official search results. Every claims[].sourceUrl must be an absolute HTTPS URL copied exactly from one sources[].url in this draft. Omit owner-supplied chalet facts from claims; they have no tourism source URL. Never put an empty string, an owner note, a relative URL, or a citation marker in sourceUrl. If the sources cannot support a genuinely useful guide, set publishable=false and explain why.\n\n` +
-    `Avoid prices, hours, live conditions, unconfirmed access, and promises that an attraction is open. Direct the reader to official live details. Keep a calm, specific human voice. Remove inflated adjectives, stock travel clichés, em dashes, staged openers, forced lists of three, filler conclusions, and invented anecdotes. No HTML, Markdown, emojis, quotations, or first-person claims. The hero prompt must request an atmospheric stock-style AI illustration, not a documentary photo of any real place. The hero alt must clearly call it an illustration. Output the requested JSON schema only.` +
-    (previousRejection ? `\n\nA previous draft failed this publication check: ${previousRejection}. Research again and correct that issue. If the official sources cannot support the article, set publishable=false.` : '');
+    `Write a useful 450-800 word article with 3-5 sections and concrete planning advice. Each section should answer a planning question with source-backed actions, choices, or checks a guest can make before or during an outing. Replace generic travel commentary with details that help a guest decide what to do, where to go, or what to verify; do not end by repeating the introduction or saying only to check ahead. Synthesize what the verified sources mean for a guest; do not paraphrase them section by section. Include at least 2 relevant official source URLs and a claim-to-source list covering each specific third-party factual assertion. Every sources[].url must be an absolute HTTPS URL from the official search results. Every claims[].sourceUrl must be an absolute HTTPS URL copied exactly from one sources[].url in this draft. Omit owner-supplied chalet facts from claims; they have no tourism source URL. Never put an empty string, an owner note, a relative URL, or a citation marker in sourceUrl. If the sources cannot support a genuinely useful guide, set publishable=false and explain why.\n\n` +
+    `Avoid prices, hours, live conditions, unconfirmed access, and promises that an attraction is open. Direct the reader to the cited official pages for current schedules, contact details, and operating information without reproducing volatile values. Keep a calm, specific human voice. Remove inflated adjectives, stock travel clichés, em dashes, staged openers, forced lists of three, filler conclusions, and invented anecdotes. No HTML, Markdown, emojis, quotations, or first-person claims. The hero prompt must request an atmospheric stock-style AI illustration, not a documentary photo of any real place. The hero alt must clearly call it an illustration. Output the requested JSON schema only.` +
+    (previousRejection ? `\n\nA previous draft failed a publication check: ${previousRejection.slice(0, 1200)}. Research again and correct supported issues while following every publication rule above. Do not add hours, prices, or unverified operating details in response to review feedback. If the official sources cannot support the article, set publishable=false.` : '');
   return backgroundResponse({
     model: TEXT_MODEL,
     reasoning: { effort: 'high' },
@@ -207,7 +207,7 @@ async function checkSources(sources, allowedDomains) {
 }
 
 async function auditDraft(draft, topic, today) {
-  const prompt = `Independently audit this proposed Raccoon Chalet local guide as a skeptical travel editor. Today is ${today}. Use web search on the official domains ${topic.allowedDomains.join(', ')} and the cited URLs. Verify every specific factual statement, including distances, access, safety rules, seasonal status, hours, and facility availability. The only approved property facts are: ${PROPERTY_FACTS.join(' ')} Owner context can support only statements about owner experiences; it cannot support third-party operating facts. Reject property claims beyond the approved list. Reject any claim that reads like a firsthand visit by the author. Reject weak paraphrases or generic prose with no practical value. Reject unsupported claims even if a source URL is listed. Check for humanizer-style problems: staged openers, inflated praise, contrived contrast, em dashes, repetitive triads, and filler ending. Pass only if the factual claims are supported and the guide helps a guest make a real plan. Return JSON only.\n\nTopic: ${topic.question}\nDraft: ${JSON.stringify(draft)}`;
+  const prompt = `Independently audit this proposed Raccoon Chalet local guide as a skeptical travel editor. Today is ${today}. Use web search on the official domains ${topic.allowedDomains.join(', ')} and the cited URLs. Verify every specific factual statement that appears, including any distances, access, safety rules, seasonal status, hours, and facility availability. The article intentionally avoids volatile hours, prices, contact details, and day-specific status; do not reject it for omitting them or require their inclusion. It should point readers to cited official pages for current details. The only approved property facts are: ${PROPERTY_FACTS.join(' ')} Owner context can support only statements about owner experiences; it cannot support third-party operating facts. Reject property claims beyond the approved list. Reject any claim that reads like a firsthand visit by the author. Reject weak paraphrases or generic prose with no practical value. Reject unsupported claims even if a source URL is listed. Check for humanizer-style problems: staged openers, inflated praise, contrived contrast, em dashes, repetitive triads, and filler ending. Pass only if the factual claims are supported and the guide helps a guest make a real plan through concrete, sourced choices and checks. Return JSON only.\n\nTopic: ${topic.question}\nDraft: ${JSON.stringify(draft)}`;
   return backgroundResponse({
     model: TEXT_MODEL,
     reasoning: { effort: 'high' },
@@ -277,11 +277,29 @@ if (rejection) {
   await output('changed', 'false');
   process.exit(0);
 }
-const auditResponse = await auditDraft(draft, topic, today);
-if (searchEvidence(auditResponse).calls < 1) fail('Independent audit did not use web search.');
-let audit;
-try { audit = JSON.parse(responseText(auditResponse)); } catch { fail('OpenAI returned invalid audit JSON.'); }
-if (!audit.pass || audit.unsupportedClaims.length || audit.styleIssues.length || audit.sourceConcerns.length) {
+async function independentlyReview(candidate) {
+  const response = await auditDraft(candidate, topic, today);
+  if (searchEvidence(response).calls < 1) fail('Independent audit did not use web search.');
+  try { return JSON.parse(responseText(response)); } catch { fail('OpenAI returned invalid audit JSON.'); }
+}
+function reviewPassed(review) {
+  return review.pass && !review.unsupportedClaims.length && !review.styleIssues.length && !review.sourceConcerns.length;
+}
+
+let audit = await independentlyReview(draft);
+if (!reviewPassed(audit)) {
+  console.log('Independent review requested a revision. Researching and reviewing once more.');
+  const feedback = [audit.reason, ...audit.unsupportedClaims, ...audit.styleIssues, ...audit.sourceConcerns]
+    .filter(Boolean).join(' ').slice(0, 1200);
+  ({ draft, rejection } = await checkResearch(await researchTopic(topic, queue, feedback || 'The independent review did not pass.')));
+  if (rejection) {
+    console.log(`Publication skipped after revision: ${rejection}`);
+    await output('changed', 'false');
+    process.exit(0);
+  }
+  audit = await independentlyReview(draft);
+}
+if (!reviewPassed(audit)) {
   console.log(`Publication skipped by independent review: ${audit.reason || 'Quality gate did not pass.'}`);
   await output('changed', 'false');
   process.exit(0);
