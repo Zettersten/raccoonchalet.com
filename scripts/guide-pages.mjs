@@ -60,6 +60,12 @@ const absolute = path => `${ORIGIN}/${path.replace(/^\//, '')}`;
 const dateLabel = date => new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T12:00:00Z`));
 const guideArrow = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>';
 
+function cleanGeneratedParagraph(paragraph) {
+  // The research model sometimes adds Markdown citations even when asked for plain text.
+  // Verified, clickable citations are rendered separately from article.sources.
+  return paragraph.replace(/\s*\(\[[^\]\n]{1,120}\]\(https?:\/\/[^\s)]+\)\)/g, '').trim();
+}
+
 function guideMetaHtml(article) {
   return `<p class="guide-story-meta"><span>${escape(article.category)}</span><time datetime="${escape(article.publishedAt)}">${escape(dateLabel(article.publishedAt))}</time>${article.aiAssisted ? '<span class="guide-assisted">AI-assisted</span>' : ''}</p>`;
 }
@@ -163,7 +169,23 @@ function articleHtml(article) {
 export async function renderGuidePages(root) {
   root = resolve(root);
   assert(root.startsWith(`${PROJECT_ROOT}${sep}`), 'site output must be inside the project workspace');
-  const content = validateGuideContent(JSON.parse(await readFile(join(root, 'guide-content.json'), 'utf8')));
+  const contentPath = join(root, 'guide-content.json');
+  const content = validateGuideContent(JSON.parse(await readFile(contentPath, 'utf8')));
+  let cleanedCitations = false;
+  for (const article of content.articles) {
+    if (!article.aiAssisted) continue;
+    for (const section of article.sections) {
+      section.paragraphs = section.paragraphs.map(paragraph => {
+        const cleaned = cleanGeneratedParagraph(paragraph);
+        if (cleaned !== paragraph) cleanedCitations = true;
+        return cleaned;
+      });
+    }
+  }
+  if (cleanedCitations) {
+    validateGuideContent(content);
+    await writeFile(contentPath, `${JSON.stringify(content, null, 2)}\n`, 'utf8');
+  }
   const guideRoot = join(root, 'guide');
   assert(resolve(guideRoot) === resolve(root, 'guide'), 'guide output must remain inside site root');
   await rm(guideRoot, { recursive: true, force: true });
