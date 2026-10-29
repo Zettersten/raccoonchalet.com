@@ -57,6 +57,16 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/pages-publish"
           rsync -a --exclude='.git' published/ "$RUNNER_TEMP/pages-publish/"
+      - name: Save calendar in published snapshot
+        if: steps.update.outputs.changed == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C published config user.name 'github-actions[bot]'
+          git -C published config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C published add -- calendar.json
+          git -C published commit -m 'Update availability calendar'
+          git -C published push origin HEAD:gh-pages
       - name: Configure Pages
         if: steps.update.outputs.changed == 'true'
         uses: actions/configure-pages@v5
@@ -69,13 +79,3 @@ jobs:
         if: steps.update.outputs.changed == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Save calendar in published snapshot
-        if: steps.update.outputs.changed == 'true'
-        shell: bash
-        run: |
-          set -euo pipefail
-          git -C published config user.name 'github-actions[bot]'
-          git -C published config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git -C published add -- calendar.json
-          git -C published commit -m 'Update availability calendar'
-          git -C published push origin HEAD:gh-pages

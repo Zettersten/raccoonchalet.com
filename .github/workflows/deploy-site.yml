@@ -9,6 +9,11 @@ on:
     paths-ignore:
       - calendar.json
   workflow_dispatch:
+    inputs:
+      use_source_guides:
+        description: Merge guide-content.json edits from main into published guides
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -34,7 +39,10 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
+          cache: npm
+      - name: Install image template dependency
+        run: npm ci
       - name: Fetch current availability
         run: node scripts/update-calendar.mjs
       - name: Build static site
@@ -49,6 +57,7 @@ jobs:
           if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
             git fetch --depth=1 origin gh-pages
             git worktree add --detach "$snapshot" FETCH_HEAD
+            node scripts/restore-published-guides.mjs "$snapshot" dist
           else
             git worktree add --detach "$snapshot" HEAD
             git -C "$snapshot" switch --orphan gh-pages
@@ -61,6 +70,10 @@ jobs:
             git -C "$snapshot" commit -m 'Publish Raccoon Chalet site'
             git -C "$snapshot" push origin HEAD:gh-pages
           fi
+        env:
+          GUIDE_SOURCE_BEFORE: ${{ github.event.before }}
+          GUIDE_SOURCE_AFTER: ${{ github.sha }}
+          GUIDE_FORCE_SOURCE: ${{ inputs.use_source_guides || 'false' }}
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload generated site

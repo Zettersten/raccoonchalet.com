@@ -89,6 +89,42 @@
         ],
         "createdAt": "2026-10-28T20:48:09.098Z",
         "reason": "Agent: privacy page inherits the warm paper color explicitly documented in DESIGN.md"
+      },
+      {
+        "rule": "italic-serif-display",
+        "value": "*",
+        "files": [
+          "guide.html"
+        ],
+        "createdAt": "2026-10-29T15:51:47.839Z",
+        "reason": "The committed Raccoon Chalet DESIGN.md specifies Instrument Serif italic as a restrained editorial accent; one hero phrase retains it."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "guide.html"
+        ],
+        "createdAt": "2026-10-29T15:51:48.546Z",
+        "reason": "The committed Raccoon Chalet DESIGN.md explicitly sets warm paper as the reading surface."
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "guide.html"
+        ],
+        "createdAt": "2026-10-29T15:51:49.226Z",
+        "reason": "The guide page uses no marquee; this warning comes from unused rules in the shared homepage stylesheet."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "guide.html"
+        ],
+        "createdAt": "2026-10-29T15:51:49.922Z",
+        "reason": "Guide sections contain inset .container children; the desktop and 390px mobile previews show generous edge spacing."
       }
     ]
   }

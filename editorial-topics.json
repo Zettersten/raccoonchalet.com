@@ -1,0 +1,160 @@
+{
+  "version": 1,
+  "ownerContext": "The owners have personally enjoyed skiing and mountain biking at Bryce Resort, hiking, Lake Laura, the mountain views, and the quiet wooded setting. They also value being within reach of Washington, DC. These are owner-supplied experiences, not independent claims about current access or conditions. The owners also mentioned a resort pool and workout gym; do not state that guests can use either unless current official access rules are verified.",
+  "topics": [
+    {
+      "slug": "bryce-bike-park-first-visit",
+      "question": "How can a guest plan a first visit to Bryce Resort's bike park while checking the current trail and lift details themselves?",
+      "category": "Out in Basye",
+      "season": "Summer",
+      "months": [3, 4, 5, 6, 7, 8, 9],
+      "officialSources": [
+        "https://bryceresort.com/summer/bike-park",
+        "https://bryceresort.com/mountain-info/hours"
+      ],
+      "allowedDomains": ["bryceresort.com"],
+      "ownerNotes": ""
+    },
+    {
+      "slug": "golf-day-at-bryce-resort",
+      "question": "What should a group know when planning a relaxed golf day at Bryce Resort, and where should they confirm current tee times and course details?",
+      "category": "Out in Basye",
+      "season": "Spring through fall",
+      "months": [3, 4, 5, 6, 7, 8, 9],
+      "officialSources": [
+        "https://bryceresort.com/summer/golf-course",
+        "https://bryceresort.com/mountain-info/hours"
+      ],
+      "allowedDomains": ["bryceresort.com"],
+      "ownerNotes": ""
+    },
+    {
+      "slug": "mount-jackson-afternoon",
+      "question": "How might Raccoon Chalet guests spend an unhurried afternoon in Mount Jackson using only verified local tourism information?",
+      "category": "Around the valley",
+      "season": "Year-round",
+      "months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "officialSources": [
+        "https://visitshenandoahcounty.com/plan-your-visit/towns-and-villages/mount-jackson/"
+      ],
+      "allowedDomains": ["visitshenandoahcounty.com", "virginia.org"],
+      "ownerNotes": ""
+    },
+    {
+      "slug": "shenandoah-county-scenic-drive",
+      "question": "What makes a scenic drive through Shenandoah County useful for guests who want a gentle day away from the resort, and what practical route information can be verified?",
+      "category": "Around the valley",
+      "season": "Year-round",
+      "months": [4, 5, 6, 7, 8, 9, 10],
+      "officialSources": [
+        "https://visitshenandoahcounty.com/things-to-do/scenic-drives/"
+      ],
+      "allowedDomains": ["visitshenandoahcounty.com", "virginia.org"],
+      "ownerNotes": ""
+    },
+    {
+      "slug": "bryce-resort-winter-without-skis",
+      "question": "What can a mixed-interest group consider around Bryce Resort in winter when some guests do not ski, without assuming any attraction is open?",
+      "category": "A weekend here",
+      "season": "Winter",
+      "months": [11, 12, 1, 2, 3],
+      "officialSources": [
+        "https://bryceresort.com/winter",
+        "https://bryceresort.com/mountain-info/hours"
+      ],
+      "allowedDomains": ["bryceresort.com", "visitshenandoahcounty.com"],
+      "ownerNotes": ""
+    },
+    {
+      "slug": "bryce-resort-visitor-planning",
+      "question": "Which Bryce Resort activities may be booked by the public, and where should visitors confirm current access, reservations, and fees?",
+      "category": "Out in Basye",
+      "season": "Year-round",
+      "months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "officialSources": [
+        "https://bryceresort.com/mountain-info/faqs",
+        "https://bryceresort.com/mountain-info/hours"
+      ],
+      "allowedDomains": ["bryceresort.com"],
+      "ownerNotes": "Do not imply the chalet stay provides resort membership or pool and gym access."
+    },
+    {
+      "slug": "bryce-snow-tubing-planning",
+      "question": "What should a family check before planning a snow-tubing outing at Bryce Resort, including reservations and participation rules?",
+      "category": "Out in Basye",
+      "season": "Winter",
+      "months": [11, 12, 1, 2, 3],
+      "officialSources": [
+        "https://bryceresort.com/winter/snow-tubing",
+        "https://bryceresort.com/mountain-info/hours"
+      ],
+      "allowedDomains": ["bryceresort.com"],
+      "ownerNotes": ""
+    },
+    {
+      "slug": "lake-laura-off-season-walk",
+      "question": "How can guests enjoy the Lake Laura trail outside beach season while checking trail conditions and access before leaving?",
+      "category": "Out in Basye",
+      "season": "Fall through spring",
+      "months": [10, 11, 12, 1, 2, 3, 4],
+      "officialSources": [
+        "https://bryceresort.com/summer/lake-laura",
+        "https://bryceresort.com/mountain-info/faqs"
+      ],
+      "allowedDomains": ["bryceresort.com"],
+      "ownerNotes": ""
+    },
+    {
+      "slug": "shenandoah-caverns-rainy-day",
+      "question": "How can guests plan an indoor visit to Shenandoah Caverns and distinguish the cave tour from seasonal companion attractions?",
+      "category": "Around the valley",
+      "season": "Year-round",
+      "months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "officialSources": [
+        "https://shenandoahcaverns.com/visitor-info/",
+        "https://visitshenandoahcounty.com/plan-your-visit/towns-and-villages/mount-jackson/"
+      ],
+      "allowedDomains": ["shenandoahcaverns.com", "visitshenandoahcounty.com"],
+      "ownerNotes": ""
+    },
+    {
+      "slug": "new-market-history-day",
+      "question": "How can a history-curious group plan a visit to New Market and the Virginia Museum of the Civil War while checking current museum access?",
+      "category": "Around the valley",
+      "season": "Year-round",
+      "months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "officialSources": [
+        "https://visitshenandoahcounty.com/plan-your-visit/towns-and-villages/new-market/",
+        "https://www.vmi.edu/research/museums-and-archives/vmcw/"
+      ],
+      "allowedDomains": ["visitshenandoahcounty.com", "vmi.edu"],
+      "ownerNotes": ""
+    },
+    {
+      "slug": "shenandoah-county-winter-hikes",
+      "question": "Which official Shenandoah County winter-hike suggestions might suit guests seeking time outdoors beyond the slopes, and how should they check conditions?",
+      "category": "Around the valley",
+      "season": "Winter",
+      "months": [11, 12, 1, 2, 3],
+      "officialSources": [
+        "https://visitshenandoahcounty.com/blog/post/6-winter-hikes-to-love-in-shenandoah-county-virginia/",
+        "https://bryceresort.com/summer/lake-laura"
+      ],
+      "allowedDomains": ["visitshenandoahcounty.com", "bryceresort.com"],
+      "ownerNotes": ""
+    },
+    {
+      "slug": "mount-jackson-wine-cider-outing",
+      "question": "How can adults plan a wine or cider outing near Mount Jackson using verified destination information and current venue details?",
+      "category": "Around the valley",
+      "season": "Year-round",
+      "months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "officialSources": [
+        "https://visitshenandoahcounty.com/listing/the-winery-at-kindred-pointe-%26-life-is-hard-cider/986/",
+        "https://visitshenandoahcounty.com/things-to-do/scenic-drives/"
+      ],
+      "allowedDomains": ["visitshenandoahcounty.com"],
+      "ownerNotes": ""
+    }
+  ]
+}

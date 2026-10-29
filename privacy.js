@@ -71,7 +71,7 @@ function initChoices() {
   document.body.append(panel);
 
   const privacyLink = panel.querySelector('.privacy-choice-link');
-  privacyLink.href = location.pathname.endsWith('/privacy.html') ? '#analytics' : 'privacy.html#analytics';
+  privacyLink.href = location.pathname.endsWith('/privacy.html') ? '#analytics' : new URL('privacy.html#analytics', import.meta.url).href;
   let returnFocus = null;
   const close = () => {
     panel.hidden = true;

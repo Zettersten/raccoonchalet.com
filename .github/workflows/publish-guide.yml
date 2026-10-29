@@ -1,0 +1,103 @@
+name: Publish local guide
+
+# A curated topic is researched each Sunday at 9 AM Eastern. The job skips when
+# there is no new topic, no API key, or source and quality checks do not pass.
+on:
+  schedule:
+    - cron: '0 9 * * 0'
+      timezone: 'America/New_York'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-publish
+  cancel-in-progress: false
+
+jobs:
+  publish-guide:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out site source
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install image template dependency
+        run: npm ci
+      - name: Check out published site snapshot
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: published
+      - name: Research, review, and prepare one guide
+        id: generate
+        shell: bash
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [[ ! -f published/guide-content.json ]]; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+            echo 'Published guide is not initialized. Run Deploy site once first.'
+            exit 0
+          fi
+          node scripts/publish-guide.mjs published editorial-topics.json
+      - name: Check publication file set
+        if: steps.generate.outputs.changed == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed=$(git -C published status --porcelain --untracked-files=all | sed -E 's/^...//')
+          if [[ -z "$changed" ]]; then
+            echo 'Generator reported a change but no published files changed.' >&2
+            exit 1
+          fi
+          while IFS= read -r file; do
+            case "$file" in
+              guide-content.json|guide.html|sitemap.xml|guide/*|assets/guides/*) ;;
+              *) echo "Unexpected publication file: $file" >&2; exit 1 ;;
+            esac
+          done <<< "$changed"
+      - name: Prepare published snapshot
+        if: steps.generate.outputs.changed == 'true'
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/pages-publish"
+          rsync -a --exclude='.git' published/ "$RUNNER_TEMP/pages-publish/"
+      - name: Save content artifacts in published snapshot
+        if: steps.generate.outputs.changed == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C published config user.name 'github-actions[bot]'
+          git -C published config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C published add -- guide-content.json guide.html sitemap.xml guide assets/guides
+          git -C published commit -m 'Publish local guide story'
+          git -C published push origin HEAD:gh-pages
+      - name: Configure Pages
+        if: steps.generate.outputs.changed == 'true'
+        uses: actions/configure-pages@v5
+      - name: Upload published snapshot
+        if: steps.generate.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ runner.temp }}/pages-publish
+      - name: Publish guide to GitHub Pages
+        if: steps.generate.outputs.changed == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Notify IndexNow of the new story
+        if: steps.generate.outputs.changed == 'true'
+        env:
+          INDEXNOW_URLS: https://raccoonchalet.com/guide.html,${{ steps.generate.outputs.new_url }}
+        run: node scripts/submit-indexnow.mjs
