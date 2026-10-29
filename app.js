@@ -2,6 +2,37 @@ const root = document.documentElement;
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 root.classList.add('js-ready');
 
+function initArrival() {
+  const hero = document.querySelector('.hero');
+  const image = hero?.querySelector('.hero-fallback');
+  if (!hero || !image) return;
+  let hasArrived = false;
+  try { hasArrived = sessionStorage.getItem('raccoon-arrival-v1') === 'seen'; } catch { /* Storage is optional. */ }
+  if (prefersReducedMotion.matches || hasArrived) {
+    hero.classList.add('is-ready');
+    return;
+  }
+  let finished = false;
+  const finish = () => {
+    if (finished) return;
+    finished = true;
+    hero.classList.add('is-ready');
+    try { sessionStorage.setItem('raccoon-arrival-v1', 'seen'); } catch { /* Storage is optional. */ }
+    clearTimeout(fallbackTimer);
+  };
+  const unveil = () => requestAnimationFrame(() => requestAnimationFrame(finish));
+  const ready = () => {
+    if (typeof image.decode === 'function') image.decode().then(unveil, unveil);
+    else unveil();
+  };
+  const fallbackTimer = setTimeout(finish, 3200);
+  if (image.complete) ready();
+  else {
+    image.addEventListener('load', ready, { once: true });
+    image.addEventListener('error', finish, { once: true });
+  }
+}
+
 function initNavigation() {
   const header = document.querySelector('.site-header');
   const toggle = document.querySelector('.menu-toggle');
@@ -81,18 +112,13 @@ function initReveals() {
 function initStory() {
   const chapters = [...document.querySelectorAll('.story-chapter')];
   const images = [...document.querySelectorAll('.story-image')];
-  const label = document.getElementById('story-visual-label');
-  const count = document.getElementById('story-visual-count');
   if (!chapters.length || !('IntersectionObserver' in window)) return;
-  const labels = ['The reset', 'The rematch', 'The gathering', 'The outside'];
   let active = -1;
   function setActive(index) {
     if (index === active) return;
     active = index;
     chapters.forEach((chapter, i) => chapter.classList.toggle('is-active', i === index));
     images.forEach((image, i) => image.classList.toggle('is-active', i === index));
-    if (label) label.textContent = labels[index];
-    if (count) count.textContent = `${String(index + 1).padStart(2, '0')} / 04`;
   }
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {
@@ -101,6 +127,25 @@ function initStory() {
   }, { rootMargin: '-42% 0px -42% 0px', threshold: 0 });
   chapters.forEach(chapter => observer.observe(chapter));
   setActive(0);
+}
+
+function initStoryDrift() {
+  const story = document.querySelector('.story');
+  const visual = story?.querySelector('.story-visual');
+  if (!story || !visual || prefersReducedMotion.matches) return;
+  let frame = 0;
+  const update = () => {
+    frame = 0;
+    if (window.innerWidth <= 700) return;
+    const rect = story.getBoundingClientRect();
+    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+    const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+    visual.style.setProperty('--story-drift', `${((progress - .5) * 42).toFixed(1)}px`);
+  };
+  const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule, { passive: true });
+  schedule();
 }
 
 function initGallery() {
@@ -248,18 +293,20 @@ function initHeroShader() {
   gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
   gl.uniform1i(uniforms.image, 0);
 
+  const pointer = { x: .5, y: .5 };
   const mouse = { x: .5, y: .5 };
   hero.addEventListener('pointermove', event => {
     const bounds = hero.getBoundingClientRect();
-    mouse.x = (event.clientX - bounds.left) / bounds.width;
-    mouse.y = 1 - (event.clientY - bounds.top) / bounds.height;
+    pointer.x = (event.clientX - bounds.left) / bounds.width;
+    pointer.y = 1 - (event.clientY - bounds.top) / bounds.height;
   }, { passive: true });
-  hero.addEventListener('pointerleave', () => { mouse.x = .5; mouse.y = .5; });
+  hero.addEventListener('pointerleave', () => { pointer.x = .5; pointer.y = .5; });
 
   let visible = true;
   let loaded = false;
   let frame = 0;
   let start = performance.now();
+  let lastFrame = start;
   const frozenTime = new URLSearchParams(location.search).get('t');
   const observer = new IntersectionObserver(entries => { visible = entries[0]?.isIntersecting ?? false; if (visible && loaded && !frame) frame = requestAnimationFrame(render); }, { threshold: 0 });
   observer.observe(hero);
@@ -279,6 +326,11 @@ function initHeroShader() {
     if (!loaded || !visible || document.hidden) return;
     resize();
     const time = frozenTime === null ? (now - start) / 1000 : Number(frozenTime) || 0;
+    const step = Math.min(.05, Math.max(0, (now - lastFrame) / 1000));
+    const ease = 1 - Math.exp(-step * 8);
+    mouse.x += (pointer.x - mouse.x) * ease;
+    mouse.y += (pointer.y - mouse.y) * ease;
+    lastFrame = now;
     gl.uniform1f(uniforms.time, time);
     gl.uniform2f(uniforms.mouse, mouse.x, mouse.y);
     gl.uniform1f(uniforms.scroll, Math.min(1, window.scrollY / Math.max(1, hero.clientHeight)));
@@ -286,7 +338,7 @@ function initHeroShader() {
     if (frozenTime === null) frame = requestAnimationFrame(render);
   }
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden && loaded && !frame) { start = performance.now(); frame = requestAnimationFrame(render); }
+    if (!document.hidden && loaded && !frame) { start = performance.now(); lastFrame = start; frame = requestAnimationFrame(render); }
   });
   window.addEventListener('resize', resize, { passive: true });
 
@@ -304,8 +356,10 @@ function initHeroShader() {
   image.src = fallback?.currentSrc || fallback?.src || 'assets/deck-view-01.jpg';
 }
 
+initArrival();
 initNavigation();
 initReveals();
 initStory();
+initStoryDrift();
 initGallery();
 initHeroShader();
