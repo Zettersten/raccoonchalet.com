@@ -118,6 +118,80 @@
           "checkedAt": "2026-10-29"
         }
       ]
+    },
+    {
+      "slug": "mount-jackson-afternoon",
+      "title": "An Unhurried Afternoon in Mount Jackson from Raccoon Chalet",
+      "description": "Plan a relaxed Mount Jackson afternoon from Raccoon Chalet, with a selective downtown walk, a bridge-side picnic and an optional potato-chip stop.",
+      "category": "Around the valley",
+      "season": "Year-round",
+      "publishedAt": "2026-10-29",
+      "updatedAt": "2026-10-29",
+      "hero": {
+        "src": "assets/guides/mount-jackson-afternoon-hero.webp",
+        "alt": "Atmospheric illustration of a covered wooden bridge beside a river, with autumn trees and a picnic bag in the foreground."
+      },
+      "ogImage": "assets/guides/mount-jackson-afternoon-og.png",
+      "readingMinutes": 3,
+      "sections": [
+        {
+          "heading": "What should you plan before leaving Basye?",
+          "paragraphs": [
+            "Build the afternoon around a short downtown walk and a picnic near Meems Bottom Covered Bridge, keeping Route 11 Potato Chips optional. The county’s Mount Jackson page identifies both the bridge picnic and the chip factory as local outing options. Leave room to linger rather than adding another major attraction. ([visitshenandoahcounty.com](https://visitshenandoahcounty.com/plan-your-visit/towns-and-villages/mount-jackson/?utm_source=openai))",
+            "Before leaving Raccoon Chalet in Basye, prepare lunch in its fully equipped kitchen and save the official pages listed below. Enter each destination separately in your map before choosing your route. Let confirmed museum visiting arrangements or chip-making availability determine which stop comes first. A listing alone should not be treated as confirmation that an afternoon arrival will work."
+          ]
+        },
+        {
+          "heading": "How can you explore downtown without completing a whole tour?",
+          "paragraphs": [
+            "Use 5901 Main Street as your downtown planning reference. County tourism identifies Town Center there as the pickup point for a self-guided walking-tour brochure. The route includes 40 sites, mostly along Main Street. Use the Town Hall contact information on the county’s Mount Jackson page to ask about brochure pickup before setting out. Choose a small cluster of sites from the brochure rather than treating all 40 as an afternoon checklist. ([visitshenandoahcounty.com](https://visitshenandoahcounty.com/listing/mount-jackson-historic-district-self-guided-walking-tour/1113/?utm_source=openai))",
+            "The Mount Jackson Museum & Visitor Center is also listed at 5901 Main Street, with artifacts and handmade objects from the Shenandoah Valley. Its listing directs visitors to call Town Hall about visiting times. If a visit is confirmed, pair it with your short walk. In wet weather, make the museum the focus and reduce the outdoor portion. Ask about any mobility or access needs when calling rather than assuming the building and walking route will suit everyone. ([visitshenandoahcounty.com](https://visitshenandoahcounty.com/listing/mount-jackson-museum-%26-visitor-center/1073/?utm_source=openai))"
+          ]
+        },
+        {
+          "heading": "Where can you pause for a picnic?",
+          "paragraphs": [
+            "Look up Meems Bottom Covered Bridge on Wissler Road off Route 11. Virginia Tourism describes its crossing over the North Fork of the Shenandoah River and identifies a small riverside picnic area nearby. Packing lunch lets you make this the afternoon’s meal stop without organizing the outing around a restaurant reservation. ([virginia.org](https://www.virginia.org/blog/post/discovering-virginias-lesser-outdoor-destinations/?utm_source=openai))",
+            "Use the picnic area rather than the bridge roadway for your break. The state tourism page identifies the bridge as carrying vehicle traffic, so keep photography out of the road. Follow posted directions and assess parking and picnic-area access on arrival; the tourism description is not a live conditions report. Keep this a land-based visit rather than planning to enter the river. If the weather makes a picnic unappealing, skip it rather than forcing the stop. ([virginia.org](https://www.virginia.org/blog/post/discovering-virginias-lesser-outdoor-destinations/?utm_source=openai))"
+          ]
+        },
+        {
+          "heading": "When is the potato-chip stop worth adding?",
+          "paragraphs": [
+            "Consider Route 11 Potato Chips if watching production or buying a snack interests your group. Virginia Tourism lists the factory at 11 Edwards Way, Mount Jackson. Production viewing is through retail-store windows, not a walk-through factory tour. The listing also describes chip sampling and purchases. ([virginia.org](https://www.virginia.org/listing/route-11-potato-chip-factory/5946/amp/))",
+            "Use that page’s contact details to confirm current visitor arrangements and ask whether chips will be cooking during your intended visit. The listing specifically recommends calling ahead for production viewing. If watching the process is your priority, arrange the other stops around that confirmed opportunity. If production is not scheduled, decide whether shopping alone warrants the stop. Otherwise, give that time to the downtown walk instead of arriving with expectations of a factory tour. ([virginia.org](https://www.virginia.org/listing/route-11-potato-chip-factory/5946/amp/))"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mount Jackson | Visit Shenandoah County",
+          "url": "https://visitshenandoahcounty.com/plan-your-visit/towns-and-villages/mount-jackson/",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "title": "Mount Jackson Historic District Self-Guided Walking Tour",
+          "url": "https://visitshenandoahcounty.com/listing/mount-jackson-historic-district-self-guided-walking-tour/1113/",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "title": "Mount Jackson Museum & Visitor Center",
+          "url": "https://visitshenandoahcounty.com/listing/mount-jackson-museum-%26-visitor-center/1073/",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "title": "Discovering Virginia’s Lesser Known Outdoor Destinations | Virginia Tourism",
+          "url": "https://www.virginia.org/blog/post/discovering-virginias-lesser-outdoor-destinations/",
+          "checkedAt": "2026-10-29"
+        },
+        {
+          "title": "Route 11 Potato Chip Factory | Virginia Tourism",
+          "url": "https://www.virginia.org/listing/route-11-potato-chip-factory/5946/amp/",
+          "checkedAt": "2026-10-29"
+        }
+      ],
+      "aiAssisted": true,
+      "imageDisclosure": "AI-generated editorial illustration. It does not show Raccoon Chalet or a specific local destination."
     }
   ]
 }
