@@ -2,6 +2,7 @@ import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { renderGuidePages, validateGuideContent } from './guide-pages.mjs';
 import { createOgCard } from './guide-og.mjs';
+import { fingerprintAssets } from './fingerprint-assets.mjs';
 
 const API = 'https://api.openai.com/v1';
 const SITE = 'https://raccoonchalet.com';
@@ -302,6 +303,7 @@ await writeFile(join(publishedRoot, heroFile), heroBuffer);
 await createOgCard({ heroPath: join(publishedRoot, heroFile), outputPath: join(publishedRoot, ogFile), title: article.title, category: article.category });
 await writeFile(join(publishedRoot, 'guide-content.json'), `${JSON.stringify(nextContent, null, 2)}\n`, 'utf8');
 await renderGuidePages(publishedRoot);
+await fingerprintAssets(publishedRoot);
 await output('changed', 'true');
 await output('new_url', `${SITE}/guide/${topic.slug}/`);
 console.log(`Ready to publish ${SITE}/guide/${topic.slug}/ after research, source checks, and independent review.`);

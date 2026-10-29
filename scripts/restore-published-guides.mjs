@@ -2,6 +2,7 @@ import { access, cp, mkdir, readFile, readdir, writeFile } from 'node:fs/promise
 import { dirname, join, resolve } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { validateGuideContent, renderGuidePages } from './guide-pages.mjs';
+import { fingerprintAssets } from './fingerprint-assets.mjs';
 
 const publishedRoot = resolve(process.argv[2] ?? '');
 const destinationRoot = resolve(process.argv[3] ?? 'dist');
@@ -56,3 +57,4 @@ if (await exists(publishedPath)) {
   console.log(`Restored published guide content; source article edits ${sourceWins ? 'merged' : 'not present'}.`);
 }
 await renderGuidePages(destinationRoot);
+await fingerprintAssets(destinationRoot);

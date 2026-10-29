@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node scripts/build-site.mjs",
     "dev": "node scripts/build-site.mjs && node scripts/dev-server.mjs",
-    "check": "node --check app.js && node --check guide.js && node --check calendar-ui.js && node --check privacy.js && node --check scripts/update-calendar.mjs && node --check scripts/build-site.mjs && node --check scripts/guide-pages.mjs && node --check scripts/guide-og.mjs && node --check scripts/publish-guide.mjs && node --check scripts/restore-published-guides.mjs && node --check scripts/submit-indexnow.mjs"
+    "check": "node --check app.js && node --check guide.js && node --check calendar-ui.js && node --check privacy.js && node --check scripts/update-calendar.mjs && node --check scripts/build-site.mjs && node --check scripts/fingerprint-assets.mjs && node --check scripts/guide-pages.mjs && node --check scripts/guide-og.mjs && node --check scripts/publish-guide.mjs && node --check scripts/restore-published-guides.mjs && node --check scripts/submit-indexnow.mjs"
   },
   "dependencies": {
     "sharp": "^0.35.5"

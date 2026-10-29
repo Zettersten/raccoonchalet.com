@@ -2,6 +2,7 @@ import { cp, mkdir, rm, stat } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderGuidePages } from './guide-pages.mjs';
+import { fingerprintAssets } from './fingerprint-assets.mjs';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const destination = resolve(projectRoot, 'dist');
@@ -25,5 +26,6 @@ await cp(join(projectRoot, 'assets'), join(destination, 'assets'), {
 });
 
 await renderGuidePages(destination);
+await fingerprintAssets(destination);
 
 console.log(`Built static site in ${destination}`);
