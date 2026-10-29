@@ -1,6 +1,6 @@
 import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
-import { renderGuidePages, validateGuideContent } from './guide-pages.mjs';
+import { guideAuthorIdAt, renderGuidePages, validateGuideContent } from './guide-pages.mjs';
 import { createOgCard } from './guide-og.mjs';
 import { fingerprintAssets } from './fingerprint-assets.mjs';
 
@@ -320,6 +320,7 @@ const article = {
   description: draft.description.trim(),
   category: topic.category,
   season: topic.season,
+  author: guideAuthorIdAt(content.articles.length),
   publishedAt: today,
   updatedAt: today,
   hero: { src: heroFile, alt: draft.heroAlt.trim() },

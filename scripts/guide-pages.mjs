@@ -8,6 +8,11 @@ const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const ASSET = /^assets\/[a-zA-Z0-9/_-]+\.(?:jpg|jpeg|png|webp)$/;
+const AUTHOR_ORDER = ['erik-zettersten', 'wendy-zettersten'];
+const AUTHORS = {
+  'erik-zettersten': { name: 'Erik Zettersten', image: 'assets/erik-zettersten.jpg' },
+  'wendy-zettersten': { name: 'Wendy Zettersten', image: 'assets/wendy-zettersten.jpg' },
+};
 
 function assert(ok, message) {
   if (!ok) throw new Error(`Guide content: ${message}`);
@@ -17,6 +22,11 @@ function validDate(value) {
   if (!DATE.test(value)) return false;
   const date = new Date(`${value}T00:00:00Z`);
   return !Number.isNaN(date.valueOf()) && date.toISOString().slice(0, 10) === value;
+}
+
+export function guideAuthorIdAt(index) {
+  assert(Number.isInteger(index) && index >= 0, 'invalid article position');
+  return AUTHOR_ORDER[index % AUTHOR_ORDER.length];
 }
 
 export function validateGuideContent(content) {
@@ -32,6 +42,8 @@ export function validateGuideContent(content) {
     for (const field of ['title', 'description', 'category', 'season']) {
       assert(typeof article[field] === 'string' && article[field].trim().length > 0, `${article.slug}: missing ${field}`);
     }
+    // Older published snapshots may need their author filled during rendering.
+    assert(article.author === undefined || Object.hasOwn(AUTHORS, article.author), `${article.slug}: invalid author`);
     assert(validDate(article.publishedAt) && validDate(article.updatedAt), `${article.slug}: invalid dates`);
     assert(article.hero && ASSET.test(article.hero.src ?? '') && typeof article.hero.alt === 'string' && article.hero.alt.trim(), `${article.slug}: invalid hero`);
     assert(ASSET.test(article.ogImage ?? ''), `${article.slug}: invalid ogImage`);
@@ -67,17 +79,23 @@ function cleanGeneratedParagraph(paragraph) {
 }
 
 function guideMetaHtml(article) {
-  return `<p class="guide-story-meta"><span>${escape(article.category)}</span><time datetime="${escape(article.publishedAt)}">${escape(dateLabel(article.publishedAt))}</time>${article.aiAssisted ? '<span class="guide-assisted">AI-assisted</span>' : ''}</p>`;
+  return `<p class="guide-story-meta"><span>${escape(article.category)}</span><time datetime="${escape(article.publishedAt)}">${escape(dateLabel(article.publishedAt))}</time></p>`;
+}
+
+function guideBylineHtml(article, prefix = '') {
+  const author = AUTHORS[article.author];
+  assert(author, `${article.slug}: missing author`);
+  return `<p class="guide-byline"><img src="${prefix}${escape(author.image)}" alt="" width="44" height="44" loading="lazy" decoding="async" /><span>By ${escape(author.name)}</span></p>`;
 }
 
 function guideIndexHtml(articles) {
   if (!articles.length) return '<p class="guide-feed-status">The first local story is on its way. In the meantime, explore the chalet and its surroundings.</p>';
   const [featured, ...rest] = [...articles].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
   const featuredPath = `guide/${escape(featured.slug)}/`;
-  const featuredHtml = `<article class="guide-feature"><a class="guide-feature-image" href="${featuredPath}" aria-label="Read ${escape(featured.title)}"><img src="${escape(featured.hero.src)}" alt="${escape(featured.hero.alt)}" loading="lazy" /></a><div class="guide-feature-copy">${guideMetaHtml(featured)}<h3><a href="${featuredPath}">${escape(featured.title)}</a></h3><p class="guide-feature-dek">${escape(featured.description)}</p><a class="guide-read-link" href="${featuredPath}">Read the story ${guideArrow}</a></div></article>`;
+  const featuredHtml = `<article class="guide-feature"><a class="guide-feature-image" href="${featuredPath}" aria-label="Read ${escape(featured.title)}"><img src="${escape(featured.hero.src)}" alt="${escape(featured.hero.alt)}" loading="lazy" /></a><div class="guide-feature-copy">${guideMetaHtml(featured)}<h3><a href="${featuredPath}">${escape(featured.title)}</a></h3><p class="guide-feature-dek">${escape(featured.description)}</p>${guideBylineHtml(featured)}<a class="guide-read-link" href="${featuredPath}">Read the story ${guideArrow}</a></div></article>`;
   const restHtml = rest.length ? `<div class="guide-story-list">${rest.map(article => {
     const path = `guide/${escape(article.slug)}/`;
-    return `<article class="guide-story-row"><div>${guideMetaHtml(article)}<h3><a href="${path}">${escape(article.title)}</a></h3><p class="guide-story-dek">${escape(article.description)}</p></div><a class="guide-story-arrow" href="${path}" aria-label="Read ${escape(article.title)}">${guideArrow}</a></article>`;
+    return `<article class="guide-story-row"><div>${guideMetaHtml(article)}<h3><a href="${path}">${escape(article.title)}</a></h3><p class="guide-story-dek">${escape(article.description)}</p>${guideBylineHtml(article)}</div><a class="guide-story-arrow" href="${path}" aria-label="Read ${escape(article.title)}">${guideArrow}</a></article>`;
   }).join('')}</div>` : '';
   return featuredHtml + restHtml;
 }
@@ -95,6 +113,8 @@ export function trackedSourceUrl(raw) {
 function articleHtml(article) {
   const url = `${ORIGIN}/guide/${article.slug}/`;
   const title = `${article.title} | Raccoon Chalet`;
+  const author = AUTHORS[article.author];
+  assert(author, `${article.slug}: missing author`);
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -104,7 +124,7 @@ function articleHtml(article) {
     description: article.description,
     datePublished: article.publishedAt,
     dateModified: article.updatedAt,
-    author: { '@type': 'Organization', name: 'Raccoon Chalet', url: ORIGIN },
+    author: { '@type': 'Person', name: author.name, image: absolute(author.image) },
     publisher: { '@type': 'Organization', name: 'Raccoon Chalet', url: ORIGIN },
     image: absolute(article.ogImage),
     inLanguage: 'en-US',
@@ -120,6 +140,7 @@ function articleHtml(article) {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#101d19" />
   <meta name="description" content="${escape(article.description)}" />
+  <meta name="author" content="${escape(author.name)}" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="${url}" />
   <meta property="og:type" content="article" />
@@ -153,7 +174,7 @@ function articleHtml(article) {
     <header class="guide-article-header"><div class="guide-reading-progress" aria-hidden="true"><span></span></div><div class="guide-article-head-inner">
       <a class="guide-back-link" href="../../guide.html">All stories</a>
       <p class="guide-story-meta">${escape(article.category)} <time datetime="${escape(article.publishedAt)}">${escape(dateLabel(article.publishedAt))}</time></p>
-      <h1>${escape(article.title)}</h1><p class="guide-article-dek">${escape(article.description)}</p>
+      <h1>${escape(article.title)}</h1><p class="guide-article-dek">${escape(article.description)}</p>${guideBylineHtml(article, '../../')}
     </div><figure class="guide-article-hero"><div class="guide-article-media"><img src="../../${escape(article.hero.src)}" alt="${escape(article.hero.alt)}" fetchpriority="high" /><canvas class="guide-photo-shader" data-guide-shader aria-hidden="true"></canvas></div>${article.imageDisclosure ? `<figcaption>${escape(article.imageDisclosure)}</figcaption>` : ''}</figure></header>
     <div class="guide-article-layout"><aside class="guide-article-sidebar"><p>${escape(article.season)}</p><p>${escape(article.readingMinutes)} min read</p><p>Updated <time datetime="${escape(article.updatedAt)}">${escape(dateLabel(article.updatedAt))}</time></p></aside>
       <div class="guide-article-body">${sections}
@@ -171,18 +192,22 @@ export async function renderGuidePages(root) {
   assert(root.startsWith(`${PROJECT_ROOT}${sep}`), 'site output must be inside the project workspace');
   const contentPath = join(root, 'guide-content.json');
   const content = validateGuideContent(JSON.parse(await readFile(contentPath, 'utf8')));
-  let cleanedCitations = false;
-  for (const article of content.articles) {
+  let normalizedContent = false;
+  for (const [index, article] of content.articles.entries()) {
+    if (article.author === undefined) {
+      article.author = guideAuthorIdAt(index);
+      normalizedContent = true;
+    }
     if (!article.aiAssisted) continue;
     for (const section of article.sections) {
       section.paragraphs = section.paragraphs.map(paragraph => {
         const cleaned = cleanGeneratedParagraph(paragraph);
-        if (cleaned !== paragraph) cleanedCitations = true;
+        if (cleaned !== paragraph) normalizedContent = true;
         return cleaned;
       });
     }
   }
-  if (cleanedCitations) {
+  if (normalizedContent) {
     validateGuideContent(content);
     await writeFile(contentPath, `${JSON.stringify(content, null, 2)}\n`, 'utf8');
   }

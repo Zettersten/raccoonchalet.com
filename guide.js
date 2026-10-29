@@ -1,5 +1,9 @@
 const feed = document.getElementById('guide-feed');
 const dateFormatter = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+const authors = {
+  'erik-zettersten': { name: 'Erik Zettersten', image: 'assets/erik-zettersten.jpg' },
+  'wendy-zettersten': { name: 'Wendy Zettersten', image: 'assets/wendy-zettersten.jpg' },
+};
 
 function localImage(path) {
   if (typeof path !== 'string' || !path.trim()) return null;
@@ -39,8 +43,26 @@ function articleMeta(article) {
     published.textContent = date;
     meta.append(published);
   }
-  if (article.aiAssisted === true) meta.append(textElement('span', 'guide-assisted', 'AI-assisted'));
   return meta;
+}
+
+function authorByline(article) {
+  const id = typeof article.author === 'string' ? article.author : article.author?.id;
+  const author = authors[id];
+  if (!author) return null;
+  const imageUrl = localImage(author.image);
+  if (!imageUrl) return null;
+  const byline = document.createElement('p');
+  byline.className = 'guide-byline';
+  const portrait = document.createElement('img');
+  portrait.src = imageUrl;
+  portrait.alt = '';
+  portrait.width = 44;
+  portrait.height = 44;
+  portrait.loading = 'lazy';
+  portrait.decoding = 'async';
+  byline.append(portrait, textElement('span', '', `By ${author.name}`));
+  return byline;
 }
 
 function arrowIcon() {
@@ -79,6 +101,8 @@ function createFeature(article) {
   link.textContent = article.title;
   heading.append(link);
   copy.append(heading, textElement('p', 'guide-feature-dek', article.description));
+  const byline = authorByline(article);
+  if (byline) copy.append(byline);
   const read = document.createElement('a');
   read.className = 'guide-read-link';
   read.href = articlePath(article.slug);
@@ -99,6 +123,8 @@ function createRow(article) {
   link.textContent = article.title;
   heading.append(link);
   copy.append(heading, textElement('p', 'guide-story-dek', article.description));
+  const byline = authorByline(article);
+  if (byline) copy.append(byline);
   row.append(copy);
   const read = document.createElement('a');
   read.className = 'guide-story-arrow';
