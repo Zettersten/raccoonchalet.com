@@ -132,7 +132,6 @@ function articleHtml(article) {
   };
   const sections = article.sections.map(section => `<section><h2>${escape(section.heading)}</h2>${section.paragraphs.map(paragraph => `<p>${escape(paragraph)}</p>`).join('')}</section>`).join('\n');
   const sources = article.sources.map(source => `<li><a href="${escape(trackedSourceUrl(source.url))}" target="_blank" rel="noopener noreferrer" referrerpolicy="origin">${escape(source.title)}</a><time datetime="${escape(source.checkedAt)}">Checked ${escape(dateLabel(source.checkedAt))}</time></li>`).join('\n');
-  const disclosure = article.aiAssisted ? '<p class="guide-article-disclosure">This guide was prepared with AI assistance using the linked sources. Check current details with each destination before visiting.</p>' : '';
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -178,7 +177,7 @@ function articleHtml(article) {
     </div><figure class="guide-article-hero"><div class="guide-article-media"><img src="../../${escape(article.hero.src)}" alt="${escape(article.hero.alt)}" fetchpriority="high" /><canvas class="guide-photo-shader" data-guide-shader aria-hidden="true"></canvas></div>${article.imageDisclosure ? `<figcaption>${escape(article.imageDisclosure)}</figcaption>` : ''}</figure></header>
     <div class="guide-article-layout"><aside class="guide-article-sidebar"><p>${escape(article.season)}</p><p>${escape(article.readingMinutes)} min read</p><p>Updated <time datetime="${escape(article.updatedAt)}">${escape(dateLabel(article.updatedAt))}</time></p></aside>
       <div class="guide-article-body">${sections}
-        <section class="guide-article-sources"><h2>Sources &amp; current details</h2><p>Hours, access, conditions, and fees can change. Check the destination’s official information before you go.</p><ul>${sources}</ul>${disclosure}</section>
+        <section class="guide-article-sources"><h2>Sources &amp; current details</h2><p>Hours, access, conditions, and fees can change. Check the destination’s official information before you go.</p><ul>${sources}</ul></section>
       </div>
     </div>
   </article></main>
