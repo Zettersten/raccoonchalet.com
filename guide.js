@@ -143,7 +143,7 @@ async function loadGuide() {
     feed.setAttribute('aria-busy', 'false');
   } catch {
     feed.setAttribute('aria-busy', 'false');
-    const fallback = feed.querySelector('.guide-fallback-list');
+    const fallback = feed.querySelector('article');
     if (fallback) feed.prepend(textElement('p', 'guide-feed-status', 'The latest updates are unavailable, but you can read the stories below.'));
     else showStatus('The stories are temporarily unavailable. Please check back soon.');
   }

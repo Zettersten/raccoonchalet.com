@@ -21,3 +21,5 @@ The hero WebGL pass applies a slow current, an eased pointer-responsive lens, fi
 ## Interaction and accessibility
 
 Controls are keyboard reachable, use visible focus rings, and keep native labels. The mobile menu contains focus and makes the page inert while open. The calendar offers large date targets, clear status states, and visible Airbnb and Vrbo paths. Airbnb links can carry selected dates; Vrbo links do not prefill dates. Availability is a guide because the booking platform confirms final dates and terms. Outbound links carry consistent source tags. Clarity loads asynchronously in the footer only after consent.
+
+The guide and article hero photographs use a gentle WebGL current, with the original images as complete fallbacks. The effect pauses offscreen and is omitted for reduced motion and data saving preferences. Story sections reveal on scroll, while long generated titles wrap within their grids and mobile image captions sit below the photograph.

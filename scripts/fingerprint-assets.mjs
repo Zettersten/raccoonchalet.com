@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { readFile, readdir, writeFile } from 'node:fs/promises';
 import { basename, join } from 'node:path';
 
-const publicAssets = ['styles.css', 'guide.css', 'app.js', 'guide.js', 'calendar-ui.js', 'privacy.js'];
+const publicAssets = ['styles.css', 'guide.css', 'app.js', 'guide.js', 'guide-motion.js', 'calendar-ui.js', 'privacy.js'];
 const localReference = /\b(href|src)="((?:\.\.?\/)*[a-z][\w-]*\.(?:css|js))(?:\?[^\"]*)?"/g;
 
 export async function fingerprintAssets(root) {

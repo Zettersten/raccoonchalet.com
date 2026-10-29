@@ -58,6 +58,23 @@ const escape = value => String(value).replace(/[&<>"']/g, character => ({ '&': '
 const scriptJson = value => JSON.stringify(value).replace(/</g, '\\u003c');
 const absolute = path => `${ORIGIN}/${path.replace(/^\//, '')}`;
 const dateLabel = date => new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T12:00:00Z`));
+const guideArrow = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>';
+
+function guideMetaHtml(article) {
+  return `<p class="guide-story-meta"><span>${escape(article.category)}</span><time datetime="${escape(article.publishedAt)}">${escape(dateLabel(article.publishedAt))}</time>${article.aiAssisted ? '<span class="guide-assisted">AI-assisted</span>' : ''}</p>`;
+}
+
+function guideIndexHtml(articles) {
+  if (!articles.length) return '<p class="guide-feed-status">The first local story is on its way. In the meantime, explore the chalet and its surroundings.</p>';
+  const [featured, ...rest] = [...articles].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+  const featuredPath = `guide/${escape(featured.slug)}/`;
+  const featuredHtml = `<article class="guide-feature"><a class="guide-feature-image" href="${featuredPath}" aria-label="Read ${escape(featured.title)}"><img src="${escape(featured.hero.src)}" alt="${escape(featured.hero.alt)}" loading="lazy" /></a><div class="guide-feature-copy">${guideMetaHtml(featured)}<h3><a href="${featuredPath}">${escape(featured.title)}</a></h3><p class="guide-feature-dek">${escape(featured.description)}</p><a class="guide-read-link" href="${featuredPath}">Read the story ${guideArrow}</a></div></article>`;
+  const restHtml = rest.length ? `<div class="guide-story-list">${rest.map(article => {
+    const path = `guide/${escape(article.slug)}/`;
+    return `<article class="guide-story-row"><div>${guideMetaHtml(article)}<h3><a href="${path}">${escape(article.title)}</a></h3><p class="guide-story-dek">${escape(article.description)}</p></div><a class="guide-story-arrow" href="${path}" aria-label="Read ${escape(article.title)}">${guideArrow}</a></article>`;
+  }).join('')}</div>` : '';
+  return featuredHtml + restHtml;
+}
 
 export function trackedSourceUrl(raw) {
   const url = new URL(raw);
@@ -118,6 +135,7 @@ function articleHtml(article) {
   <link rel="preload" href="../../assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../../styles.css?v=20261029-guide" />
   <link rel="stylesheet" href="../../guide.css?v=20261029-1" />
+  <script type="module" src="../../guide-motion.js"></script>
 </head>
 <body class="guide-page guide-article-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -126,11 +144,11 @@ function articleHtml(article) {
     <nav class="guide-nav" aria-label="Main navigation"><a href="../../index.html">The chalet</a><a href="../../guide.html" aria-current="page">Local guide</a><a class="guide-nav-book" href="../../index.html#availability">Check dates <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg></a></nav>
   </header>
   <main id="main"><article class="guide-article">
-    <header class="guide-article-header"><div class="guide-article-head-inner">
+    <header class="guide-article-header"><div class="guide-reading-progress" aria-hidden="true"><span></span></div><div class="guide-article-head-inner">
       <a class="guide-back-link" href="../../guide.html">All stories</a>
       <p class="guide-story-meta">${escape(article.category)} <time datetime="${escape(article.publishedAt)}">${escape(dateLabel(article.publishedAt))}</time></p>
       <h1>${escape(article.title)}</h1><p class="guide-article-dek">${escape(article.description)}</p>
-    </div><figure class="guide-article-hero"><img src="../../${escape(article.hero.src)}" alt="${escape(article.hero.alt)}" fetchpriority="high" />${article.imageDisclosure ? `<figcaption>${escape(article.imageDisclosure)}</figcaption>` : ''}</figure></header>
+    </div><figure class="guide-article-hero"><div class="guide-article-media"><img src="../../${escape(article.hero.src)}" alt="${escape(article.hero.alt)}" fetchpriority="high" /><canvas class="guide-photo-shader" data-guide-shader aria-hidden="true"></canvas></div>${article.imageDisclosure ? `<figcaption>${escape(article.imageDisclosure)}</figcaption>` : ''}</figure></header>
     <div class="guide-article-layout"><aside class="guide-article-sidebar"><p>${escape(article.season)}</p><p>${escape(article.readingMinutes)} min read</p><p>Updated <time datetime="${escape(article.updatedAt)}">${escape(dateLabel(article.updatedAt))}</time></p></aside>
       <div class="guide-article-body">${sections}
         <section class="guide-article-sources"><h2>Sources &amp; current details</h2><p>Hours, access, conditions, and fees can change. Check the destination’s official information before you go.</p><ul>${sources}</ul>${disclosure}</section>
@@ -165,8 +183,8 @@ export async function renderGuidePages(root) {
   const indexHtml = await readFile(indexPath, 'utf8');
   const marker = /<!-- GUIDE_LINKS_START -->[\s\S]*?<!-- GUIDE_LINKS_END -->/;
   assert(marker.test(indexHtml), 'guide.html is missing static link markers');
-  const links = [...content.articles].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).map(article => `<article><a href="guide/${escape(article.slug)}/"><span>${escape(article.category)}</span><h3>${escape(article.title)}</h3><p>${escape(article.description)}</p></a></article>`).join('\n');
-  await writeFile(indexPath, indexHtml.replace(marker, `<!-- GUIDE_LINKS_START -->\n<div class="guide-fallback-list">${links}</div>\n<!-- GUIDE_LINKS_END -->`), 'utf8');
+  const links = guideIndexHtml(content.articles);
+  await writeFile(indexPath, indexHtml.replace(marker, `<!-- GUIDE_LINKS_START -->\n${links}\n<!-- GUIDE_LINKS_END -->`), 'utf8');
   const sitemapPath = join(root, 'sitemap.xml');
   const currentSitemap = await readFile(sitemapPath, 'utf8');
   assert(currentSitemap.includes('</urlset>'), 'sitemap.xml is malformed');
