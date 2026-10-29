@@ -8,7 +8,7 @@ if (dirname(destination) !== projectRoot || destination === projectRoot) {
   throw new Error('Refusing to build outside the project root.');
 }
 
-const files = ['index.html', 'privacy.html', 'styles.css', 'app.js', 'calendar-ui.js', 'privacy.js', 'calendar.json', 'favicon.svg', 'robots.txt', 'sitemap.xml', 'BingSiteAuth.xml'];
+const files = ['index.html', 'privacy.html', 'styles.css', 'app.js', 'calendar-ui.js', 'privacy.js', 'calendar.json', 'favicon.svg', 'robots.txt', 'sitemap.xml', 'BingSiteAuth.xml', 'b37fe215b24148208f5c4a0492950f61.txt'];
 for (const name of files) {
   await stat(join(projectRoot, name));
 }

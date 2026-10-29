@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: Check out source
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
@@ -68,3 +70,9 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Notify IndexNow of changed pages
+        env:
+          INDEXNOW_BEFORE: ${{ github.event.before }}
+          INDEXNOW_AFTER: ${{ github.sha }}
+          INDEXNOW_EVENT: ${{ github.event_name }}
+        run: node scripts/submit-indexnow.mjs

@@ -6,6 +6,6 @@
   "scripts": {
     "build": "node scripts/build-site.mjs",
     "dev": "node scripts/dev-server.mjs",
-    "check": "node --check app.js && node --check calendar-ui.js && node --check privacy.js && node --check scripts/update-calendar.mjs && node --check scripts/build-site.mjs"
+    "check": "node --check app.js && node --check calendar-ui.js && node --check privacy.js && node --check scripts/update-calendar.mjs && node --check scripts/build-site.mjs && node --check scripts/submit-indexnow.mjs"
   }
 }

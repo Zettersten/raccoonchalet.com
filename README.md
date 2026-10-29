@@ -21,6 +21,12 @@ GitHub Pages requires an artifact deployment to publish a changed static file. C
 
 Run the full site workflow once before the calendar-only workflow so the `gh-pages` snapshot exists. Airbnb links prefill a selected date range; Vrbo links open the listing without dates.
 
+## IndexNow
+
+The root file `b37fe215b24148208f5c4a0492950f61.txt` verifies ownership for IndexNow. After the full site deployment succeeds, `scripts/submit-indexnow.mjs` notifies the IndexNow API about changed HTML page URLs. A homepage or published media change submits `/`; a privacy-page change submits `/privacy.html`; shared style changes submit both. Documentation-only changes submit nothing. A manual **Deploy site** run resubmits both pages when needed.
+
+The hourly calendar workflow does not send IndexNow notifications because it only changes `calendar.json`. Verify submitted URLs in Bing Webmaster Tools. IndexNow reports changes to participating search engines; the sitemap and Google Search Console remain the route for Google discovery.
+
 ## Privacy and analytics
 
 The homepage footer contains the Microsoft Clarity site disclosure and links to `privacy.html`. Clarity loads only after a visitor allows analytics. `privacy.js` stores that choice in the visitor's browser for up to 180 days and sends Clarity Consent V2 with advertising storage denied. Visitors can change their choice from either page's footer. In the Clarity project, enable Consent Mode under **Settings → Setup** so the consent signal controls Clarity cookies.
