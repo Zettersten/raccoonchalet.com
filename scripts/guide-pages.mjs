@@ -128,7 +128,7 @@ function articleHtml(article) {
   <main id="main"><article class="guide-article">
     <header class="guide-article-header"><div class="guide-article-head-inner">
       <a class="guide-back-link" href="../../guide.html">All stories</a>
-      <p class="guide-story-meta">${escape(article.category)} · <time datetime="${escape(article.publishedAt)}">${escape(dateLabel(article.publishedAt))}</time></p>
+      <p class="guide-story-meta">${escape(article.category)} <time datetime="${escape(article.publishedAt)}">${escape(dateLabel(article.publishedAt))}</time></p>
       <h1>${escape(article.title)}</h1><p class="guide-article-dek">${escape(article.description)}</p>
     </div><figure class="guide-article-hero"><img src="../../${escape(article.hero.src)}" alt="${escape(article.hero.alt)}" fetchpriority="high" />${article.imageDisclosure ? `<figcaption>${escape(article.imageDisclosure)}</figcaption>` : ''}</figure></header>
     <div class="guide-article-layout"><aside class="guide-article-sidebar"><p>${escape(article.season)}</p><p>${escape(article.readingMinutes)} min read</p><p>Updated <time datetime="${escape(article.updatedAt)}">${escape(dateLabel(article.updatedAt))}</time></p></aside>
@@ -165,7 +165,7 @@ export async function renderGuidePages(root) {
   const indexHtml = await readFile(indexPath, 'utf8');
   const marker = /<!-- GUIDE_LINKS_START -->[\s\S]*?<!-- GUIDE_LINKS_END -->/;
   assert(marker.test(indexHtml), 'guide.html is missing static link markers');
-  const links = [...content.articles].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).map(article => `<article><a href="guide/${escape(article.slug)}/"><span>${escape(article.category)} · ${escape(dateLabel(article.publishedAt))}</span><h3>${escape(article.title)}</h3><p>${escape(article.description)}</p></a></article>`).join('\n');
+  const links = [...content.articles].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).map(article => `<article><a href="guide/${escape(article.slug)}/"><span>${escape(article.category)}</span><h3>${escape(article.title)}</h3><p>${escape(article.description)}</p></a></article>`).join('\n');
   await writeFile(indexPath, indexHtml.replace(marker, `<!-- GUIDE_LINKS_START -->\n<div class="guide-fallback-list">${links}</div>\n<!-- GUIDE_LINKS_END -->`), 'utf8');
   const sitemapPath = join(root, 'sitemap.xml');
   const currentSitemap = await readFile(sitemapPath, 'utf8');
