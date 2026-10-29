@@ -8,6 +8,7 @@
       "description": "A practical plan for a first ski weekend in Basye: reserve lessons before you arrive, check the mountain on the day, and leave room to unwind afterward.",
       "category": "A weekend here",
       "season": "Winter",
+      "author": "erik-zettersten",
       "aiAssisted": true,
       "publishedAt": "2026-10-29",
       "updatedAt": "2026-10-29",
@@ -69,6 +70,7 @@
       "description": "How to plan a lake day near Raccoon Chalet, from the beach and lakeside trail to the practical rules worth checking before you go.",
       "category": "Out in Basye",
       "season": "Summer",
+      "author": "wendy-zettersten",
       "aiAssisted": true,
       "publishedAt": "2026-10-29",
       "updatedAt": "2026-10-29",
@@ -191,7 +193,8 @@
         }
       ],
       "aiAssisted": true,
-      "imageDisclosure": "AI-generated editorial illustration. It does not show Raccoon Chalet or a specific local destination."
+      "imageDisclosure": "AI-generated editorial illustration. It does not show Raccoon Chalet or a specific local destination.",
+      "author": "erik-zettersten"
     }
   ]
 }
