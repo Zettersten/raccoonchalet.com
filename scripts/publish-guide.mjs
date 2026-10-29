@@ -128,13 +128,14 @@ const auditSchema = {
   required: ['pass', 'reason', 'unsupportedClaims', 'styleIssues', 'sourceConcerns'],
 };
 
-async function researchTopic(topic, queue) {
+async function researchTopic(topic, queue, previousRejection = '') {
   const today = todayInNewYork();
   const prompt = `You are preparing ONE practical local guide for prospective guests at Raccoon Chalet in Basye, Virginia. Today is ${today}. Reader question: ${topic.question}\n\n` +
     `Start with these official pages: ${topic.officialSources.join(', ')}. Search further within these allowed official domains only: ${topic.allowedDomains.join(', ')}. Use current primary sources and do not copy their prose.\n\n` +
     `Verified property facts supplied by the owner: ${PROPERTY_FACTS.join(' ')} Do not state any other property fact. Owner-supplied context: ${queue.ownerContext || 'None'}. Topic-specific owner notes: ${topic.ownerNotes || 'None'}. Owner notes can support statements about the owners' experiences, but cannot prove any current third-party amenity, opening, rule, price, or access. Do not write as though you personally visited a destination. Do not suggest the chalet grants access to resort amenities. Do not mention resort pool, gym, or fitness access.\n\n` +
-    `Write a useful 450-800 word article with 3-5 sections and concrete planning advice. Synthesize what the verified sources mean for a guest; do not paraphrase them section by section. Include at least 2 relevant official source URLs and a claim-to-source list covering each specific factual assertion. If the sources cannot support a genuinely useful guide, set publishable=false and explain why.\n\n` +
-    `Avoid prices, hours, live conditions, unconfirmed access, and promises that an attraction is open. Direct the reader to official live details. Keep a calm, specific human voice. Remove inflated adjectives, stock travel clichés, em dashes, staged openers, forced lists of three, filler conclusions, and invented anecdotes. No HTML, Markdown, emojis, quotations, or first-person claims. The hero prompt must request an atmospheric stock-style AI illustration, not a documentary photo of any real place. The hero alt must clearly call it an illustration. Output the requested JSON schema only.`;
+    `Write a useful 450-800 word article with 3-5 sections and concrete planning advice. Synthesize what the verified sources mean for a guest; do not paraphrase them section by section. Include at least 2 relevant official source URLs and a claim-to-source list covering each specific third-party factual assertion. Every sources[].url must be an absolute HTTPS URL from the official search results. Every claims[].sourceUrl must be an absolute HTTPS URL copied exactly from one sources[].url in this draft. Omit owner-supplied chalet facts from claims; they have no tourism source URL. Never put an empty string, an owner note, a relative URL, or a citation marker in sourceUrl. If the sources cannot support a genuinely useful guide, set publishable=false and explain why.\n\n` +
+    `Avoid prices, hours, live conditions, unconfirmed access, and promises that an attraction is open. Direct the reader to official live details. Keep a calm, specific human voice. Remove inflated adjectives, stock travel clichés, em dashes, staged openers, forced lists of three, filler conclusions, and invented anecdotes. No HTML, Markdown, emojis, quotations, or first-person claims. The hero prompt must request an atmospheric stock-style AI illustration, not a documentary photo of any real place. The hero alt must clearly call it an illustration. Output the requested JSON schema only.` +
+    (previousRejection ? `\n\nA previous draft failed this publication check: ${previousRejection}. Research again and correct that issue. If the official sources cannot support the article, set publishable=false.` : '');
   return backgroundResponse({
     model: TEXT_MODEL,
     reasoning: { effort: 'high' },
@@ -257,12 +258,20 @@ if (!key) {
 }
 
 const today = todayInNewYork();
-const research = await researchTopic(topic, queue);
-let draft;
-try { draft = JSON.parse(responseText(research)); } catch { fail('OpenAI returned invalid draft JSON.'); }
-const evidence = searchEvidence(research);
-let rejection = validateDraft(draft, topic, evidence);
-if (!rejection) rejection = await checkSources(draft.sources, topic.allowedDomains);
+async function checkResearch(response) {
+  let draft;
+  try { draft = JSON.parse(responseText(response)); } catch { fail('OpenAI returned invalid draft JSON.'); }
+  const evidence = searchEvidence(response);
+  let rejection = validateDraft(draft, topic, evidence);
+  if (!rejection) rejection = await checkSources(draft.sources, topic.allowedDomains);
+  return { draft, rejection };
+}
+
+let { draft, rejection } = await checkResearch(await researchTopic(topic, queue));
+if (rejection && draft.publishable) {
+  console.log(`First draft failed publication checks: ${rejection}. Retrying research once.`);
+  ({ draft, rejection } = await checkResearch(await researchTopic(topic, queue, rejection)));
+}
 if (rejection) {
   console.log(`Publication skipped: ${rejection}`);
   await output('changed', 'false');
