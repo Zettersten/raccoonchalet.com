@@ -100,13 +100,13 @@ export async function initCalendar() {
       url.searchParams.set('check_in', selectedStart);
       url.searchParams.set('check_out', selectedEnd);
       el.booking.href = url.toString();
-      el.selection.textContent = `${formatDate(selectedStart)} – ${formatDate(selectedEnd)} selected. Confirm dates and booking terms on Airbnb.`;
+      el.selection.textContent = `${formatDate(selectedStart)} – ${formatDate(selectedEnd)} selected. Airbnb opens with these dates; check Vrbo separately for final availability and terms.`;
     } else if (selectedStart) {
       el.booking.href = AIRBNB_URL;
       el.selection.textContent = `${formatDate(selectedStart)} selected for check-in. Choose a check-out date.`;
     } else {
       el.booking.href = AIRBNB_URL;
-      el.selection.textContent = 'Choose your dates, or browse the listing for current booking details.';
+      el.selection.textContent = 'Choose dates to preview availability, or explore either booking listing.';
     }
   }
 
@@ -124,7 +124,7 @@ export async function initCalendar() {
       el.status.textContent = 'Check-in date selected.';
     } else if (isContiguousStay(selectedStart, key)) {
       selectedEnd = key;
-      el.status.textContent = 'Stay selected. Continue to Airbnb to confirm availability.';
+      el.status.textContent = 'Stay selected. Confirm dates and prices on your preferred booking site.';
     } else {
       selectedStart = key;
       selectedEnd = null;
@@ -215,8 +215,8 @@ export async function initCalendar() {
     render();
   } catch (error) {
     root.classList.add('calendar-error');
-    el.status.textContent = 'The calendar could not load right now. Check current dates on Airbnb.';
-    el.selection.textContent = 'The listing has the latest booking details.';
+    el.status.textContent = 'The calendar could not load right now. Check current dates on Airbnb or Vrbo.';
+    el.selection.textContent = 'The booking listings have the latest details.';
     if (el.updated) el.updated.textContent = '';
     el.grid.replaceChildren();
     el.previous.disabled = true;

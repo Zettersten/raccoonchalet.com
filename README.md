@@ -10,7 +10,7 @@ The browser fetches `./calendar.json` at runtime. Calendar data is separate from
 
 ## Availability
 
-`node scripts/update-calendar.mjs` downloads and validates a year of dates from the Stay Blue Maple API, then writes `calendar.json` atomically. It rejects incomplete or malformed responses. The site displays the API's `available` flag; final dates and booking terms are confirmed on Airbnb.
+`node scripts/update-calendar.mjs` downloads and validates a year of dates from the Stay Blue Maple API, then writes `calendar.json` atomically. It rejects incomplete or malformed responses. The site displays the API's `available` flag; final dates and booking terms are confirmed on Airbnb or Vrbo.
 
 Set repository **Pages Source** to **GitHub Actions**.
 
@@ -19,7 +19,7 @@ Set repository **Pages Source** to **GitHub Actions**.
 
 GitHub Pages requires an artifact deployment to publish a changed static file. Calendar-only updates leave the site's HTML, CSS, JavaScript, and media unchanged.
 
-Run the full site workflow once before the calendar-only workflow so the `gh-pages` snapshot exists. Airbnb is currently the only booking link.
+Run the full site workflow once before the calendar-only workflow so the `gh-pages` snapshot exists. Airbnb links prefill a selected date range; Vrbo links open the listing without dates.
 
 ## Privacy and analytics
 
