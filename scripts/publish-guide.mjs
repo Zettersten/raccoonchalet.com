@@ -207,7 +207,7 @@ async function checkSources(sources, allowedDomains) {
 }
 
 async function auditDraft(draft, topic, today) {
-  const prompt = `Independently audit this proposed Raccoon Chalet local guide as a skeptical travel editor. Today is ${today}. Use web search on the official domains ${topic.allowedDomains.join(', ')} and the cited URLs. Verify every specific factual statement that appears, including any distances, access, safety rules, seasonal status, hours, and facility availability. The article intentionally avoids volatile hours, prices, contact details, and day-specific status; do not reject it for omitting them or require their inclusion. It should point readers to cited official pages for current details. The only approved property facts are: ${PROPERTY_FACTS.join(' ')} Owner context can support only statements about owner experiences; it cannot support third-party operating facts. Reject property claims beyond the approved list. Reject any claim that reads like a firsthand visit by the author. Reject weak paraphrases or generic prose with no practical value. Reject unsupported claims even if a source URL is listed. Check for humanizer-style problems: staged openers, inflated praise, contrived contrast, em dashes, repetitive triads, and filler ending. Pass only if the factual claims are supported and the guide helps a guest make a real plan through concrete, sourced choices and checks. Return JSON only.\n\nTopic: ${topic.question}\nDraft: ${JSON.stringify(draft)}`;
+  const prompt = `Independently audit this proposed Raccoon Chalet local guide as a skeptical travel editor. Today is ${today}. Use web search on the official domains ${topic.allowedDomains.join(', ')} and the cited URLs. Verify every specific factual statement that appears, including any distances, access, safety rules, seasonal status, hours, and facility availability. The article intentionally avoids volatile hours, prices, contact details, and day-specific status; do not reject it for omitting them or require their inclusion. It should point readers to cited official pages for current details. The only approved property facts are: ${PROPERTY_FACTS.join(' ')} Owner context can support only statements about owner experiences; it cannot support third-party operating facts. Reject property claims beyond the approved list. Reject any claim that reads like a firsthand visit by the author. Reject weak paraphrases or generic prose with no practical value. Reject unsupported claims even if a source URL is listed. Check for humanizer-style problems: staged openers, inflated praise, contrived contrast, em dashes, repetitive triads, and filler ending. Pass only if the factual claims are supported and the guide helps a guest make a real plan through concrete, sourced choices and checks. The verdict fields must agree: set pass=true if and only if unsupportedClaims, styleIssues, and sourceConcerns are all empty. If any issue array is nonempty, set pass=false and make each item a specific actionable reason for rejection. Keep reason to one plain-text sentence under 240 characters, beginning with Pass or Reject and naming the decisive finding; do not put citations or a claim-by-claim summary in reason. Return JSON only.\n\nTopic: ${topic.question}\nDraft: ${JSON.stringify(draft)}`;
   return backgroundResponse({
     model: TEXT_MODEL,
     reasoning: { effort: 'high' },
@@ -285,10 +285,16 @@ async function independentlyReview(candidate) {
 function reviewPassed(review) {
   return review.pass && !review.unsupportedClaims.length && !review.styleIssues.length && !review.sourceConcerns.length;
 }
+function reviewDiagnostic(review) {
+  const compact = value => String(value || '').replace(/\s+/g, ' ').slice(0, 240);
+  const issue = [review.unsupportedClaims[0], review.styleIssues[0], review.sourceConcerns[0]]
+    .find(Boolean);
+  return `pass=${review.pass}; unsupported=${review.unsupportedClaims.length}; style=${review.styleIssues.length}; sources=${review.sourceConcerns.length}; reason=${compact(review.reason)}${issue ? `; first issue=${compact(issue)}` : ''}`;
+}
 
 let audit = await independentlyReview(draft);
 if (!reviewPassed(audit)) {
-  console.log('Independent review requested a revision. Researching and reviewing once more.');
+  console.log(`Independent review requested a revision (${reviewDiagnostic(audit)}). Researching and reviewing once more.`);
   const feedback = [audit.reason, ...audit.unsupportedClaims, ...audit.styleIssues, ...audit.sourceConcerns]
     .filter(Boolean).join(' ').slice(0, 1200);
   ({ draft, rejection } = await checkResearch(await researchTopic(topic, queue, feedback || 'The independent review did not pass.')));
@@ -300,7 +306,7 @@ if (!reviewPassed(audit)) {
   audit = await independentlyReview(draft);
 }
 if (!reviewPassed(audit)) {
-  console.log(`Publication skipped by independent review: ${audit.reason || 'Quality gate did not pass.'}`);
+  console.log(`Publication skipped by independent review: ${reviewDiagnostic(audit)}`);
   await output('changed', 'false');
   process.exit(0);
 }
