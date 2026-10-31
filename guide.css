@@ -66,6 +66,8 @@
 .guide-intro h2 em,.guide-stories-heading h2 em,.guide-close h2 em{font-weight:400}
 .guide-intro div{max-width:58ch;padding-top:.6rem}
 .guide-intro p{margin:0 0 1.3rem;color:var(--guide-intro-copy);font-size:1.02rem;line-height:1.8}
+.guide-intro a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.24em}
+.guide-intro a:hover{text-decoration-thickness:2px}
 .guide-intro p:last-child{margin-bottom:0;color:var(--guide-intro-note);font-size:.88rem}
 .guide-stories{padding-block:clamp(5rem,8vw,8rem) clamp(7rem,12vw,12rem);background:var(--guide-story-paper)}
 .guide-stories-heading{display:flex;justify-content:space-between;align-items:end;gap:3rem;margin-bottom:clamp(3rem,6vw,6rem)}
