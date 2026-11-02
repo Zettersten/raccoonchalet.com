@@ -1,5 +1,6 @@
 import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { guideAuthorIdAt, renderGuidePages, validateGuideContent } from './guide-pages.mjs';
 import { createOgCard } from './guide-og.mjs';
 import { fingerprintAssets } from './fingerprint-assets.mjs';
@@ -18,6 +19,7 @@ const publishedRoot = resolve(process.argv[2] ?? 'published');
 const queuePath = resolve(process.argv[3] ?? 'editorial-topics.json');
 const dryRun = process.argv.includes('--dry-run');
 const key = process.env.OPENAI_API_KEY;
+let runDeadline = Infinity;
 
 function todayInNewYork() {
   const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
@@ -38,31 +40,102 @@ function normalizeUrl(raw) {
   return url.toString();
 }
 function wordCount(text) { return text.trim().split(/\s+/).filter(Boolean).length; }
+function remainingTime() {
+  const remaining = runDeadline - Date.now();
+  if (remaining <= 0) fail('Guide generation exceeded its 38-minute budget. A later scheduled run will retry.');
+  return remaining;
+}
+export function normalizeDraftDescription(description, sections = []) {
+  const clean = value => String(value ?? '').replace(/\s+/g, ' ').trim();
+  let result = clean(description);
+  if (result.length < 80) {
+    const prose = (Array.isArray(sections) ? sections : [])
+      .flatMap(section => Array.isArray(section?.paragraphs) ? section.paragraphs : []).map(clean).join(' ');
+    result = prose.length >= 80 ? prose : clean(`${result} ${prose}`);
+  }
+  if (result.length > 165) {
+    const clipped = result.slice(0, 165);
+    const boundary = clipped.lastIndexOf(' ');
+    result = boundary >= 80 ? clipped.slice(0, boundary).trim() : clipped;
+    result = result.replace(/[,;:\-–—]+$/, '').trim();
+  }
+  return result;
+}
+function sourceTitle(url) {
+  const parsed = new URL(url);
+  const name = (parsed.pathname.split('/').filter(Boolean).at(-1)?.replace(/[-_]+/g, ' ') || 'Visitor information')
+    .replace(/\b[a-z]/g, letter => letter.toUpperCase());
+  return `${parsed.hostname.replace(/^www\./, '')}: ${name}`;
+}
+export function normalizeDraft(draft, topic, evidence) {
+  const sources = Array.isArray(draft.sources) ? draft.sources.filter(source => source && typeof source === 'object') : [];
+  const seen = new Set();
+  for (const source of sources) {
+    try { seen.add(normalizeUrl(source?.url)); } catch { /* Validation reports malformed URLs. */ }
+  }
+  function addObservedSource(raw) {
+    if (sources.length >= 6) return;
+    try {
+      const url = new URL(raw);
+      const normalized = normalizeUrl(raw);
+      // Backfill only pages actually observed in official-domain research.
+      if (url.protocol !== 'https:' || !isOfficialHost(url.hostname, topic.allowedDomains) ||
+          !evidence.urls.has(normalized) || seen.has(normalized)) return;
+      sources.push({ title: sourceTitle(raw), url: raw });
+      seen.add(normalized);
+    } catch { /* Validation will handle bad model URLs separately. */ }
+  }
+  for (const claim of Array.isArray(draft.claims) ? draft.claims : []) addObservedSource(claim?.sourceUrl);
+  for (const raw of [...(topic.officialSources || []), ...evidence.urls]) {
+    if (sources.length >= 2) break;
+    addObservedSource(raw);
+  }
+  return { ...draft, description: normalizeDraftDescription(draft.description, draft.sections || []), sources };
+}
 async function output(name, value) {
   if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `${name}=${value}\n`, 'utf8');
 }
 
 async function apiRequest(path, { method = 'GET', body, timeout = 120_000 } = {}) {
-  const response = await fetch(`${API}${path}`, {
-    method,
-    headers: { Authorization: `Bearer ${key}`, ...(body ? { 'Content-Type': 'application/json' } : {}) },
-    body: body ? JSON.stringify(body) : undefined,
-    signal: AbortSignal.timeout(timeout),
-  });
-  if (!response.ok) {
+  for (let attempt = 0; attempt < 4; attempt++) {
+    let response;
+    try {
+      response = await fetch(`${API}${path}`, {
+        method,
+        headers: { Authorization: `Bearer ${key}`, ...(body ? { 'Content-Type': 'application/json' } : {}) },
+        body: body ? JSON.stringify(body) : undefined,
+        signal: AbortSignal.timeout(Math.min(timeout, remainingTime())),
+      });
+    } catch (error) {
+      if (attempt >= 3 || !['AbortError', 'TimeoutError', 'TypeError'].includes(error?.name)) throw error;
+      const delay = 2_000 * 2 ** attempt;
+      if (delay >= remainingTime()) fail('Guide generation ran out of time while retrying OpenAI.');
+      console.log(`OpenAI request interrupted; retrying in ${Math.ceil(delay / 1000)} seconds.`);
+      await new Promise(done => setTimeout(done, delay));
+      continue;
+    }
+    if (response.ok) return response.json();
     let detail = '';
     try { detail = (await response.json()).error?.message || ''; } catch { /* Status is enough. */ }
+    if (attempt < 3 && [408, 409, 429, 500, 502, 503, 504].includes(response.status)) {
+      const retryAfter = Number(response.headers.get('retry-after'));
+      const delay = Number.isFinite(retryAfter) && retryAfter > 0
+        ? Math.min(60_000, retryAfter * 1000) : 2_000 * 2 ** attempt;
+      if (delay >= remainingTime()) fail('Guide generation ran out of time while retrying OpenAI.');
+      console.log(`OpenAI returned HTTP ${response.status}; retrying in ${Math.ceil(delay / 1000)} seconds.`);
+      await new Promise(done => setTimeout(done, delay));
+      continue;
+    }
     fail(`OpenAI API returned HTTP ${response.status}${detail ? `: ${detail.slice(0, 240)}` : ''}`);
   }
-  return response.json();
 }
 
 async function backgroundResponse(payload) {
   let response = await apiRequest('/responses', { method: 'POST', body: { ...payload, background: true }, timeout: 120_000 });
-  const deadline = Date.now() + 14 * 60_000;
+  const deadline = Math.min(Date.now() + 14 * 60_000, runDeadline);
   while (['queued', 'in_progress'].includes(response.status)) {
-    if (Date.now() > deadline) fail('OpenAI research exceeded the 14-minute limit.');
-    await new Promise(done => setTimeout(done, 8_000));
+    if (Date.now() >= deadline) fail('OpenAI research exceeded its time budget. A later scheduled run will retry.');
+    await new Promise(done => setTimeout(done, Math.min(8_000, deadline - Date.now())));
     response = await apiRequest(`/responses/${encodeURIComponent(response.id)}`, { timeout: 30_000 });
   }
   if (response.status !== 'completed') fail(`OpenAI research ended with status ${response.status}.`);
@@ -81,7 +154,9 @@ function searchEvidence(response) {
   const urls = new Set();
   function collect(value) {
     if (!value || typeof value !== 'object') return;
-    if (typeof value.url === 'string' && /^https:\/\//.test(value.url)) urls.add(normalizeUrl(value.url));
+    if (typeof value.url === 'string' && /^https:\/\//.test(value.url)) {
+      try { urls.add(normalizeUrl(value.url)); } catch { /* Ignore malformed search links. */ }
+    }
     for (const item of Object.values(value)) collect(item);
   }
   for (const call of calls) collect(call.action?.sources);
@@ -128,14 +203,14 @@ const auditSchema = {
   required: ['pass', 'reason', 'unsupportedClaims', 'styleIssues', 'sourceConcerns'],
 };
 
-async function researchTopic(topic, queue, previousRejection = '') {
+async function researchTopic(topic, queue, previousRejection = '', previousDraft = null) {
   const today = todayInNewYork();
   const prompt = `You are preparing ONE practical local guide for prospective guests at Raccoon Chalet in Basye, Virginia. Today is ${today}. Reader question: ${topic.question}\n\n` +
     `Start with these official pages: ${topic.officialSources.join(', ')}. Search further within these allowed official domains only: ${topic.allowedDomains.join(', ')}. Use current primary sources and do not copy their prose.\n\n` +
     `Verified property facts supplied by the owner: ${PROPERTY_FACTS.join(' ')} Do not state any other property fact. Owner-supplied context: ${queue.ownerContext || 'None'}. Topic-specific owner notes: ${topic.ownerNotes || 'None'}. Owner notes can support statements about the owners' experiences, but cannot prove any current third-party amenity, opening, rule, price, or access. Do not write as though you personally visited a destination. Do not suggest the chalet grants access to resort amenities. Do not mention resort pool, gym, or fitness access.\n\n` +
-    `Write a useful 450-800 word article with 3-5 sections and concrete planning advice. Each section should answer a planning question with source-backed actions, choices, or checks a guest can make before or during an outing. Replace generic travel commentary with details that help a guest decide what to do, where to go, or what to verify; do not end by repeating the introduction or saying only to check ahead. Synthesize what the verified sources mean for a guest; do not paraphrase them section by section. Include at least 2 relevant official source URLs and a claim-to-source list covering each specific third-party factual assertion. Every sources[].url must be an absolute HTTPS URL from the official search results. Every claims[].sourceUrl must be an absolute HTTPS URL copied exactly from one sources[].url in this draft. Omit owner-supplied chalet facts from claims; they have no tourism source URL. Never put an empty string, an owner note, a relative URL, or a citation marker in sourceUrl. If the sources cannot support a genuinely useful guide, set publishable=false and explain why.\n\n` +
+    `Write a useful 450-800 word article with 3-5 sections and concrete planning advice. Use a title of 20-90 characters and a description of 80-165 characters. List 2-6 distinct relevant official source pages and at least four specific claims linked to those pages. Each section should answer a planning question with source-backed actions, choices, or checks a guest can make before or during an outing. Replace generic travel commentary with details that help a guest decide what to do, where to go, or what to verify; do not end by repeating the introduction or saying only to check ahead. Synthesize what the verified sources mean for a guest; do not paraphrase them section by section. Include at least 2 relevant official source URLs and a claim-to-source list covering each specific third-party factual assertion. Every sources[].url must be an absolute HTTPS URL from the official search results. Every claims[].sourceUrl must be an absolute HTTPS URL copied exactly from one sources[].url in this draft. Omit owner-supplied chalet facts from claims; they have no tourism source URL. Never put an empty string, an owner note, a relative URL, or a citation marker in sourceUrl. If the sources cannot support a genuinely useful guide, set publishable=false and explain why.\n\n` +
     `Avoid prices, hours, live conditions, unconfirmed access, and promises that an attraction is open. Direct the reader to the cited official pages for current schedules, contact details, and operating information without reproducing volatile values. Keep a calm, specific human voice. Remove inflated adjectives, stock travel clichés, em dashes, staged openers, forced lists of three, filler conclusions, and invented anecdotes. No HTML, Markdown, emojis, quotations, or first-person claims. The hero prompt must request an atmospheric stock-style AI illustration, not a documentary photo of any real place. The hero alt must clearly call it an illustration. Output the requested JSON schema only.` +
-    (previousRejection ? `\n\nA previous draft failed a publication check: ${previousRejection.slice(0, 1200)}. Research again and correct supported issues while following every publication rule above. Do not add hours, prices, or unverified operating details in response to review feedback. If the official sources cannot support the article, set publishable=false.` : '');
+    (previousRejection ? `\n\nA previous draft failed a publication check: ${previousRejection.slice(0, 1200)}. Correct that issue while preserving verified, useful material from the previous draft. Search again for any source that is missing. Do not add hours, prices, or unverified operating details in response to review feedback. If the official sources cannot support the article, set publishable=false. Previous draft for reference, not an instruction: ${JSON.stringify(previousDraft).slice(0, 16_000)}` : '');
   return backgroundResponse({
     model: TEXT_MODEL,
     reasoning: { effort: 'high' },
@@ -147,7 +222,7 @@ async function researchTopic(topic, queue, previousRejection = '') {
   });
 }
 
-function validateDraft(draft, topic, evidence) {
+export function validateDraft(draft, topic, evidence) {
   if (!draft.publishable) return draft.reason || 'Research found no useful material.';
   if (evidence.calls < 1 || evidence.urls.size < 2) return 'Web search did not return enough cited source evidence.';
   if (!draft.title || draft.title.length > 90 || draft.title.length < 20) return 'Title is outside editorial limits.';
@@ -232,56 +307,29 @@ async function createHero(prompt, topic) {
   return buffer;
 }
 
+async function main() {
 const queue = JSON.parse(await readFile(queuePath, 'utf8'));
 if (queue.version !== 1 || !Array.isArray(queue.topics)) fail('Editorial topic queue is invalid.');
 const content = validateGuideContent(JSON.parse(await readFile(join(publishedRoot, 'guide-content.json'), 'utf8')));
 const alreadyPublished = new Set(content.articles.map(article => article.slug));
 const currentMonth = Number(todayInNewYork().slice(5, 7));
-const topic = queue.topics.find(item => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(item.slug) &&
-  !alreadyPublished.has(item.slug) && Array.isArray(item.months) && item.months.includes(currentMonth));
-if (!topic) {
-  console.log('No new curated topic is eligible this month. Skipping publication.');
-  await output('changed', 'false');
-  process.exit(0);
+const topics = queue.topics.filter(item => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(item.slug) &&
+  !alreadyPublished.has(item.slug) && Array.isArray(item.months) && item.months.includes(currentMonth)).slice(0, 2);
+if (!topics.length) fail('No new curated topic is eligible this month. Add a topic before the next publication window.');
+for (const topic of topics) {
+  if (!Array.isArray(topic.allowedDomains) || !topic.allowedDomains.length || !Array.isArray(topic.officialSources) || !topic.officialSources.length) fail(`Topic ${topic.slug} needs official sources and allowed domains.`);
 }
-if (!Array.isArray(topic.allowedDomains) || !topic.allowedDomains.length || !Array.isArray(topic.officialSources) || !topic.officialSources.length) fail('Topic needs official sources and allowed domains.');
-console.log(`Next curated topic: ${topic.slug}`);
+console.log(`Curated topics available this run: ${topics.map(item => item.slug).join(', ')}`);
 if (dryRun) {
   console.log('Dry run: no OpenAI request or file write was made.');
   await output('changed', 'false');
-  process.exit(0);
+  return;
 }
-if (!key) {
-  console.log('OPENAI_API_KEY repository secret is not configured. Skipping weekly guide publication.');
-  await output('changed', 'false');
-  process.exit(0);
-}
+if (!key) fail('OPENAI_API_KEY repository secret is not configured. Weekly publication cannot proceed.');
+// Leave time inside the 50-minute Actions job for image rendering and deployment.
+runDeadline = Date.now() + 38 * 60_000;
 
 const today = todayInNewYork();
-async function checkResearch(response) {
-  let draft;
-  try { draft = JSON.parse(responseText(response)); } catch { fail('OpenAI returned invalid draft JSON.'); }
-  const evidence = searchEvidence(response);
-  let rejection = validateDraft(draft, topic, evidence);
-  if (!rejection) rejection = await checkSources(draft.sources, topic.allowedDomains);
-  return { draft, rejection };
-}
-
-let { draft, rejection } = await checkResearch(await researchTopic(topic, queue));
-if (rejection && draft.publishable) {
-  console.log(`First draft failed publication checks: ${rejection}. Retrying research once.`);
-  ({ draft, rejection } = await checkResearch(await researchTopic(topic, queue, rejection)));
-}
-if (rejection) {
-  console.log(`Publication skipped: ${rejection}`);
-  await output('changed', 'false');
-  process.exit(0);
-}
-async function independentlyReview(candidate) {
-  const response = await auditDraft(candidate, topic, today);
-  if (searchEvidence(response).calls < 1) fail('Independent audit did not use web search.');
-  try { return JSON.parse(responseText(response)); } catch { fail('OpenAI returned invalid audit JSON.'); }
-}
 function reviewPassed(review) {
   return review.pass && !review.unsupportedClaims.length && !review.styleIssues.length && !review.sourceConcerns.length;
 }
@@ -291,28 +339,72 @@ function reviewDiagnostic(review) {
     .find(Boolean);
   return `pass=${review.pass}; unsupported=${review.unsupportedClaims.length}; style=${review.styleIssues.length}; sources=${review.sourceConcerns.length}; reason=${compact(review.reason)}${issue ? `; first issue=${compact(issue)}` : ''}`;
 }
-
-let audit = await independentlyReview(draft);
-if (!reviewPassed(audit)) {
-  console.log(`Independent review requested a revision (${reviewDiagnostic(audit)}). Researching and reviewing once more.`);
-  const feedback = [audit.reason, ...audit.unsupportedClaims, ...audit.styleIssues, ...audit.sourceConcerns]
-    .filter(Boolean).join(' ').slice(0, 1200);
-  ({ draft, rejection } = await checkResearch(await researchTopic(topic, queue, feedback || 'The independent review did not pass.')));
-  if (rejection) {
-    console.log(`Publication skipped after revision: ${rejection}`);
-    await output('changed', 'false');
-    process.exit(0);
+async function prepareTopic(topic) {
+  const evidence = { calls: 0, urls: new Set() };
+  async function checkResearch(response) {
+    let draft;
+    try { draft = JSON.parse(responseText(response)); } catch { return { draft: null, rejection: 'OpenAI returned invalid draft JSON.' }; }
+    if (!draft || typeof draft !== 'object' || Array.isArray(draft)) {
+      return { draft: null, rejection: 'OpenAI returned an invalid draft object.' };
+    }
+    const found = searchEvidence(response);
+    evidence.calls += found.calls;
+    for (const url of found.urls) evidence.urls.add(url);
+    draft = normalizeDraft(draft, topic, evidence);
+    let rejection = validateDraft(draft, topic, evidence);
+    if (!rejection) rejection = await checkSources(draft.sources, topic.allowedDomains);
+    return { draft, rejection };
   }
-  audit = await independentlyReview(draft);
+  async function independentlyReview(candidate) {
+    const response = await auditDraft(candidate, topic, today);
+    if (searchEvidence(response).calls < 1) fail('Independent audit did not use web search.');
+    try { return JSON.parse(responseText(response)); } catch { fail('OpenAI returned invalid audit JSON.'); }
+  }
+  let draft;
+  let rejection = '';
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    ({ draft, rejection } = await checkResearch(await researchTopic(topic, queue, rejection, draft)));
+    if (!rejection) break;
+    console.log(`Draft ${attempt}/3 for ${topic.slug} failed publication checks: ${rejection}`);
+  }
+  if (rejection) return { rejection };
+
+  let audit = await independentlyReview(draft);
+  for (let revision = 1; !reviewPassed(audit) && revision <= 2; revision++) {
+    const feedback = [audit.reason, ...audit.unsupportedClaims, ...audit.styleIssues, ...audit.sourceConcerns]
+      .filter(Boolean).join(' ').slice(0, 1200);
+    console.log(`Independent review requested revision ${revision}/2 for ${topic.slug}: ${reviewDiagnostic(audit)}`);
+    ({ draft, rejection } = await checkResearch(await researchTopic(topic, queue,
+      [feedback, rejection].filter(Boolean).join(' '), draft)));
+    if (rejection) {
+      console.log(`Revision ${revision}/2 for ${topic.slug} failed publication checks: ${rejection}`);
+      continue;
+    }
+    audit = await independentlyReview(draft);
+  }
+  if (rejection) return { rejection };
+  if (!reviewPassed(audit)) return { rejection: `Independent review rejected the article: ${reviewDiagnostic(audit)}` };
+  return { draft };
 }
-if (!reviewPassed(audit)) {
-  console.log(`Publication skipped by independent review: ${reviewDiagnostic(audit)}`);
+
+let selected;
+const failures = [];
+for (const candidate of topics) {
+  console.log(`Researching curated topic: ${candidate.slug}`);
+  const result = await prepareTopic(candidate);
+  if (result.draft) { selected = { topic: candidate, draft: result.draft }; break; }
+  failures.push(`${candidate.slug}: ${result.rejection}`);
+  console.log(`Topic ${candidate.slug} could not be published this run: ${result.rejection}`);
+}
+if (!selected) {
   await output('changed', 'false');
-  process.exit(0);
+  fail(`No curated topic passed publication checks. ${failures.join(' | ')}`);
 }
+const { topic, draft } = selected;
 
 const heroFile = `assets/guides/${topic.slug}-hero.webp`;
 const ogFile = `assets/guides/${topic.slug}-og.png`;
+if (remainingTime() < 5 * 60_000) fail('Less than five minutes remain for image generation and rendering. A later scheduled run will retry.');
 const heroBuffer = await createHero(draft.heroPrompt, topic);
 const article = {
   slug: topic.slug,
@@ -341,3 +433,6 @@ await fingerprintAssets(publishedRoot);
 await output('changed', 'true');
 await output('new_url', `${SITE}/guide/${topic.slug}/`);
 console.log(`Ready to publish ${SITE}/guide/${topic.slug}/ after research, source checks, and independent review.`);
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) await main();

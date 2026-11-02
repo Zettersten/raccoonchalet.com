@@ -23,6 +23,7 @@ permissions:
 concurrency:
   group: pages-publish
   cancel-in-progress: false
+  queue: max
 
 jobs:
   deploy-site:
@@ -43,6 +44,10 @@ jobs:
           cache: npm
       - name: Install image template dependency
         run: npm ci
+      - name: Check publishing code
+        run: |
+          npm run check
+          npm test
       - name: Fetch current availability
         run: node scripts/update-calendar.mjs
       - name: Build static site

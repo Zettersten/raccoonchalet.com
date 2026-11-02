@@ -17,6 +17,7 @@ permissions:
 concurrency:
   group: pages-publish
   cancel-in-progress: false
+  queue: max
 
 jobs:
   update-calendar:
