@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-29",
+  "updatedAt": "2026-11-02",
   "articles": [
     {
       "slug": "first-ski-weekend-bryce-resort",
@@ -195,6 +195,94 @@
       "aiAssisted": true,
       "imageDisclosure": "AI-generated editorial illustration. It does not show Raccoon Chalet or a specific local destination.",
       "author": "erik-zettersten"
+    },
+    {
+      "slug": "bryce-resort-winter-without-skis",
+      "title": "Winter Around Bryce Resort When Not Everyone Skis",
+      "description": "Plan a mixed-interest winter stay near Bryce Resort with tubing, skating, a possible lake walk, meal arrangements and practical chalet alternatives.",
+      "category": "A weekend here",
+      "season": "Winter",
+      "author": "wendy-zettersten",
+      "publishedAt": "2026-11-02",
+      "updatedAt": "2026-11-02",
+      "hero": {
+        "src": "assets/guides/bryce-resort-winter-without-skis-hero.webp",
+        "alt": "Illustration of an imagined mountain vacation home at winter dusk, with boots and skates beside a doorway."
+      },
+      "ogImage": "assets/guides/bryce-resort-winter-without-skis-og.png",
+      "readingMinutes": 3,
+      "sections": [
+        {
+          "heading": "How should the group divide the day?",
+          "paragraphs": [
+            "Raccoon Chalet is a vacation home in Basye, Virginia, about five minutes from Bryce Resort. Plan separate activity blocks rather than expecting non-skiers to spend the whole day waiting for the skiing group.",
+            "Bryce’s Winter page identifies skiing, snowboarding, tubing and ice skating as winter choices. Treat that list as a starting point, not confirmation that an activity will operate during your stay. Use the Hours of Operation page to check activities, lifts and restaurants separately, then consult the individual activity page before making arrangements.",
+            "Agree on a reunion time and arrange transport before anyone books. If sharing one vehicle, decide who keeps it and how the others will return. Reserve only for confirmed participants, and leave non-skiers free to choose a shorter outing or stay at the chalet."
+          ]
+        },
+        {
+          "heading": "Would tubing or skating suit the non-skiers?",
+          "paragraphs": [
+            "For tubing, Bryce requires advance online reservations and ticket collection at the main ticket window. Its posted rules specify one rider per tube, with children at least four years old and 36 inches tall. A conveyor assists the uphill return, but participants still need to walk and exit the tube and lane quickly. Pack hiking boots or waterproof shoes, not ski boots. Review these requirements before buying, particularly with anyone who has mobility concerns.",
+            "For skating, the official page describes rental equipment and on-site ticket purchasing at the rink. Confirm the rink’s operating plans and rental availability for your date before treating it as an alternative to tubing. Ask about suitable equipment if children are joining. These are different physical activities, so let each guest choose rather than booking both for everyone. Leave time afterward to change footwear and reconnect with the skiing group."
+          ]
+        },
+        {
+          "heading": "Could Lake Laura work for a winter walk?",
+          "paragraphs": [
+            "Shenandoah County’s winter-hiking guide describes the Lake Laura loop as 2.5 miles around the lake. Bryce’s FAQ distinguishes the public perimeter trail from the beachfront, which it says closes in winter. Neither description confirms trail access or suitable footing on your outing date.",
+            "Before leaving, ask Bryce specifically about the walking trail, its access point and parking, rather than asking only whether Lake Laura is open. Choose the walk only if access and conditions suit the group. Allow daylight for the return, wear footwear with traction, and turn back if footing becomes uncertain. Keep the outing on the trail, not the lake surface, and do not build the plan around summer lake activities."
+          ]
+        },
+        {
+          "heading": "Where could everyone meet for a meal?",
+          "paragraphs": [
+            "Consider the Copper Kettle only after checking its separate restaurant entry on Bryce’s Hours of Operation page. The resort FAQ asks diners to make reservations and describes takeout during operating hours. Confirm seating for your group or ask whether takeout will be available at the intended pickup time; a ski booking does not establish either arrangement.",
+            "Keep a meal at the chalet as the alternative. Raccoon Chalet has a fully equipped kitchen, so bring ingredients for a dinner that can accommodate staggered returns. Decide who will prepare it before the group splits up, rather than leaving dinner dependent on the last skier finishing."
+          ]
+        },
+        {
+          "heading": "What should replace an outing that does not work out?",
+          "paragraphs": [
+            "Before purchasing activities, read Bryce’s cancellation and rebooking policy. It distinguishes guest cancellations from operator cancellations, so do not assume a change in your group’s weather preferences automatically qualifies for a refund. Use the official FAQ for the current terms and contact route.",
+            "Make the chalet alternative specific: choose a film for the home theater or arrange games around the pool table and ping pong table. The private saltwater hot tub and cedar sauna offer other ways to spend time at the property. Skiers can use the ski gear drop zone when they return. Buy dinner ingredients before the outing and choose an indoor activity everyone actually wants to join, so changing plans does not leave the evening undecided."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Winter Adventures at Bryce Resort",
+          "url": "https://bryceresort.com/winter",
+          "checkedAt": "2026-11-02"
+        },
+        {
+          "title": "Hours of Operation at Bryce Resort",
+          "url": "https://bryceresort.com/mountain-info/hours",
+          "checkedAt": "2026-11-02"
+        },
+        {
+          "title": "Snow Tubing at Bryce Resort",
+          "url": "https://bryceresort.com/winter/snow-tubing",
+          "checkedAt": "2026-11-02"
+        },
+        {
+          "title": "Ice Skating at Bryce Resort",
+          "url": "https://bryceresort.com/winter/ice-skating",
+          "checkedAt": "2026-11-02"
+        },
+        {
+          "title": "Frequently Asked Questions at Bryce Resort",
+          "url": "https://bryceresort.com/mountain-info/faqs",
+          "checkedAt": "2026-11-02"
+        },
+        {
+          "title": "6 Winter Hikes to Love in Shenandoah County, Virginia",
+          "url": "https://visitshenandoahcounty.com/blog/post/6-winter-hikes-to-love-in-shenandoah-county-virginia/",
+          "checkedAt": "2026-11-02"
+        }
+      ],
+      "aiAssisted": true,
+      "imageDisclosure": "AI-generated editorial illustration. It does not show Raccoon Chalet or a specific local destination."
     }
   ]
 }
