@@ -8,7 +8,7 @@
     "checkout": 0
   },
   "2026-11-13": {
-    "price": 294,
+    "price": 301,
     "min_stay": 1,
     "max_stay": 0,
     "available": 0,
@@ -16,7 +16,7 @@
     "checkout": 0
   },
   "2026-11-14": {
-    "price": 291,
+    "price": 298,
     "min_stay": 1,
     "max_stay": 0,
     "available": 0,
@@ -24,7 +24,7 @@
     "checkout": 2
   },
   "2026-11-15": {
-    "price": 180,
+    "price": 182,
     "min_stay": 1,
     "max_stay": 0,
     "available": 0,
@@ -40,7 +40,7 @@
     "checkout": 0
   },
   "2026-11-17": {
-    "price": 107,
+    "price": 106,
     "min_stay": 1,
     "max_stay": 0,
     "available": 1,
@@ -56,7 +56,7 @@
     "checkout": 1
   },
   "2026-11-19": {
-    "price": 124,
+    "price": 123,
     "min_stay": 1,
     "max_stay": 0,
     "available": 1,
@@ -64,7 +64,7 @@
     "checkout": 1
   },
   "2026-11-20": {
-    "price": 431,
+    "price": 429,
     "min_stay": 1,
     "max_stay": 0,
     "available": 0,
@@ -72,7 +72,7 @@
     "checkout": 1
   },
   "2026-11-21": {
-    "price": 411,
+    "price": 416,
     "min_stay": 1,
     "max_stay": 0,
     "available": 0,
@@ -80,7 +80,7 @@
     "checkout": 2
   },
   "2026-11-22": {
-    "price": 195,
+    "price": 196,
     "min_stay": 1,
     "max_stay": 0,
     "available": 1,
@@ -88,7 +88,7 @@
     "checkout": 2
   },
   "2026-11-23": {
-    "price": 171,
+    "price": 173,
     "min_stay": 1,
     "max_stay": 0,
     "available": 1,
@@ -96,7 +96,7 @@
     "checkout": 1
   },
   "2026-11-24": {
-    "price": 164,
+    "price": 166,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -136,7 +136,7 @@
     "checkout": 2
   },
   "2026-11-29": {
-    "price": 199,
+    "price": 200,
     "min_stay": 1,
     "max_stay": 0,
     "available": 1,
@@ -152,7 +152,7 @@
     "checkout": 1
   },
   "2026-12-01": {
-    "price": 118,
+    "price": 116,
     "min_stay": 1,
     "max_stay": 0,
     "available": 1,
@@ -160,7 +160,7 @@
     "checkout": 1
   },
   "2026-12-02": {
-    "price": 123,
+    "price": 121,
     "min_stay": 1,
     "max_stay": 0,
     "available": 1,
@@ -168,7 +168,7 @@
     "checkout": 1
   },
   "2026-12-03": {
-    "price": 125,
+    "price": 124,
     "min_stay": 1,
     "max_stay": 0,
     "available": 1,
@@ -176,7 +176,7 @@
     "checkout": 1
   },
   "2026-12-04": {
-    "price": 343,
+    "price": 346,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -184,7 +184,7 @@
     "checkout": 1
   },
   "2026-12-05": {
-    "price": 320,
+    "price": 324,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -192,7 +192,7 @@
     "checkout": 1
   },
   "2026-12-06": {
-    "price": 193,
+    "price": 195,
     "min_stay": 1,
     "max_stay": 0,
     "available": 1,
@@ -200,7 +200,7 @@
     "checkout": 1
   },
   "2026-12-07": {
-    "price": 138,
+    "price": 134,
     "min_stay": 1,
     "max_stay": 0,
     "available": 1,
@@ -216,7 +216,7 @@
     "checkout": 1
   },
   "2026-12-09": {
-    "price": 121,
+    "price": 122,
     "min_stay": 1,
     "max_stay": 0,
     "available": 1,
@@ -224,7 +224,7 @@
     "checkout": 1
   },
   "2026-12-10": {
-    "price": 126,
+    "price": 127,
     "min_stay": 1,
     "max_stay": 0,
     "available": 1,
@@ -232,7 +232,7 @@
     "checkout": 1
   },
   "2026-12-11": {
-    "price": 312,
+    "price": 314,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -240,7 +240,7 @@
     "checkout": 1
   },
   "2026-12-12": {
-    "price": 447,
+    "price": 317,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -248,7 +248,7 @@
     "checkout": 1
   },
   "2026-12-13": {
-    "price": 270,
+    "price": 273,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -264,7 +264,7 @@
     "checkout": 1
   },
   "2026-12-15": {
-    "price": 191,
+    "price": 190,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -328,7 +328,7 @@
     "checkout": 1
   },
   "2026-12-23": {
-    "price": 559,
+    "price": 558,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -336,7 +336,7 @@
     "checkout": 1
   },
   "2026-12-24": {
-    "price": 581,
+    "price": 580,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -360,7 +360,7 @@
     "checkout": 1
   },
   "2026-12-27": {
-    "price": 627,
+    "price": 639,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -368,7 +368,7 @@
     "checkout": 1
   },
   "2026-12-28": {
-    "price": 625,
+    "price": 637,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -376,7 +376,7 @@
     "checkout": 1
   },
   "2026-12-29": {
-    "price": 629,
+    "price": 640,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -384,7 +384,7 @@
     "checkout": 1
   },
   "2026-12-30": {
-    "price": 838,
+    "price": 847,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -392,7 +392,7 @@
     "checkout": 1
   },
   "2026-12-31": {
-    "price": 851,
+    "price": 896,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -400,7 +400,7 @@
     "checkout": 1
   },
   "2027-01-01": {
-    "price": 707,
+    "price": 688,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -408,7 +408,7 @@
     "checkout": 1
   },
   "2027-01-02": {
-    "price": 766,
+    "price": 780,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -416,7 +416,7 @@
     "checkout": 1
   },
   "2027-01-03": {
-    "price": 264,
+    "price": 267,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -424,7 +424,7 @@
     "checkout": 1
   },
   "2027-01-04": {
-    "price": 212,
+    "price": 209,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -448,7 +448,7 @@
     "checkout": 1
   },
   "2027-01-07": {
-    "price": 168,
+    "price": 170,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -456,7 +456,7 @@
     "checkout": 1
   },
   "2027-01-08": {
-    "price": 471,
+    "price": 472,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -464,7 +464,7 @@
     "checkout": 1
   },
   "2027-01-09": {
-    "price": 492,
+    "price": 494,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -488,7 +488,7 @@
     "checkout": 1
   },
   "2027-01-12": {
-    "price": 173,
+    "price": 172,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -496,7 +496,7 @@
     "checkout": 1
   },
   "2027-01-13": {
-    "price": 163,
+    "price": 164,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -504,7 +504,7 @@
     "checkout": 1
   },
   "2027-01-14": {
-    "price": 400,
+    "price": 402,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -512,7 +512,7 @@
     "checkout": 1
   },
   "2027-01-15": {
-    "price": 515,
+    "price": 518,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -520,7 +520,7 @@
     "checkout": 1
   },
   "2027-01-16": {
-    "price": 519,
+    "price": 522,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -528,7 +528,7 @@
     "checkout": 1
   },
   "2027-01-17": {
-    "price": 499,
+    "price": 503,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -536,7 +536,7 @@
     "checkout": 1
   },
   "2027-01-18": {
-    "price": 282,
+    "price": 283,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -552,7 +552,7 @@
     "checkout": 1
   },
   "2027-01-20": {
-    "price": 232,
+    "price": 166,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -568,7 +568,7 @@
     "checkout": 1
   },
   "2027-01-22": {
-    "price": 478,
+    "price": 480,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -576,7 +576,7 @@
     "checkout": 1
   },
   "2027-01-23": {
-    "price": 533,
+    "price": 534,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -584,7 +584,7 @@
     "checkout": 1
   },
   "2027-01-24": {
-    "price": 339,
+    "price": 343,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -600,7 +600,7 @@
     "checkout": 1
   },
   "2027-01-26": {
-    "price": 174,
+    "price": 175,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -616,7 +616,7 @@
     "checkout": 1
   },
   "2027-01-28": {
-    "price": 214,
+    "price": 213,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -624,7 +624,7 @@
     "checkout": 1
   },
   "2027-01-29": {
-    "price": 554,
+    "price": 547,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -632,7 +632,7 @@
     "checkout": 1
   },
   "2027-01-30": {
-    "price": 466,
+    "price": 463,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -640,7 +640,7 @@
     "checkout": 1
   },
   "2027-01-31": {
-    "price": 344,
+    "price": 345,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -648,7 +648,7 @@
     "checkout": 1
   },
   "2027-02-01": {
-    "price": 203,
+    "price": 208,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -656,7 +656,7 @@
     "checkout": 1
   },
   "2027-02-02": {
-    "price": 180,
+    "price": 184,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -664,7 +664,7 @@
     "checkout": 1
   },
   "2027-02-03": {
-    "price": 245,
+    "price": 247,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -672,7 +672,7 @@
     "checkout": 1
   },
   "2027-02-04": {
-    "price": 226,
+    "price": 230,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -680,7 +680,7 @@
     "checkout": 1
   },
   "2027-02-05": {
-    "price": 576,
+    "price": 580,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -688,7 +688,7 @@
     "checkout": 1
   },
   "2027-02-06": {
-    "price": 571,
+    "price": 574,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -696,7 +696,7 @@
     "checkout": 1
   },
   "2027-02-07": {
-    "price": 344,
+    "price": 352,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -704,7 +704,7 @@
     "checkout": 1
   },
   "2027-02-08": {
-    "price": 229,
+    "price": 237,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -712,7 +712,7 @@
     "checkout": 1
   },
   "2027-02-09": {
-    "price": 170,
+    "price": 176,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -720,7 +720,7 @@
     "checkout": 1
   },
   "2027-02-10": {
-    "price": 168,
+    "price": 176,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -728,7 +728,7 @@
     "checkout": 1
   },
   "2027-02-11": {
-    "price": 409,
+    "price": 405,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -736,7 +736,7 @@
     "checkout": 1
   },
   "2027-02-12": {
-    "price": 595,
+    "price": 663,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -752,7 +752,7 @@
     "checkout": 1
   },
   "2027-02-14": {
-    "price": 603,
+    "price": 612,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -760,7 +760,7 @@
     "checkout": 1
   },
   "2027-02-15": {
-    "price": 281,
+    "price": 284,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -768,7 +768,7 @@
     "checkout": 1
   },
   "2027-02-16": {
-    "price": 173,
+    "price": 231,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -776,7 +776,7 @@
     "checkout": 1
   },
   "2027-02-17": {
-    "price": 190,
+    "price": 232,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -784,7 +784,7 @@
     "checkout": 1
   },
   "2027-02-18": {
-    "price": 233,
+    "price": 214,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -792,7 +792,7 @@
     "checkout": 1
   },
   "2027-02-19": {
-    "price": 591,
+    "price": 580,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -800,7 +800,7 @@
     "checkout": 1
   },
   "2027-02-20": {
-    "price": 568,
+    "price": 563,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -808,7 +808,7 @@
     "checkout": 1
   },
   "2027-02-21": {
-    "price": 363,
+    "price": 366,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -816,7 +816,7 @@
     "checkout": 1
   },
   "2027-02-22": {
-    "price": 229,
+    "price": 231,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -824,7 +824,7 @@
     "checkout": 1
   },
   "2027-02-23": {
-    "price": 185,
+    "price": 187,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -832,7 +832,7 @@
     "checkout": 1
   },
   "2027-02-24": {
-    "price": 182,
+    "price": 183,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -848,7 +848,7 @@
     "checkout": 1
   },
   "2027-02-26": {
-    "price": 518,
+    "price": 522,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -856,7 +856,7 @@
     "checkout": 1
   },
   "2027-02-27": {
-    "price": 487,
+    "price": 500,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -864,7 +864,7 @@
     "checkout": 1
   },
   "2027-02-28": {
-    "price": 323,
+    "price": 330,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -872,7 +872,7 @@
     "checkout": 1
   },
   "2027-03-01": {
-    "price": 243,
+    "price": 244,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -880,7 +880,7 @@
     "checkout": 1
   },
   "2027-03-02": {
-    "price": 217,
+    "price": 174,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -888,7 +888,7 @@
     "checkout": 1
   },
   "2027-03-03": {
-    "price": 224,
+    "price": 222,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -904,7 +904,7 @@
     "checkout": 1
   },
   "2027-03-05": {
-    "price": 502,
+    "price": 497,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -912,7 +912,7 @@
     "checkout": 1
   },
   "2027-03-06": {
-    "price": 529,
+    "price": 518,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -920,7 +920,7 @@
     "checkout": 1
   },
   "2027-03-07": {
-    "price": 324,
+    "price": 319,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -928,7 +928,7 @@
     "checkout": 1
   },
   "2027-03-08": {
-    "price": 235,
+    "price": 232,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -936,7 +936,7 @@
     "checkout": 1
   },
   "2027-03-09": {
-    "price": 208,
+    "price": 204,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -944,7 +944,7 @@
     "checkout": 1
   },
   "2027-03-10": {
-    "price": 193,
+    "price": 192,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -952,7 +952,7 @@
     "checkout": 1
   },
   "2027-03-11": {
-    "price": 200,
+    "price": 209,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -960,7 +960,7 @@
     "checkout": 1
   },
   "2027-03-12": {
-    "price": 457,
+    "price": 458,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -968,7 +968,7 @@
     "checkout": 1
   },
   "2027-03-13": {
-    "price": 431,
+    "price": 455,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -976,7 +976,7 @@
     "checkout": 1
   },
   "2027-03-14": {
-    "price": 309,
+    "price": 314,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -984,7 +984,7 @@
     "checkout": 1
   },
   "2027-03-15": {
-    "price": 265,
+    "price": 268,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1008,7 +1008,7 @@
     "checkout": 1
   },
   "2027-03-18": {
-    "price": 232,
+    "price": 234,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1016,7 +1016,7 @@
     "checkout": 1
   },
   "2027-03-19": {
-    "price": 450,
+    "price": 455,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1024,7 +1024,7 @@
     "checkout": 1
   },
   "2027-03-20": {
-    "price": 447,
+    "price": 450,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1032,7 +1032,7 @@
     "checkout": 1
   },
   "2027-03-21": {
-    "price": 358,
+    "price": 360,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1040,7 +1040,7 @@
     "checkout": 1
   },
   "2027-03-22": {
-    "price": 300,
+    "price": 302,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1048,7 +1048,7 @@
     "checkout": 1
   },
   "2027-03-23": {
-    "price": 270,
+    "price": 272,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1056,7 +1056,7 @@
     "checkout": 1
   },
   "2027-03-24": {
-    "price": 271,
+    "price": 272,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1064,7 +1064,7 @@
     "checkout": 1
   },
   "2027-03-25": {
-    "price": 242,
+    "price": 243,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1072,7 +1072,7 @@
     "checkout": 1
   },
   "2027-03-26": {
-    "price": 683,
+    "price": 673,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1080,7 +1080,7 @@
     "checkout": 1
   },
   "2027-03-27": {
-    "price": 653,
+    "price": 654,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1088,7 +1088,7 @@
     "checkout": 1
   },
   "2027-03-28": {
-    "price": 529,
+    "price": 530,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1096,7 +1096,7 @@
     "checkout": 1
   },
   "2027-03-29": {
-    "price": 265,
+    "price": 267,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1128,7 +1128,7 @@
     "checkout": 1
   },
   "2027-04-02": {
-    "price": 546,
+    "price": 554,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1136,7 +1136,7 @@
     "checkout": 1
   },
   "2027-04-03": {
-    "price": 475,
+    "price": 491,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1144,7 +1144,7 @@
     "checkout": 1
   },
   "2027-04-04": {
-    "price": 339,
+    "price": 336,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1152,7 +1152,7 @@
     "checkout": 1
   },
   "2027-04-05": {
-    "price": 262,
+    "price": 260,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1160,7 +1160,7 @@
     "checkout": 1
   },
   "2027-04-06": {
-    "price": 228,
+    "price": 227,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1168,7 +1168,7 @@
     "checkout": 1
   },
   "2027-04-07": {
-    "price": 233,
+    "price": 231,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1184,7 +1184,7 @@
     "checkout": 1
   },
   "2027-04-09": {
-    "price": 552,
+    "price": 546,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1200,7 +1200,7 @@
     "checkout": 1
   },
   "2027-04-11": {
-    "price": 332,
+    "price": 328,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1208,7 +1208,7 @@
     "checkout": 1
   },
   "2027-04-12": {
-    "price": 246,
+    "price": 245,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1216,7 +1216,7 @@
     "checkout": 1
   },
   "2027-04-13": {
-    "price": 204,
+    "price": 206,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1224,7 +1224,7 @@
     "checkout": 1
   },
   "2027-04-14": {
-    "price": 237,
+    "price": 238,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1240,7 +1240,7 @@
     "checkout": 1
   },
   "2027-04-16": {
-    "price": 505,
+    "price": 506,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1248,7 +1248,7 @@
     "checkout": 1
   },
   "2027-04-17": {
-    "price": 529,
+    "price": 531,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1256,7 +1256,7 @@
     "checkout": 1
   },
   "2027-04-18": {
-    "price": 325,
+    "price": 326,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1264,7 +1264,7 @@
     "checkout": 1
   },
   "2027-04-19": {
-    "price": 240,
+    "price": 239,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1272,7 +1272,7 @@
     "checkout": 1
   },
   "2027-04-20": {
-    "price": 214,
+    "price": 213,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1288,7 +1288,7 @@
     "checkout": 1
   },
   "2027-04-22": {
-    "price": 207,
+    "price": 208,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1296,7 +1296,7 @@
     "checkout": 1
   },
   "2027-04-23": {
-    "price": 502,
+    "price": 510,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1304,7 +1304,7 @@
     "checkout": 1
   },
   "2027-04-24": {
-    "price": 478,
+    "price": 487,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1320,7 +1320,7 @@
     "checkout": 1
   },
   "2027-04-26": {
-    "price": 267,
+    "price": 266,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1352,7 +1352,7 @@
     "checkout": 1
   },
   "2027-04-30": {
-    "price": 485,
+    "price": 491,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1360,7 +1360,7 @@
     "checkout": 1
   },
   "2027-05-01": {
-    "price": 487,
+    "price": 490,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1384,7 +1384,7 @@
     "checkout": 1
   },
   "2027-05-04": {
-    "price": 186,
+    "price": 185,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1392,7 +1392,7 @@
     "checkout": 1
   },
   "2027-05-05": {
-    "price": 202,
+    "price": 201,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1408,7 +1408,7 @@
     "checkout": 1
   },
   "2027-05-07": {
-    "price": 507,
+    "price": 506,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1432,7 +1432,7 @@
     "checkout": 1
   },
   "2027-05-10": {
-    "price": 248,
+    "price": 249,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1440,7 +1440,7 @@
     "checkout": 1
   },
   "2027-05-11": {
-    "price": 225,
+    "price": 226,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1448,7 +1448,7 @@
     "checkout": 1
   },
   "2027-05-12": {
-    "price": 268,
+    "price": 273,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1456,7 +1456,7 @@
     "checkout": 1
   },
   "2027-05-13": {
-    "price": 270,
+    "price": 276,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1464,7 +1464,7 @@
     "checkout": 1
   },
   "2027-05-14": {
-    "price": 543,
+    "price": 549,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1472,7 +1472,7 @@
     "checkout": 1
   },
   "2027-05-15": {
-    "price": 546,
+    "price": 553,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1496,7 +1496,7 @@
     "checkout": 1
   },
   "2027-05-18": {
-    "price": 184,
+    "price": 183,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1504,7 +1504,7 @@
     "checkout": 1
   },
   "2027-05-19": {
-    "price": 193,
+    "price": 194,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1512,7 +1512,7 @@
     "checkout": 1
   },
   "2027-05-20": {
-    "price": 202,
+    "price": 203,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1520,7 +1520,7 @@
     "checkout": 1
   },
   "2027-05-21": {
-    "price": 513,
+    "price": 515,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1528,7 +1528,7 @@
     "checkout": 1
   },
   "2027-05-22": {
-    "price": 527,
+    "price": 530,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1560,7 +1560,7 @@
     "checkout": 1
   },
   "2027-05-26": {
-    "price": 189,
+    "price": 188,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1568,7 +1568,7 @@
     "checkout": 1
   },
   "2027-05-27": {
-    "price": 387,
+    "price": 389,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -1576,7 +1576,7 @@
     "checkout": 1
   },
   "2027-05-28": {
-    "price": 640,
+    "price": 642,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -1584,7 +1584,7 @@
     "checkout": 1
   },
   "2027-05-29": {
-    "price": 610,
+    "price": 612,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -1592,7 +1592,7 @@
     "checkout": 1
   },
   "2027-05-30": {
-    "price": 572,
+    "price": 621,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -1600,7 +1600,7 @@
     "checkout": 1
   },
   "2027-05-31": {
-    "price": 243,
+    "price": 240,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1608,7 +1608,7 @@
     "checkout": 1
   },
   "2027-06-01": {
-    "price": 196,
+    "price": 194,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1616,7 +1616,7 @@
     "checkout": 1
   },
   "2027-06-02": {
-    "price": 211,
+    "price": 210,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1624,7 +1624,7 @@
     "checkout": 1
   },
   "2027-06-03": {
-    "price": 218,
+    "price": 220,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1640,7 +1640,7 @@
     "checkout": 1
   },
   "2027-06-05": {
-    "price": 434,
+    "price": 438,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1648,7 +1648,7 @@
     "checkout": 1
   },
   "2027-06-06": {
-    "price": 276,
+    "price": 280,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1688,7 +1688,7 @@
     "checkout": 1
   },
   "2027-06-11": {
-    "price": 410,
+    "price": 412,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1704,7 +1704,7 @@
     "checkout": 1
   },
   "2027-06-13": {
-    "price": 336,
+    "price": 333,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1712,7 +1712,7 @@
     "checkout": 1
   },
   "2027-06-14": {
-    "price": 262,
+    "price": 258,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1720,7 +1720,7 @@
     "checkout": 1
   },
   "2027-06-15": {
-    "price": 216,
+    "price": 214,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1728,7 +1728,7 @@
     "checkout": 1
   },
   "2027-06-16": {
-    "price": 219,
+    "price": 216,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1736,7 +1736,7 @@
     "checkout": 1
   },
   "2027-06-17": {
-    "price": 521,
+    "price": 523,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1744,7 +1744,7 @@
     "checkout": 1
   },
   "2027-06-18": {
-    "price": 501,
+    "price": 502,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1752,7 +1752,7 @@
     "checkout": 1
   },
   "2027-06-19": {
-    "price": 491,
+    "price": 494,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1760,7 +1760,7 @@
     "checkout": 1
   },
   "2027-06-20": {
-    "price": 306,
+    "price": 308,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1776,7 +1776,7 @@
     "checkout": 1
   },
   "2027-06-22": {
-    "price": 256,
+    "price": 255,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1784,7 +1784,7 @@
     "checkout": 1
   },
   "2027-06-23": {
-    "price": 256,
+    "price": 255,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1792,7 +1792,7 @@
     "checkout": 1
   },
   "2027-06-24": {
-    "price": 279,
+    "price": 278,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1800,7 +1800,7 @@
     "checkout": 1
   },
   "2027-06-25": {
-    "price": 671,
+    "price": 673,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1808,7 +1808,7 @@
     "checkout": 1
   },
   "2027-06-26": {
-    "price": 609,
+    "price": 611,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1848,7 +1848,7 @@
     "checkout": 1
   },
   "2027-07-01": {
-    "price": 443,
+    "price": 445,
     "min_stay": 4,
     "max_stay": 0,
     "available": 1,
@@ -1856,7 +1856,7 @@
     "checkout": 1
   },
   "2027-07-02": {
-    "price": 599,
+    "price": 690,
     "min_stay": 4,
     "max_stay": 0,
     "available": 1,
@@ -1864,7 +1864,7 @@
     "checkout": 1
   },
   "2027-07-03": {
-    "price": 611,
+    "price": 684,
     "min_stay": 4,
     "max_stay": 0,
     "available": 1,
@@ -1872,7 +1872,7 @@
     "checkout": 1
   },
   "2027-07-04": {
-    "price": 615,
+    "price": 620,
     "min_stay": 4,
     "max_stay": 0,
     "available": 1,
@@ -1880,7 +1880,7 @@
     "checkout": 1
   },
   "2027-07-05": {
-    "price": 270,
+    "price": 217,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1888,7 +1888,7 @@
     "checkout": 1
   },
   "2027-07-06": {
-    "price": 195,
+    "price": 197,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1896,7 +1896,7 @@
     "checkout": 1
   },
   "2027-07-07": {
-    "price": 226,
+    "price": 238,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1904,7 +1904,7 @@
     "checkout": 1
   },
   "2027-07-08": {
-    "price": 270,
+    "price": 269,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1912,7 +1912,7 @@
     "checkout": 1
   },
   "2027-07-09": {
-    "price": 603,
+    "price": 604,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1920,7 +1920,7 @@
     "checkout": 1
   },
   "2027-07-10": {
-    "price": 562,
+    "price": 563,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1928,7 +1928,7 @@
     "checkout": 1
   },
   "2027-07-11": {
-    "price": 325,
+    "price": 327,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1936,7 +1936,7 @@
     "checkout": 1
   },
   "2027-07-12": {
-    "price": 276,
+    "price": 281,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1944,7 +1944,7 @@
     "checkout": 1
   },
   "2027-07-13": {
-    "price": 248,
+    "price": 253,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1952,7 +1952,7 @@
     "checkout": 1
   },
   "2027-07-14": {
-    "price": 249,
+    "price": 254,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1960,7 +1960,7 @@
     "checkout": 1
   },
   "2027-07-15": {
-    "price": 226,
+    "price": 230,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -1968,7 +1968,7 @@
     "checkout": 1
   },
   "2027-07-16": {
-    "price": 545,
+    "price": 550,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2000,7 +2000,7 @@
     "checkout": 1
   },
   "2027-07-20": {
-    "price": 226,
+    "price": 224,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2024,7 +2024,7 @@
     "checkout": 1
   },
   "2027-07-23": {
-    "price": 630,
+    "price": 620,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2032,7 +2032,7 @@
     "checkout": 1
   },
   "2027-07-24": {
-    "price": 571,
+    "price": 573,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2040,7 +2040,7 @@
     "checkout": 1
   },
   "2027-07-25": {
-    "price": 364,
+    "price": 362,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2048,7 +2048,7 @@
     "checkout": 1
   },
   "2027-07-26": {
-    "price": 268,
+    "price": 266,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2056,7 +2056,7 @@
     "checkout": 1
   },
   "2027-07-27": {
-    "price": 233,
+    "price": 231,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2064,7 +2064,7 @@
     "checkout": 1
   },
   "2027-07-28": {
-    "price": 227,
+    "price": 226,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2080,7 +2080,7 @@
     "checkout": 1
   },
   "2027-07-30": {
-    "price": 533,
+    "price": 538,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2088,7 +2088,7 @@
     "checkout": 1
   },
   "2027-07-31": {
-    "price": 536,
+    "price": 541,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2096,7 +2096,7 @@
     "checkout": 1
   },
   "2027-08-01": {
-    "price": 344,
+    "price": 345,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2104,7 +2104,7 @@
     "checkout": 1
   },
   "2027-08-02": {
-    "price": 282,
+    "price": 283,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2112,22 +2112,6 @@
     "checkout": 1
   },
   "2027-08-03": {
-    "price": 254,
-    "min_stay": 2,
-    "max_stay": 0,
-    "available": 1,
-    "checkin": 1,
-    "checkout": 1
-  },
-  "2027-08-04": {
-    "price": 259,
-    "min_stay": 2,
-    "max_stay": 0,
-    "available": 1,
-    "checkin": 1,
-    "checkout": 1
-  },
-  "2027-08-05": {
     "price": 255,
     "min_stay": 2,
     "max_stay": 0,
@@ -2135,8 +2119,24 @@
     "checkin": 1,
     "checkout": 1
   },
+  "2027-08-04": {
+    "price": 261,
+    "min_stay": 2,
+    "max_stay": 0,
+    "available": 1,
+    "checkin": 1,
+    "checkout": 1
+  },
+  "2027-08-05": {
+    "price": 256,
+    "min_stay": 2,
+    "max_stay": 0,
+    "available": 1,
+    "checkin": 1,
+    "checkout": 1
+  },
   "2027-08-06": {
-    "price": 578,
+    "price": 586,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2144,7 +2144,7 @@
     "checkout": 1
   },
   "2027-08-07": {
-    "price": 596,
+    "price": 601,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2152,7 +2152,7 @@
     "checkout": 1
   },
   "2027-08-08": {
-    "price": 339,
+    "price": 340,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2160,7 +2160,7 @@
     "checkout": 1
   },
   "2027-08-09": {
-    "price": 245,
+    "price": 244,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2176,7 +2176,7 @@
     "checkout": 1
   },
   "2027-08-11": {
-    "price": 240,
+    "price": 239,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2192,7 +2192,7 @@
     "checkout": 1
   },
   "2027-08-13": {
-    "price": 638,
+    "price": 634,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2200,7 +2200,7 @@
     "checkout": 1
   },
   "2027-08-14": {
-    "price": 581,
+    "price": 583,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2224,7 +2224,7 @@
     "checkout": 1
   },
   "2027-08-17": {
-    "price": 234,
+    "price": 233,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2248,7 +2248,7 @@
     "checkout": 1
   },
   "2027-08-20": {
-    "price": 597,
+    "price": 598,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2280,7 +2280,7 @@
     "checkout": 1
   },
   "2027-08-24": {
-    "price": 203,
+    "price": 202,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2296,7 +2296,7 @@
     "checkout": 1
   },
   "2027-08-26": {
-    "price": 207,
+    "price": 208,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2304,7 +2304,7 @@
     "checkout": 1
   },
   "2027-08-27": {
-    "price": 491,
+    "price": 498,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2312,7 +2312,7 @@
     "checkout": 1
   },
   "2027-08-28": {
-    "price": 516,
+    "price": 520,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2320,7 +2320,7 @@
     "checkout": 1
   },
   "2027-08-29": {
-    "price": 316,
+    "price": 319,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2328,7 +2328,7 @@
     "checkout": 1
   },
   "2027-08-30": {
-    "price": 267,
+    "price": 268,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2336,7 +2336,7 @@
     "checkout": 1
   },
   "2027-08-31": {
-    "price": 241,
+    "price": 242,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2360,7 +2360,7 @@
     "checkout": 1
   },
   "2027-09-03": {
-    "price": 681,
+    "price": 674,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -2368,7 +2368,7 @@
     "checkout": 1
   },
   "2027-09-04": {
-    "price": 664,
+    "price": 662,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -2376,7 +2376,7 @@
     "checkout": 1
   },
   "2027-09-05": {
-    "price": 584,
+    "price": 648,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -2424,7 +2424,7 @@
     "checkout": 1
   },
   "2027-09-11": {
-    "price": 473,
+    "price": 475,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2432,7 +2432,7 @@
     "checkout": 1
   },
   "2027-09-12": {
-    "price": 311,
+    "price": 310,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2440,7 +2440,7 @@
     "checkout": 1
   },
   "2027-09-13": {
-    "price": 241,
+    "price": 239,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2448,7 +2448,7 @@
     "checkout": 1
   },
   "2027-09-14": {
-    "price": 195,
+    "price": 192,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2456,7 +2456,7 @@
     "checkout": 1
   },
   "2027-09-15": {
-    "price": 204,
+    "price": 203,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2464,7 +2464,7 @@
     "checkout": 1
   },
   "2027-09-16": {
-    "price": 222,
+    "price": 220,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2480,7 +2480,7 @@
     "checkout": 1
   },
   "2027-09-18": {
-    "price": 515,
+    "price": 511,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2488,7 +2488,7 @@
     "checkout": 1
   },
   "2027-09-19": {
-    "price": 325,
+    "price": 324,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2496,7 +2496,7 @@
     "checkout": 1
   },
   "2027-09-20": {
-    "price": 241,
+    "price": 240,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2512,7 +2512,7 @@
     "checkout": 1
   },
   "2027-09-22": {
-    "price": 178,
+    "price": 179,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2528,7 +2528,7 @@
     "checkout": 1
   },
   "2027-09-24": {
-    "price": 553,
+    "price": 563,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2536,7 +2536,7 @@
     "checkout": 1
   },
   "2027-09-25": {
-    "price": 527,
+    "price": 529,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2552,7 +2552,7 @@
     "checkout": 1
   },
   "2027-09-27": {
-    "price": 257,
+    "price": 258,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2560,7 +2560,7 @@
     "checkout": 1
   },
   "2027-09-28": {
-    "price": 235,
+    "price": 236,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2584,7 +2584,7 @@
     "checkout": 1
   },
   "2027-10-01": {
-    "price": 790,
+    "price": 791,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2592,7 +2592,7 @@
     "checkout": 1
   },
   "2027-10-02": {
-    "price": 750,
+    "price": 752,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2600,7 +2600,7 @@
     "checkout": 1
   },
   "2027-10-03": {
-    "price": 429,
+    "price": 430,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2632,7 +2632,7 @@
     "checkout": 1
   },
   "2027-10-07": {
-    "price": 416,
+    "price": 418,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -2640,7 +2640,7 @@
     "checkout": 1
   },
   "2027-10-08": {
-    "price": 610,
+    "price": 614,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -2648,7 +2648,7 @@
     "checkout": 1
   },
   "2027-10-09": {
-    "price": 590,
+    "price": 593,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -2656,7 +2656,7 @@
     "checkout": 1
   },
   "2027-10-10": {
-    "price": 633,
+    "price": 637,
     "min_stay": 3,
     "max_stay": 0,
     "available": 1,
@@ -2664,7 +2664,7 @@
     "checkout": 1
   },
   "2027-10-11": {
-    "price": 212,
+    "price": 214,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2680,7 +2680,7 @@
     "checkout": 1
   },
   "2027-10-13": {
-    "price": 214,
+    "price": 215,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2688,7 +2688,7 @@
     "checkout": 1
   },
   "2027-10-14": {
-    "price": 266,
+    "price": 267,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2696,7 +2696,7 @@
     "checkout": 1
   },
   "2027-10-15": {
-    "price": 850,
+    "price": 853,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2704,7 +2704,7 @@
     "checkout": 1
   },
   "2027-10-16": {
-    "price": 898,
+    "price": 903,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2712,7 +2712,7 @@
     "checkout": 1
   },
   "2027-10-17": {
-    "price": 376,
+    "price": 379,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2720,7 +2720,7 @@
     "checkout": 1
   },
   "2027-10-18": {
-    "price": 239,
+    "price": 242,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2728,7 +2728,7 @@
     "checkout": 1
   },
   "2027-10-19": {
-    "price": 202,
+    "price": 203,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2736,7 +2736,7 @@
     "checkout": 1
   },
   "2027-10-20": {
-    "price": 209,
+    "price": 210,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2744,7 +2744,7 @@
     "checkout": 1
   },
   "2027-10-21": {
-    "price": 245,
+    "price": 246,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2768,7 +2768,7 @@
     "checkout": 1
   },
   "2027-10-24": {
-    "price": 333,
+    "price": 336,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2792,7 +2792,7 @@
     "checkout": 1
   },
   "2027-10-27": {
-    "price": 187,
+    "price": 188,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2808,7 +2808,7 @@
     "checkout": 1
   },
   "2027-10-29": {
-    "price": 670,
+    "price": 672,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2824,7 +2824,7 @@
     "checkout": 1
   },
   "2027-10-31": {
-    "price": 346,
+    "price": 343,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2832,7 +2832,7 @@
     "checkout": 1
   },
   "2027-11-01": {
-    "price": 300,
+    "price": 302,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2840,7 +2840,7 @@
     "checkout": 1
   },
   "2027-11-02": {
-    "price": 270,
+    "price": 272,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2848,7 +2848,7 @@
     "checkout": 1
   },
   "2027-11-03": {
-    "price": 274,
+    "price": 276,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2856,7 +2856,7 @@
     "checkout": 1
   },
   "2027-11-04": {
-    "price": 248,
+    "price": 249,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2864,7 +2864,7 @@
     "checkout": 1
   },
   "2027-11-05": {
-    "price": 610,
+    "price": 609,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2872,7 +2872,7 @@
     "checkout": 1
   },
   "2027-11-06": {
-    "price": 616,
+    "price": 618,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2880,7 +2880,7 @@
     "checkout": 1
   },
   "2027-11-07": {
-    "price": 341,
+    "price": 340,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2888,7 +2888,7 @@
     "checkout": 1
   },
   "2027-11-08": {
-    "price": 232,
+    "price": 230,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2896,7 +2896,7 @@
     "checkout": 1
   },
   "2027-11-09": {
-    "price": 192,
+    "price": 190,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2904,7 +2904,7 @@
     "checkout": 1
   },
   "2027-11-10": {
-    "price": 270,
+    "price": 346,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
@@ -2912,7 +2912,7 @@
     "checkout": 1
   },
   "2027-11-11": {
-    "price": 237,
+    "price": 305,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
