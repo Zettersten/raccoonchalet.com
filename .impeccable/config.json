@@ -125,6 +125,33 @@
         ],
         "createdAt": "2026-10-29T15:51:49.922Z",
         "reason": "Guide sections contain inset .container children; the desktop and 390px mobile previews show generous edge spacing."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "guest-manual.html"
+        ],
+        "createdAt": "2026-11-13T17:59:46.970Z",
+        "reason": "Agent: rendered manual text has padded inner containers; the full-bleed photo and section backgrounds intentionally have no own padding."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "guest-manual.html"
+        ],
+        "createdAt": "2026-11-13T18:00:02.969Z",
+        "reason": "Agent: DESIGN.md explicitly specifies warm paper for reading pages; the manual follows the established chalet palette."
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "guest-manual.html"
+        ],
+        "createdAt": "2026-11-13T18:00:03.627Z",
+        "reason": "Agent: the manual contains no marquee; the detector matched unused homepage selectors in the shared stylesheet."
       }
     ]
   }
