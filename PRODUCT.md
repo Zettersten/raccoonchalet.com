@@ -33,7 +33,7 @@ A mountain chalet five minutes from Bryce Resort with a saltwater hot tub, cedar
 
 ## Evidence on Hand
 - The supplied property description establishes three bedrooms, a kids' loft, two full bathrooms, a hot tub, cedar sauna, theater, pool, ping pong, deck, fire pit, kitchen, keyless entry, Wi-Fi, laundry, and nearby recreation.
-- Up to two dogs are allowed at $29 per pet per night; cats are not allowed.
+- Pets are not allowed.
 - On-site parking accommodates up to two vehicles.
 - A Ring doorbell camera is outside; there are no interior cameras.
 - Stays of 14 nights or longer require an e-signed rental agreement.
