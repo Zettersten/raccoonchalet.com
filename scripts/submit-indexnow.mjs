@@ -8,7 +8,7 @@ const keyFile = 'b37fe215b24148208f5c4a0492950f61.txt';
 const key = keyFile.slice(0, -4);
 const origin = 'https://raccoonchalet.com';
 const keyLocation = `${origin}/${keyFile}`;
-const pages = { home: `${origin}/`, privacy: `${origin}/privacy.html`, guide: `${origin}/guide.html` };
+const pages = { home: `${origin}/`, privacy: `${origin}/privacy.html`, guide: `${origin}/guide.html`, manual: `${origin}/guest-manual.html` };
 
 const fileContent = (await readFile(join(projectRoot, keyFile), 'utf8')).trim();
 if (fileContent !== key) throw new Error('IndexNow key file content does not match its filename.');
@@ -26,7 +26,7 @@ let urlList;
 if (explicitUrls) {
   urlList = explicitUrls.split(',').map(url => url.trim()).filter(Boolean);
 } else if (isManual || (before && /^0+$/.test(before))) {
-  urlList = [pages.home, pages.privacy, pages.guide, ...await guideArticleUrls()];
+  urlList = [pages.home, pages.privacy, pages.guide, pages.manual, ...await guideArticleUrls()];
 } else {
   if (!before) throw new Error('Set INDEXNOW_BEFORE to the previous commit or use a manual deployment.');
   const changedFiles = execFileSync('git', ['diff', '--name-only', before, after], {
@@ -44,7 +44,10 @@ if (explicitUrls) {
     ['guide.html', 'guide.css', 'guide.js', 'guide-content.json', 'styles.css', 'scripts/guide-pages.mjs'].includes(file)
     || file.startsWith('assets/guides/')
   );
-  urlList = [homeChanged && pages.home, privacyChanged && pages.privacy, guideChanged && pages.guide,
+  const manualChanged = changedFiles.some(file =>
+    ['guest-manual.html', 'guest-manual.css', 'guide.css', 'guide-motion.js', 'styles.css'].includes(file)
+  );
+  urlList = [homeChanged && pages.home, privacyChanged && pages.privacy, guideChanged && pages.guide, manualChanged && pages.manual,
     ...(guideChanged ? await guideArticleUrls() : [])].filter(Boolean);
 }
 

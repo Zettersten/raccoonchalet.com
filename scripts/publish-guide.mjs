@@ -13,7 +13,7 @@ const PROPERTY_FACTS = [
   'Raccoon Chalet is a vacation home in Basye, Virginia, about five minutes from Bryce Resort.',
   'The chalet has a private saltwater hot tub, cedar sauna, home theater, pool table, ping pong table, and an outdoor deck.',
   'The chalet has a fully equipped kitchen and a ski gear drop zone.',
-  'The chalet welcomes up to two dogs.',
+  'Pets are not permitted at the chalet.',
 ];
 const publishedRoot = resolve(process.argv[2] ?? 'published');
 const queuePath = resolve(process.argv[3] ?? 'editorial-topics.json');

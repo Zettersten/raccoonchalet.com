@@ -357,7 +357,7 @@ async function startShader(container) {
 initReveals();
 initReadingProgress();
 if (!reduceMotion.matches && !saveData) {
-  document.querySelectorAll('.guide-hero, .guide-article-hero').forEach(container => {
+  document.querySelectorAll('.guide-hero, .guide-article-hero, .manual-hero-visual').forEach(container => {
     startShader(container);
   });
   reduceMotion.addEventListener('change', event => {
