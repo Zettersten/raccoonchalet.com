@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-08",
+  "updatedAt": "2026-11-13",
   "articles": [
     {
       "slug": "first-ski-weekend-bryce-resort",
@@ -292,7 +292,7 @@
       "season": "Year-round",
       "author": "erik-zettersten",
       "publishedAt": "2026-11-08",
-      "updatedAt": "2026-11-08",
+      "updatedAt": "2026-11-13",
       "hero": {
         "src": "assets/guides/bryce-resort-visitor-planning-hero.webp",
         "alt": "Illustration of a fictional wooded mountain landscape with a winding trail and distant lake in autumn light."
@@ -326,7 +326,7 @@
           "heading": "Should you plan Lake Laura as a water outing or a walk?",
           "paragraphs": [
             "Treat beach admission, equipment rental and walking as separate planning decisions. Get Tickets identifies the lakeside Beach Shack as the purchase location for day passes and rentals. Confirm beach operations before heading there for either purchase.",
-            "Use the Lake Laura page for directions, admission information and rental choices, including kayaks and paddleboards. Its visitor rules state that there is no lifeguard and pets are prohibited. Raccoon Chalet welcomes up to two dogs, so plan pet arrangements before choosing this outing.",
+            "Use the Lake Laura page for directions, admission information and rental choices, including kayaks and paddleboards. Its visitor rules state that there is no lifeguard and pets are prohibited.",
             "For a walk, consult the lake map and trail notes instead of relying on beach information. The page identifies the parking lot at the base of the dam as one trail starting point. Confirm trail access separately from beach operations."
           ]
         },
