@@ -27,17 +27,17 @@
     "price": 182,
     "min_stay": 1,
     "max_stay": 0,
-    "available": 0,
-    "checkin": 0,
+    "available": 1,
+    "checkin": 1,
     "checkout": 2
   },
   "2026-11-16": {
     "price": 117,
     "min_stay": 1,
     "max_stay": 0,
-    "available": 0,
-    "checkin": 0,
-    "checkout": 0
+    "available": 1,
+    "checkin": 1,
+    "checkout": 1
   },
   "2026-11-17": {
     "price": 106,
@@ -45,7 +45,7 @@
     "max_stay": 0,
     "available": 1,
     "checkin": 1,
-    "checkout": 0
+    "checkout": 1
   },
   "2026-11-18": {
     "price": 114,
