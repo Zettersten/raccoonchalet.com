@@ -167,7 +167,7 @@ function articleHtml(article) {
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="guide-header">
     <a class="brand" href="../../index.html" aria-label="Raccoon Chalet home"><span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M4 17.5 20 5l16 12.5v17H4v-17Z"/><path d="M13 35V23.5l7-5 7 5V35"/><path d="M12 13.5h3m10 0h3"/></svg></span><span class="brand-name">Raccoon <em>Chalet</em></span></a>
-    <nav class="guide-nav" aria-label="Main navigation"><a href="../../index.html">The chalet</a><a href="../../guide.html" aria-current="page">Local guide</a><a class="guide-nav-book" href="../../index.html#availability">Check dates <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg></a></nav>
+    <nav class="guide-nav" aria-label="Main navigation"><a href="../../index.html">The chalet</a><a href="../../guide.html" aria-current="page">Local guide</a><a href="../../guest-manual.html">Guest manual</a><a class="guide-nav-book" href="../../index.html#availability">Check dates <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg></a></nav>
   </header>
   <main id="main"><article class="guide-article">
     <header class="guide-article-header"><div class="guide-reading-progress" aria-hidden="true"><span></span></div><div class="guide-article-head-inner">
