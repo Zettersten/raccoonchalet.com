@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-13",
+  "updatedAt": "2026-11-15",
   "articles": [
     {
       "slug": "first-ski-weekend-bryce-resort",
@@ -368,6 +368,86 @@
           "title": "Bryce Resort Get Tickets",
           "url": "https://bryceresort.com/tickets",
           "checkedAt": "2026-11-08"
+        }
+      ],
+      "aiAssisted": true,
+      "imageDisclosure": "AI-generated editorial illustration. It does not show Raccoon Chalet or a specific local destination."
+    },
+    {
+      "slug": "bryce-snow-tubing-planning",
+      "title": "Bryce Resort Snow Tubing: What Families Should Check",
+      "description": "Plan a family snow-tubing outing at Bryce Resort with reservation guidance, rider requirements, footwear rules and ticket pickup advice.",
+      "category": "Out in Basye",
+      "season": "Winter",
+      "author": "wendy-zettersten",
+      "publishedAt": "2026-11-15",
+      "updatedAt": "2026-11-15",
+      "hero": {
+        "src": "assets/guides/bryce-snow-tubing-planning-hero.webp",
+        "alt": "Atmospheric illustration of a family preparing with separate snow tubes beside a fictional wooded winter hill."
+      },
+      "ogImage": "assets/guides/bryce-snow-tubing-planning-og.png",
+      "readingMinutes": 3,
+      "sections": [
+        {
+          "heading": "How should you choose your tubing date?",
+          "paragraphs": [
+            "Raccoon Chalet is a vacation home in Basye, Virginia, about five minutes from Bryce Resort. Before building a day around tubing, confirm availability for your intended date rather than assuming a winter visit guarantees a session.",
+            "Consult the Winter Tubing page and the Hours of Operation page. Bryce lists tubing separately from skiing and snowboarding, so use tubing-specific information rather than treating a ski schedule as confirmation. Check the current operating information again before leaving the chalet.",
+            "If your date remains unclear, ask Bryce specifically about tubing before making other commitments. The official Contact page provides phone numbers and an inquiry form. Use those details instead of contact information saved from an older trip."
+          ]
+        },
+        {
+          "heading": "Can everyone in your family participate?",
+          "paragraphs": [
+            "Children must be at least four years old and 36 inches tall. Tubes are for one rider only. A conveyor assists the uphill return, but walking is still necessary, and participants must enter and leave their tube and lane quickly.",
+            "Measure younger children before buying tickets, and do not plan for a child to ride on an adult's lap. If anyone needs assistance, describe their needs to Bryce and ask about suitability before paying. For a child who will sit out, decide which adult will stay with them and ask where nonparticipants may wait. Resolve those questions before choosing the number of tickets."
+          ]
+        },
+        {
+          "heading": "What should you reserve before leaving the chalet?",
+          "paragraphs": [
+            "Tubing requires advance online reservations. A Slope Use Ticket excludes snow tubing, so buying a skiing ticket does not cover this outing.",
+            "Use the booking link on the Winter Tubing page.",
+            "Before checkout, compare the selected activity, date, session and rider count with your plans. If another household is joining you, agree on the same session before either family pays. Save the confirmation where the adult organizing arrival can retrieve it easily. Leave a buffer for getting dressed and collecting tickets instead of scheduling another activity immediately beforehand."
+          ]
+        },
+        {
+          "heading": "What should you wear, and where do you go first?",
+          "paragraphs": [
+            "Ski boots are prohibited for tubing; Bryce recommends hiking boots or waterproof shoes. Pick up tickets at the main ticket window, then head to the tubing hill on the resort's far left beside the ice rink.",
+            "If combining skiing and tubing, pack a footwear change before leaving the chalet. Treat ticket pickup as a separate arrival step rather than heading straight to the hill. Use Raccoon Chalet's ski gear drop zone to gather everyone's belongings, and set aside dry clothing for the return. Keep the reservation confirmation accessible."
+          ]
+        },
+        {
+          "heading": "What if your plans or the weather change?",
+          "paragraphs": [
+            "Read the FAQ's cancellation terms before checkout. Poor weather alone does not guarantee a refund, while operator cancellations qualify for a full refund. No-shows and reservations already rebooked once are nonrefundable.",
+            "For rebooking more than 48 hours ahead, use the confirmation email's link. Within 48 hours, contact the resort. Review the published cancellation deadlines and set a reminder before the relevant cutoff rather than waiting until the session begins.",
+            "If you decide against tubing, address the reservation rather than simply staying away. For an alternative at Raccoon Chalet, plan a meal using the fully equipped kitchen and choose a film for the home theater."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Snow Tubing at Bryce Resort",
+          "url": "https://bryceresort.com/winter/snow-tubing",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "title": "Hours of Operation at Bryce Resort",
+          "url": "https://bryceresort.com/mountain-info/hours",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "title": "Frequently Asked Questions at Bryce Resort",
+          "url": "https://bryceresort.com/mountain-info/faqs",
+          "checkedAt": "2026-11-15"
+        },
+        {
+          "title": "Contact Bryce Resort",
+          "url": "https://bryceresort.com/contact",
+          "checkedAt": "2026-11-15"
         }
       ],
       "aiAssisted": true,
