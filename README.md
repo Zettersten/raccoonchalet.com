@@ -8,6 +8,10 @@ Run `npm run dev` and open `http://127.0.0.1:4173`. Run `npm run check` and `npm
 
 The browser fetches `./calendar.json` and `./guide-content.json` at runtime. The local guide also has pre-rendered article pages and ordinary HTML links so search engines and visitors without JavaScript can read it.
 
+## Guest manual download
+
+The guest manual page links to `assets/raccoon-chalet-guest-manual.pdf`, a public copy of Blue Maple's full rulebook with a branded cover. The private source PDF contains a Wi-Fi password and must not be added to the repository. To refresh the public copy, install PyMuPDF and ReportLab, then run `python scripts/prepare-public-guest-manual.py path/to/private-source.pdf`. The script removes the password, corrects the November 2026 parking and checkout instructions, and checks the resulting PDF before it is published. Review each new source for changed rules before regenerating the download.
+
 ## Local guide publishing
 
 `guide-content.json` is the guide's source of truth. `npm run build` renders `/guide/<slug>/index.html`, adds article links to `/guide.html`, updates the sitemap, and creates a 1200 × 630 OG image for an article when its `ogImage` file is missing. The initial articles use real Raccoon Chalet photos and their own generated OG cards. Each article stores an `author` ID (`erik-zettersten` or `wendy-zettersten`) for its byline and portrait. Weekly stories alternate between them; existing bylines remain fixed in the JSON. External source links carry `utm_source=raccoonchalet.com`, `utm_medium=referral`, and `utm_campaign=local_guide` while preserving any existing URL parameters.
