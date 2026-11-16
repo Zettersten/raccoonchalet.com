@@ -1,12 +1,4 @@
 {
-  "2026-11-15": {
-    "price": 171,
-    "min_stay": 1,
-    "max_stay": 0,
-    "available": 0,
-    "checkin": 0,
-    "checkout": 0
-  },
   "2026-11-16": {
     "price": 112,
     "min_stay": 1,
