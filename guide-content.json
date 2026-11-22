@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-15",
+  "updatedAt": "2026-11-22",
   "articles": [
     {
       "slug": "first-ski-weekend-bryce-resort",
@@ -448,6 +448,94 @@
           "title": "Contact Bryce Resort",
           "url": "https://bryceresort.com/contact",
           "checkedAt": "2026-11-15"
+        }
+      ],
+      "aiAssisted": true,
+      "imageDisclosure": "AI-generated editorial illustration. It does not show Raccoon Chalet or a specific local destination."
+    },
+    {
+      "slug": "shenandoah-caverns-rainy-day",
+      "title": "Shenandoah Caverns: Plan the Cave Tour and Seasonal Extras",
+      "description": "Plan an indoor outing from Raccoon Chalet to Shenandoah Caverns, with walking advice, admission distinctions, and checks for seasonal extras.",
+      "category": "Around the valley",
+      "season": "Year-round",
+      "author": "erik-zettersten",
+      "publishedAt": "2026-11-22",
+      "updatedAt": "2026-11-22",
+      "hero": {
+        "src": "assets/guides/shenandoah-caverns-rainy-day-hero.webp",
+        "alt": "Atmospheric illustration of an imagined cavern walkway and mineral formations, not a depiction of Shenandoah Caverns."
+      },
+      "ogImage": "assets/guides/shenandoah-caverns-rainy-day-og.png",
+      "readingMinutes": 3,
+      "sections": [
+        {
+          "heading": "Where should you go, and how should you plan arrival?",
+          "paragraphs": [
+            "From Raccoon Chalet in Basye, set navigation to Shenandoah Caverns at 261 Caverns Road, Quicksburg, Virginia. Use the official Visitor Info page for current operating schedules, holiday arrangements, and contact details before deciding when to leave. Navigate to the attraction itself rather than to Mount Jackson generally.",
+            "Allow time beyond the underground walk. Groups form as visitors arrive, and your tour departure is assigned at check-in. Get that time before exploring anything else, and avoid a tightly timed lunch reservation immediately afterward."
+          ]
+        },
+        {
+          "heading": "Will the underground walk suit your group?",
+          "paragraphs": [
+            "The guided cave tour takes approximately one hour and covers about one mile on crushed gravel, including uphill and downhill stretches. Treat it as a walking excursion rather than a seated indoor activity. The operator recommends comfortable walking shoes and a light jacket for the cool underground environment, even when it feels warm outside.",
+            "Elevator access does not mean the whole route is accessible. The operator says the caverns are not fully ADA accessible and recommends calling before visiting with a wheelchair, walker, or scooter. Describe your equipment and available assistance so staff can discuss whether the route suits your group before you buy tickets."
+          ]
+        },
+        {
+          "heading": "Which companion attraction belongs in an indoor plan?",
+          "paragraphs": [
+            "Main Street of Yesteryear is indoors and included with caverns admission, according to the FAQ. Ask at check-in whether there is enough time to visit it before your assigned cave departure or whether you should save it for afterward. Distinguish this included attraction from optional extras when choosing tickets.",
+            "Gemstone mining is different: the sluice is outdoors, not another indoor exhibit. Its attraction page describes seasonal, weather-dependent operation and bags of mining rough purchased for sifting through running water. If staying indoors is the purpose of your outing, leave this activity out of the core plan. Confirm availability before buying supplies or promising it to children."
+          ]
+        },
+        {
+          "heading": "How do American Celebration and holiday events differ?",
+          "paragraphs": [
+            "Shenandoah County’s Mount Jackson page suggests pairing the cave with American Celebration on Parade, a museum displaying floats from inaugural and Rose Bowl parades. Treat that suggestion as an itinerary idea, not evidence that both attractions operate together on your travel date.",
+            "American Celebration has separate admission and seasonal operation; the operator also describes combination tickets. Confirm the museum’s availability and the ticket’s contents for your date before buying. For a late-autumn or winter stay, keep the museum optional rather than building your afternoon around it.",
+            "Holiday programming requires another decision. The official homepage lists Christmas at the Celebration at American Celebration on Parade. Review that event’s current schedule and ticket terms independently. An event listing should not be treated as confirmation of ordinary museum tours, and you should not assume cave admission includes the holiday experience."
+          ]
+        },
+        {
+          "heading": "How can you keep lunch independent of seasonal extras?",
+          "paragraphs": [
+            "The Caverns Café is seasonal, so do not rely on it as your only lunch option. Check its operating information separately from the cave schedule on the official homepage. If food timing matters to your group, eat before leaving or arrange a meal after returning rather than depending on a café stop between attractions.",
+            "Raccoon Chalet has a fully equipped kitchen and a home theater. Have ingredients ready for a meal when you return, then plan a film at the chalet instead of extending the outing simply to fill the afternoon."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Shenandoah Caverns Visitor Info",
+          "url": "https://shenandoahcaverns.com/visitor-info/",
+          "checkedAt": "2026-11-22"
+        },
+        {
+          "title": "Mount Jackson | Visit Shenandoah County",
+          "url": "https://visitshenandoahcounty.com/plan-your-visit/towns-and-villages/mount-jackson/",
+          "checkedAt": "2026-11-22"
+        },
+        {
+          "title": "Shenandoah Caverns Attraction",
+          "url": "https://shenandoahcaverns.com/attractions/shenandoah-caverns/",
+          "checkedAt": "2026-11-22"
+        },
+        {
+          "title": "Shenandoah Caverns FAQ",
+          "url": "https://shenandoahcaverns.com/faq/",
+          "checkedAt": "2026-11-22"
+        },
+        {
+          "title": "Gemstone Sluice",
+          "url": "https://shenandoahcaverns.com/attractions/gemstone-sluice/",
+          "checkedAt": "2026-11-22"
+        },
+        {
+          "title": "Shenandoah Caverns Official Homepage and Events",
+          "url": "https://shenandoahcaverns.com/",
+          "checkedAt": "2026-11-22"
         }
       ],
       "aiAssisted": true,
