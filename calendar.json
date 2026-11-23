@@ -1,18 +1,10 @@
 {
-  "2026-11-22": {
-    "price": 128,
-    "min_stay": 1,
-    "max_stay": 0,
-    "available": 0,
-    "checkin": 0,
-    "checkout": 0
-  },
   "2026-11-23": {
     "price": 106,
     "min_stay": 1,
     "max_stay": 0,
-    "available": 1,
-    "checkin": 1,
+    "available": 0,
+    "checkin": 0,
     "checkout": 0
   },
   "2026-11-24": {
@@ -21,7 +13,7 @@
     "max_stay": 0,
     "available": 1,
     "checkin": 1,
-    "checkout": 1
+    "checkout": 0
   },
   "2026-11-25": {
     "price": 368,
@@ -2913,6 +2905,14 @@
   },
   "2027-11-21": {
     "price": 271,
+    "min_stay": 2,
+    "max_stay": 0,
+    "available": 1,
+    "checkin": 1,
+    "checkout": 1
+  },
+  "2027-11-22": {
+    "price": 179,
     "min_stay": 2,
     "max_stay": 0,
     "available": 1,
