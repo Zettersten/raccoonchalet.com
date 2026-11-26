@@ -125,6 +125,11 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: ${{ runner.temp }}/pages-publish
+      # GitHub may not list a newly uploaded Pages artifact immediately.
+      # https://github.com/actions/deploy-pages/issues/451
+      - name: Wait for Pages artifact
+        if: steps.generate.outputs.changed == 'true' || steps.due.outputs.sync_due == 'true'
+        run: sleep 60
       - name: Publish guide to GitHub Pages
         if: steps.generate.outputs.changed == 'true' || steps.due.outputs.sync_due == 'true'
         id: deployment

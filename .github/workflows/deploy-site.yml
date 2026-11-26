@@ -85,6 +85,10 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: dist
+      # GitHub may not list a newly uploaded Pages artifact immediately.
+      # https://github.com/actions/deploy-pages/issues/451
+      - name: Wait for Pages artifact
+        run: sleep 60
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
